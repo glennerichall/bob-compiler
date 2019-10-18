@@ -15,7 +15,7 @@ export class Parser {
         matches: Array.from(matches),
         ...matches.groups,
         first: matches.index,
-        last: matches.index + matches[0].length
+        last: matches.index + matches[0].length - 1
       };
       for (let key in range) {
         if (transformers[key]) {
@@ -75,7 +75,8 @@ export class ResultParser extends TagParser {
   constructor(tag) {
     let transformers = {
       points: value => Number.parseFloat(value),
-      result: value => Number.parseFloat(value)
+      result: value => Number.parseFloat(value),
+      tag: value => tag
     };
     super(resultPattern.replace(tagPlaceholder, tag), { transformers });
   }

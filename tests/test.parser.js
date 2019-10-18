@@ -14,7 +14,7 @@ describe('TagParser', () => {
       expect(range).to.have.property('tag', 'bob:');
       expect(range).to.have.property('content', 'aaabbbbccc dddeeff');
       expect(range).to.have.property('first', 25);
-      expect(range).to.have.property('last', 62);
+      expect(range).to.have.property('last', 61);
     });
 
     it('should parse comments /* comment */ using a given tag', () => {
@@ -28,7 +28,7 @@ describe('TagParser', () => {
       expect(range).to.have.property('tag', 'bob:');
       expect(range).to.have.property('content', 'aaabbbbccc dddeeff');
       expect(range).to.have.property('first', 25);
-      expect(range).to.have.property('last', 59);
+      expect(range).to.have.property('last', 58);
     });
 
     it('should parse comments a pattern tag', () => {
@@ -42,7 +42,7 @@ describe('TagParser', () => {
       expect(range).to.have.property('tag', 'bill:');
       expect(range).to.have.property('content', 'aaabbbbccc dddeeff');
       expect(range).to.have.property('first', 25);
-      expect(range).to.have.property('last', 60);
+      expect(range).to.have.property('last', 59);
     });
 
     it('should parse multiple comments', () => {
@@ -56,14 +56,14 @@ describe('TagParser', () => {
       expect(range).to.have.property('tag', 'bill:');
       expect(range).to.have.property('content', 'aaabbbbccc dddeeff');
       expect(range).to.have.property('first', 25);
-      expect(range).to.have.property('last', 60);
+      expect(range).to.have.property('last', 59);
       range = parser.parse(text);
       expect(range).to.have.property('prefix', '<!--');
       expect(range).to.have.property('suffix', '-->');
       expect(range).to.have.property('tag', 'bob:');
       expect(range).to.have.property('content', 'yo');
       expect(range).to.have.property('first', 79);
-      expect(range).to.have.property('last', 95);
+      expect(range).to.have.property('last', 94);
       range = parser.parse(text);
       expect(range).to.be.null;
     });

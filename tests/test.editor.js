@@ -4,7 +4,7 @@ import { Editor } from '../src/editor.js';
 describe('Editor', () => {
   describe('#prepare', () => {
     it('should sort actions', () => {
-      let editor = new Editor({ text: '01234567890abcdef' });
+      let editor = new Editor({ content: '01234567890abcdef' });
       let a = { first: 10, last: 20 };
       let b = { first: 30, last: 40 };
       let c = { first: 60, last: 80 };
@@ -18,7 +18,7 @@ describe('Editor', () => {
     });
 
     it('should pad with noop actions', () => {
-      let editor = new Editor({ text: '01234567890abcdefghijklmnop' });
+      let editor = new Editor({ content: '01234567890abcdefghijklmnop' });
       // noop here (0,2)
       let a = { first: 3, last: 5 };
       // noop here (6,7)
@@ -42,8 +42,9 @@ describe('Editor', () => {
       expect(actions[5].range.last).to.equal(26);
     });
 
-    it('should pad with noop actions', () => {
-      let editor = new Editor({ text: '01234567890abcdefghijklmnop' });
+    it('should pad with noop actions and keep others', () => {
+      let editor = new Editor({ content: '01234567890abcdefghijklmnop' });
+      // insert here at 0
       // noop here (0,2)
       let a = { first: 3, last: 5 };
       // noop here (6,7)
@@ -53,20 +54,22 @@ describe('Editor', () => {
       editor.replaceRange(b, 'qqqq');
       editor.replaceRange(a, 'wwww');
       editor.replaceRange(c, 'eeee');
+      editor.insertPosition(0,'bob');
       let actions = editor.prepare();
 
-      expect(actions[0].execute(editor)).to.equal('012');
-      expect(actions[1].execute(editor)).to.equal('wwww');
-      expect(actions[2].execute(editor)).to.equal('67');
-      expect(actions[3].execute(editor)).to.equal('qqqq');
-      expect(actions[4].execute(editor)).to.equal('eeee');
-      expect(actions[5].execute(editor)).to.equal('cdefghijklmnop');
+      expect(actions[0].execute(editor)).to.equal('bob');
+      expect(actions[1].execute(editor)).to.equal('012');
+      expect(actions[2].execute(editor)).to.equal('wwww');
+      expect(actions[3].execute(editor)).to.equal('67');
+      expect(actions[4].execute(editor)).to.equal('qqqq');
+      expect(actions[5].execute(editor)).to.equal('eeee');
+      expect(actions[6].execute(editor)).to.equal('cdefghijklmnop');
     });
   });
 
   describe('#done', () => {
     it('should apply actions', () => {
-      let doc = { text: '01234567890abcdefghijklmnop' };
+      let doc = { content: '01234567890abcdefghijklmnop' };
       let editor = new Editor(doc);
       let a = { first: 3, last: 5 };
       let b = { first: 8, last: 9 };
@@ -74,8 +77,9 @@ describe('Editor', () => {
       editor.replaceRange(b, 'qqqq');
       editor.replaceRange(a, 'wwww');
       editor.replaceRange(c, 'eeee');
+      editor.insertPosition(0, 'bob');
       editor.done();
-      expect(doc.text).to.equal('012wwww67qqqqeeeecdefghijklmnop');
+      expect(doc.content).to.equal('bob012wwww67qqqqeeeecdefghijklmnop');
     });
   });
 });

@@ -4,6 +4,7 @@ export class EditorAction {
   }
 
   compare(other) {
+    if(other instanceof InsertRangeAction) return -other.compare(this);
     return this.range.first - other.range.first;
   }
 
@@ -22,6 +23,8 @@ export class ReplaceRangeAction extends EditorAction {
     this.advance(editor);
     return this.content;
   }
+
+  
 }
 
 export class DeleteRangeAction extends EditorAction {
@@ -44,6 +47,16 @@ export class InsertRangeAction extends EditorAction {
   execute(editor) {
     return this.content;
   }
+
+  compare(other) {
+    let diff = super.compare(other);
+    if (diff == 0) {
+      if (!(other instanceof InsertRangeAction)) {
+        return -1;
+      }
+    }
+    return diff;
+  }
 }
 
 export class NoopAction extends EditorAction {
@@ -53,7 +66,7 @@ export class NoopAction extends EditorAction {
 
   execute(editor) {
     this.advance(editor);
-    return editor.document.text.substring(
+    return editor.document.content.substring(
       this.range.first,
       this.range.last + 1
     );

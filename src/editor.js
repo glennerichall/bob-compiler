@@ -1,4 +1,8 @@
-import { ReplaceRangeAction, NoopAction } from './actions.js';
+import {
+  ReplaceRangeAction,
+  NoopAction,
+  InsertRangeAction
+} from './actions.js';
 
 export class Editor {
   constructor(document) {
@@ -11,19 +15,29 @@ export class Editor {
     this.commands.push(new ReplaceRangeAction(range, content));
   }
 
+  insertPosition(position, content) {
+    this.commands.push(
+      new InsertRangeAction({ first: position, last: position }, content)
+    );
+  }
+
   prepare() {
     let { commands } = this;
     commands.sort((a, b) => a.compare(b));
+    // console.log(commands)
     let result = [];
     let cursor = 0;
     let i = 0;
-    let n = this.document.text.length;
+    let n = this.document.content.length;
     do {
       let command = commands[i];
-      let first = command.range.first;
+      let { first, last } = command.range;
       if (i != 0) {
         let previous = commands[i - 1].range.last + 1;
         if (previous < first) {
+          if(commands[i - 1] instanceof InsertRangeAction){
+            previous--;
+          }
           let noop = new NoopAction({
             first: previous,
             last: first - 1
@@ -38,7 +52,6 @@ export class Editor {
         result.push(noop);
       }
       result.push(command);
-
       cursor = command.range.last;
       i++;
     } while (i < commands.length);
@@ -58,6 +71,6 @@ export class Editor {
     for (let i = 0; i < commands.length; i++) {
       text += commands[i].execute(this);
     }
-    this.document.text = text;
+    this.document.content = text;
   }
 }

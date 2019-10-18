@@ -60,7 +60,7 @@ describe('NoopAction', () => {
       });
       let text = action.execute({
         cursor: 3,
-        document: { text: '01234567890abcdef' }
+        document: { content: '01234567890abcdef' }
       });
       expect(text).to.equal('34567890');
     });
