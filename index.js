@@ -1,3 +1,1 @@
-// import 
-
-// let args = process.argv;
+module.exports.Compiler = require('./src/compiler.js').Compiler;
