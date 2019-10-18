@@ -1,0 +1,63 @@
+import { ReplaceRangeAction, NoopAction } from './actions.js';
+
+export class Editor {
+  constructor(document) {
+    this.document = document;
+    this.commands = [];
+    this.cursor = 0;
+  }
+
+  replaceRange(range, content) {
+    this.commands.push(new ReplaceRangeAction(range, content));
+  }
+
+  prepare() {
+    let { commands } = this;
+    commands.sort((a, b) => a.compare(b));
+    let result = [];
+    let cursor = 0;
+    let i = 0;
+    let n = this.document.text.length;
+    do {
+      let command = commands[i];
+      let first = command.range.first;
+      if (i != 0) {
+        let previous = commands[i - 1].range.last + 1;
+        if (previous < first) {
+          let noop = new NoopAction({
+            first: previous,
+            last: first - 1
+          });
+          result.push(noop);
+        }
+      } else if (first != 0) {
+        let noop = new NoopAction({
+          first: 0,
+          last: first - 1
+        });
+        result.push(noop);
+      }
+      result.push(command);
+
+      cursor = command.range.last;
+      i++;
+    } while (i < commands.length);
+    if (cursor < n) {
+      let noop = new NoopAction({
+        first: cursor + 1,
+        last: n - 1
+      });
+      result.push(noop);
+    }
+    return result;
+  }
+
+  done() {
+    let commands = this.prepare();
+    let text = '';
+    for (let i = 0; i < commands.length; i++) {
+      text += commands[i].execute(this);
+    }
+    this.document.text = text;
+  }
+}
