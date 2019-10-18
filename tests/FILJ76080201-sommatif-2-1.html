@@ -1,0 +1,135 @@
+<!-- Résultat: 4.5/20 -->
+
+<!-- Err: (11) Le fichier est mal nommé, (0.5 point) -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!-- Err: (19) Il manque les méta-informations, (0.5 point) -->
+  <meta charset="UTF-8" />
+  <meta name="author" content="" />
+
+</head>
+<style>
+  html {
+    border-left: solid;
+    margin-left: 50px;
+    border-width: 10px;
+    /* Err: (25) Seule le remplissage gauche doit être renseigné, (1 point) */
+    padding: 10px;
+    text-align: justify;
+  }
+
+  body {
+    counter-reset: counter1;
+  }
+
+  /* Err: (18) Le sélecteur d'élément n'est pas précis, (2 points) */
+  .pizzabacon {
+    border: dashed;
+
+  }
+  .baconpizza {
+    border: dashed;
+    border-color: red;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /* Err: (24) Utiliser une propriété raccourcie, (0.5 point) */
+    border-left-width: 3px;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    padding: 15px;
+  }
+
+  .baconpizza :nth-child(4n+6) {
+    color: red;
+  }
+  /* Err: (21): Règle redondante, (1 point) */
+  .baconpizza :nth-child(4n+3) {
+    color: red;
+  }
+
+  /* Err: (1) Les éléments de hautes importances seulement dans les paragraphes, (1 point) */
+  strong {
+    font-size: 30px
+  }
+
+  strong:hover {
+    background-color: blue;
+  }
+
+  strong:nth-of-type(3) {
+    background-color: #99cc00;
+    border: solid;
+    border-color: #99cc00;
+    border-radius: 10px;
+    /* Err: (6) Utilser la propriété padding pour ajouter un remplissage au contenu, (1 point) */
+    border-left-width: 20px;
+    border-right-width: 20px;
+    
+  }
+
+  .bacona::before {
+    content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
+  }
+
+  .bacona::after {
+    content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
+  }
+  p:nth-child(odd) {
+    background-color: lightblue;
+  }
+
+  p {
+    counter-reset: counter2;
+  }
+
+  /* Err: (16) Les paragraphes de classe « pizza » et « bacon » ne sont pas annotés correctement avec un pseudo-élément, (6 points) */
+  p::before {
+    counter-increment: counter1;
+    content: counter(counter1)". ";
+    /* Pour les compteurs au début des paragraphes, je n'ai pas reussis a les enlever après plus de 2 heures de recherche*/
+  }
+
+  i::before {
+    counter-increment: counter2;
+    content: counter(counter1) "."counter(counter2) " ";
+    color: red;
+    font-weight: bold;
+  }
+
+  i {
+    text-decoration: line-through;
+    text-decoration-color: red;
+  }
+</style>
+
+<body>
+  <strong>Du bon bacon</strong>
+  <br>
+  <strong class="bacon">canadian bacon</strong>
+  <p>
+    Magna. Sed cupidatat ribs spare hock, ham nostrud aute velit Meatloaf
+    beef. Corned salami cillum ea et Sunt <i></i> shankle. Ribs
+    <span class="bacon pizza">beef</span> magna ut, ullamco tri-tip Tenderloin
+    in. Qui <span class="bacon pizza">in</span> non
+    <span class="bacon pizza">capicola</span> flank leberkas ut
+    <span class="bacon pizza">loin</span>
+    <span class="bacon pizza">pork</span> officia minim, <i>shoulder</i> Ad
+    <i></i> deserunt. consectetur sint chicken kielbasa nisi
+    <i>turkey</i> shank Sunt et. in ad nostrud deserunt ipsum, ex Veniam
+  </p>
+  <!-- Err: (22) Le code HTML a été modifié, (2 points) -->
+  <p class="pizzabacon">
+    Chop. pork enim et occaecat shankle eiusmod landjaeger nisi
+    <i>cillum</i> Id tail. magna cow non consectetur sunt jerky, qui chop Pork
+    consectetur. ad lorem chicken <i>beef</i> corned quis veniam ribs spare id
+    <i>tri-tip</i> nisi round ground mignon filet Duis minim. pastrami
+    prosciutto, shankle frankfurter bresaola Do landjaeger. consequat picanha
+    nostrud <span class="bacon pizza">capicola</span> ut voluptate hock ham
+    ullamco, cupim Aliqua
+  </p>
+</body>
+
+</html>

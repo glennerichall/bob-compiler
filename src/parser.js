@@ -1,73 +1,82 @@
 export class Parser {
-  constructor(pattern) {
+  constructor(pattern, options) {
     this.pattern = pattern;
+    this.options = options || {};
+    this.options.transformers = this.options.transformers || {};
   }
 
   parse(text) {
+    let {
+      options: { transformers }
+    } = this;
     let matches = this.pattern.exec(text);
     if (matches) {
-      let prefix = matches[1];
-      let suffix = matches[matches.length - 1];
-      return {
+      let range = {
+        matches: Array.from(matches),
+        ...matches.groups,
         first: matches.index,
-        last: matches.index + matches[0].length,
-        prefix,
-        suffix,
-        content: matches[0].replace(prefix, '').replace(suffix, ''),
-        text: matches[0],
-        matches
+        last: matches.index + matches[0].length
       };
+      for (let key in range) {
+        if (transformers[key]) {
+          range[key] = transformers[key](range[key]);
+        }
+      }
+      return range;
     }
     return null;
   }
 }
 
-const prefixPattern = '(<!--|\\/\\*)\\s*';
-const suffixPattern = '\\s*(-->|\\*\\/)';
+const prefixPattern = '(?<prefix><!--|\\/\\*)\\s*';
+const suffixPattern = '\\s*(?<suffix>-->|\\*\\/)';
 const tagPlaceholder = '{tag}';
 const anythingThatFollowsPattern = '.*';
-const tagPattern = `${prefixPattern}(${tagPlaceholder})${anythingThatFollowsPattern}${suffixPattern}`;
+const tagPattern = `${prefixPattern}(?<tag>${tagPlaceholder})(?<content>${anythingThatFollowsPattern})${suffixPattern}`;
 
 export class TagParser extends Parser {
-  constructor(pattern) {
-    super(new RegExp(tagPattern.replace(tagPlaceholder, pattern), 'g'));
-  }
-
-  parse(text) {
-    let range = super.parse(text);
-    if (!range) return range;
-    range.tag = range.matches[2];
-    range.content = range.content.replace(range.tag, '').trim();
-    return range;
+  constructor(pattern, options) {
+    let transformers = {
+      content: content => content.trim()
+    };
+    options = options || { transformers: {} };
+    options.transformers = {
+      ...transformers,
+      ...options.transformers
+    };
+    super(
+      new RegExp(tagPattern.replace(tagPlaceholder, pattern), 'g'),
+      options
+    );
   }
 }
 
-const errorTagPattern = 'Err: \\((\\d+)\\)';
+const errorTagPattern = `${tagPlaceholder}\\s*\\((?<id>\\d+)\\)`;
 export class ErrorParser extends TagParser {
-  constructor() {
-    super(errorTagPattern);
-  }
-
-  parse(text) {
-    let range = super.parse(text);
-    if (!range) return range;
-    range.id = Number.parseInt(range.matches[3]);
-    return range;
+  constructor(tag) {
+    let transformers = {
+      id: id => Number.parseInt(id)
+    };
+    super(
+      tag instanceof RegExp
+        ? tag
+        : errorTagPattern.replace(tagPlaceholder, tag),
+      { transformers }
+    );
   }
 }
 
-const numPattern = '(\\d+(\\.\\d+){0,1})';
-const resultPattern = `${tagPlaceholder}\\s*${numPattern}/${numPattern}`;
+const numPattern = '(?<{name}>\\d+(\\.\\d+){0,1})';
+const resultPattern = `${tagPlaceholder}\\s*${numPattern.replace(
+  '{name}',
+  'result'
+)}/${numPattern.replace('{name}', 'points')}`;
 export class ResultParser extends TagParser {
   constructor(tag) {
-    super(resultPattern.replace(tagPlaceholder, tag));
-  }
-
-  parse(text) {
-    let range = super.parse(text);
-    if (!range) return range;
-    range.result = Number.parseFloat(range.matches[3]);
-    range.points = Number.parseFloat(range.matches[5]);
-    return range;
+    let transformers = {
+      points: value => Number.parseFloat(value),
+      result: value => Number.parseFloat(value)
+    };
+    super(resultPattern.replace(tagPlaceholder, tag), { transformers });
   }
 }

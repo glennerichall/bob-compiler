@@ -12,7 +12,8 @@
       "args": ["--require", "@babel/register", "tests/*.js"],
       "console": "integratedTerminal",
       "cwd": "${workspaceRoot}",
-      "internalConsoleOptions": "neverOpen"
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true,
     }
   ]
 }

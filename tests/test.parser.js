@@ -74,7 +74,7 @@ describe('ErrorParser', () => {
   describe('#parse', () => {
     it('should parse error with id', () => {
       let text = 'texte xtex xtext \n <!-- Err: (45) Message erruer --> ,\n text text';
-      let parser = new ErrorParser();
+      let parser = new ErrorParser('Err:');
       let range = parser.parse(text);
       expect(range).to.have.property('id', 45);
     });
