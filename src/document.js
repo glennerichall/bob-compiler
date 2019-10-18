@@ -16,10 +16,10 @@ export class Document {
     this.content = await readFile(this.filename, 'utf8');
   }
 
-  edit(edition) {
+  async edit(edition) {
     let editor = new Editor(this);
-    if (edition(editor)) {
-      editor.done();
+    if (await edition(editor)) {
+      await editor.done();
     }
   }
 

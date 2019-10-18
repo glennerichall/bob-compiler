@@ -17,25 +17,24 @@ class CommentDbParser extends ErrorParser {
 export class CommentList {
   constructor(filename) {
     this.filename = filename;
-    this.comments = [];
+    this.comments = null;
   }
 
   async load() {
+    if (this.comments != null) return;
     let content = await readFile(this.filename);
     let parser = new CommentDbParser('Err:');
 
     let comment;
+    this.comments = [];
     while ((comment = parser.parse(content)) != null) {
       this.comments[comment.id] = comment;
     }
-
     this.total = new Parser(/Total:\s*(?<points>\d+)/g, {
       transformers: { points: value => Number.parseInt(value) }
     }).parse(content);
   }
 }
-
-
 
 export function getDefaultFix(lang) {
   let prefix, suffix;
@@ -50,4 +49,4 @@ export function getDefaultFix(lang) {
     prefix,
     suffix
   };
-};
+}

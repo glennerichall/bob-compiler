@@ -39,7 +39,7 @@ export class ResultComment extends Comment {
 
   getText(sum) {
     let { tag, prefix, suffix, max } = this.range;
-    let template = `${prefix} ${tag} ${sum}/${max} ${suffix}`;
+    let template = `${prefix} ${tag} ${max-sum}/${max} ${suffix}`;
     return template;
   }
 }
@@ -47,7 +47,8 @@ export class ResultComment extends Comment {
 export class Compiler {
   constructor(filename, database) {
     this.document = new Document(filename);
-    this.database = new CommentList(database);
+    this.database =
+      database instanceof CommentList ? database : new CommentList(database);
     this.comments = [];
   }
 
@@ -75,17 +76,26 @@ export class Compiler {
     this.resultComment = new ResultComment(r);
   }
 
+  async updateErrors(editor) {
+    let sum = 0;
+    for (let comment of this.comments) {
+      let { id } = comment.range;
+      let { content, points } = this.database.comments[id];
+      comment.range.points = points;
+      sum += points;
+      comment.update(editor, content);
+    }
+    return sum;
+  }
+
+  async updateResult(editor, sum) {
+    this.resultComment.update(editor, sum);
+  }
+
   async execute() {
-    this.document.edit(editor => {
-      let sum = 0;
-      for (let comment of this.comments) {
-        let { id } = comment.range;
-        let { content, points } = this.database.comments[id];
-        comment.range.points = points;
-        sum += points;
-        comment.update(editor, content);
-      }
-      this.resultComment.update(editor, sum);
+    await this.document.edit(async editor => {
+      let sum = await this.updateErrors(editor);
+      await this.updateResult(editor, sum);
       return true;
     });
     await this.document.save();
