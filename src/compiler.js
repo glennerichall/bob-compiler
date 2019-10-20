@@ -1,7 +1,7 @@
 import { ErrorParser, ResultParser } from './parser.js';
 import { CommentList, getDefaultFix } from './comments.js';
 import { Document } from './document.js';
-// import readdir from 'recursive-readdir';
+
 
 export class Comment {
   constructor(range) {

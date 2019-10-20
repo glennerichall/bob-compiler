@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "node_modules/.bin/mocha --require @babel/register tests/ "
   },
@@ -19,5 +20,9 @@
     "chai": "^4.2.0",
     "mocha": "^6.2.1",
     "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "recursive-readdir": "^2.2.2",
+    "yargs": "^14.2.0"
   }
 }

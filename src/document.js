@@ -1,15 +1,13 @@
 import { Editor } from './editor.js';
 import path from 'path';
-import fs from 'fs';
-import { promisify } from 'util';
-
-let readFile = promisify(fs.readFile);
+import { promises } from 'fs';
+const { writeFile, readFile } = promises;
 
 export class Document {
   constructor(filename) {
     this.filename = filename;
     this.content = null;
-    this.lang = path.extname(filename).replace('\.','');
+    this.lang = path.extname(filename).replace('.', '');
   }
 
   async load() {
@@ -20,10 +18,11 @@ export class Document {
     let editor = new Editor(this);
     if (await edition(editor)) {
       await editor.done();
+      this.modified = true;
     }
   }
 
-  async saveAs(filename){
+  async saveAs(filename) {
     if (!this.modified) return Promise.resolve(false);
     await writeFile(filename, this.content, 'utf8');
     return Promise.resolve(true);

@@ -1,5 +1,5 @@
-const fs = require('fs');
-const util = require('util');
+import fs from 'fs';
+import util from 'util';
 import { Parser, ErrorParser, ResultParser } from './parser.js';
 
 const exists = util.promisify(fs.exists);

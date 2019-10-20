@@ -7,13 +7,21 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/index.js",
+      "args": ["compile", "E:\\OD\\OneDrive - College D'Alma\\Collège d'Alma\\Corrections\\Automne 2019\\420-1W1-AA\\Sommatif 2\\Alexis Lapointe_161467_assignsubmission_file_",  "E:\\OD\\OneDrive - College D'Alma\\Collège d'Alma\\Corrections\\Automne 2019\\420-1W1-AA\\Sommatif 2\\commentaires"]
+      "runtimeArgs": ["--experimental-modules"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Mocha",
       "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
       "args": ["--require", "@babel/register", "tests/*.js"],
       "console": "integratedTerminal",
       "cwd": "${workspaceRoot}",
       "internalConsoleOptions": "neverOpen",
-      "sourceMaps": true,
+      "sourceMaps": true
     }
   ]
 }
