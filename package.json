@@ -5,7 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "node_modules/.bin/mocha --require @babel/register tests/ "
+    "test": "node_modules/.bin/mocha --require @babel/register tests/ ",
+    "start": "node --experimental-modules ./index.js"
+  },
+  "bin": {
+    "bobc": "./index.js"
   },
   "author": "Glenn Hall",
   "license": "ISC",

@@ -4,5 +4,5 @@ const readFile = promises.readFile;
 
 export default async function version(){
     const pkg = await readFile('./package.json', 'utf8');
-    return JSON.parse(pkg).version;
+    return 'v' + JSON.parse(pkg).version;
 }
