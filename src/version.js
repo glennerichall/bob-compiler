@@ -8,6 +8,5 @@ export default async function version() {
     path.join(__dirname, '..', 'package.json'),
     'utf8'
   );
-  console.log(__dirname);
   return 'v' + JSON.parse(pkg).version;
 }
