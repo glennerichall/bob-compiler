@@ -1,0 +1,6 @@
+.gitignore
+.npmignore
+.babelrc
+tests/
+node_modules/
+dist/index.js

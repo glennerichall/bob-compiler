@@ -1,15 +1,17 @@
 {
-  "name": "compiler",
-  "version": "1.0.3",
+  "name": "bob-compiler",
+  "version": "1.0.4",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.js",
   "type": "module",
   "scripts": {
     "test": "node_modules/.bin/mocha --require @babel/register tests/ ",
-    "start": "node --experimental-modules ./index.js"
+    "start": "node --experimental-modules ./src/index.js",
+    "build:prod": "npx babel src --out-dir lib",
+    "deploy": "npm version patch && npm run build:prod && npm publish . --access public"
   },
   "bin": {
-    "bobc": "./index.js"
+    "bobc": "./lib/index.js"
   },
   "author": "Glenn Hall",
   "license": "ISC",

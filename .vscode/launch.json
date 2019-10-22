@@ -12,11 +12,7 @@
       "args": [
         "compile",
         "E:\\OD\\OneDrive - College D'Alma\\Collège d'Alma\\Corrections\\Automne 2019\\420-1W1-AA\\Sommatif 2",
-        "E:\\OD\\OneDrive - College D'Alma\\Collège d'Alma\\Corrections\\Automne 2019\\420-1W1-AA\\Sommatif 2\\commentaires",
-        "--pattern",
-        "\"^(?<codepermanent>\\w{4}\\d{6,8})-(?<travail>\\w+)-(?<numero>\\d+)\\.(?<lang>css|html|js)$\"",
-        "--groupby",
-        "codepermanent"
+        "E:\\OD\\OneDrive - College D'Alma\\Collège d'Alma\\Corrections\\Automne 2019\\420-1W1-AA\\Sommatif 2\\commentaires"
       ],
       "runtimeArgs": ["--experimental-modules"]
     },
