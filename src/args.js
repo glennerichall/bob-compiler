@@ -25,9 +25,17 @@ export const cpmCmd = [
       .option('pattern', {
         type: 'string',
         default: process.env.bobcpattern || '.*',
-        describe: 'Filtrer les fichier selon une expression régulière'
+        describe: 'Filtrer les fichiers selon une expression régulière'
       })
-      .implies('groupby', 'pattern'),
+      .option('parts', {
+        choices: ['basename','dirname','extname','fullname','resolve'],
+        default: 'basename',
+        describe:
+          'Considérer seulement certaines parties du nom de fichier dans le filtre [pattern]'
+      })
+      .coerce('parts', parts => parts.replace(/^fullname$/, 'resolve'))
+      .implies('groupby', 'pattern')
+      .implies('parts', 'pattern'),
   async args => {
     const { source, commentaires } = args;
     await compile(source, commentaires, args);

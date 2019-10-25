@@ -13,6 +13,13 @@ version().then(value => {
     .version(value)
     .command(...lstCmd)
     .command(...cpmCmd)
+    .option('verbose', {
+      type: 'boolean',
+      default: 'false',
+      describe: 'Exécution verbeuse'
+    })
     .showHelpOnFail(true)
     .help().argv;
+
+  if (argv.verbose) console.log(argv);
 });
