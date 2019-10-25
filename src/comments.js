@@ -38,10 +38,18 @@ export class CommentList {
 
 export function getDefaultFix(lang) {
   let prefix, suffix;
-  if (lang == 'js' || lang == 'css') {
+  if (
+    lang == 'js' ||
+    lang == 'css' ||
+    lang == 'cs' ||
+    lang == 'cpp' ||
+    lang == 'c' ||
+    lang == 'c++' ||
+    lang == 'java'
+  ) {
     prefix = '/*';
     suffix = '*/';
-  } else if (lang == 'html') {
+  } else if (lang == 'html' || lang == 'xaml') {
     prefix = '<!--';
     suffix = '-->';
   }
