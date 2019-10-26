@@ -3,7 +3,8 @@
 
 import yargs from 'yargs';
 import version from './version.js';
-import { lstCmd, cpmCmd } from './args.js';
+import { lstCmd, cpmCmd, preCmd } from './args.js';
+import { applyPresets } from './cli-presets.js';
 
 // ---------------------------------------------------------------------------
 version().then(value => {
@@ -12,14 +13,32 @@ version().then(value => {
     .usage('$0 <cmd> [args]')
     .version(value)
     .command(...lstCmd)
+    .command(...preCmd)
     .command(...cpmCmd)
     .option('verbose', {
       type: 'boolean',
-      default: 'false',
       describe: 'Exécution verbeuse'
     })
+    .option('dryrun', {
+      type: 'boolean',
+      describe: 'Ne pas exécuter la commande'
+    })
+    .middleware([
+      argv => {
+        if (argv['_'][0] == 'compile') {
+          if(argv.verbose) console.log('Applying presets');
+          let presets = applyPresets(argv.preset || []);
+          for (let key of Object.keys(presets)) {
+            argv[key] = presets[key];
+          }
+        }
+      }
+    ])
     .showHelpOnFail(true)
     .help().argv;
 
-  if (argv.verbose) console.log(argv);
+  if (argv.verbose) {
+    console.log('\nCurrent effective options are:');
+    console.log(argv);
+  }
 });
