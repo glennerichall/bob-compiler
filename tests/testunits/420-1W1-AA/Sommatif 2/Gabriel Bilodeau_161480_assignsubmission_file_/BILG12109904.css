@@ -1,0 +1,92 @@
+/* Résultat: 16/20 */
+
+/* Err: (17) Trop de fichers zip, un seul contenant tous les fichier suffit, (0.5 point) */
+/* Err: (29) Le fichier est mal nommé, (0.5 point) */
+/* Question 1 et Question 2 */
+body{
+    margin-left: 50px;
+    border-left-style: solid;
+    border-left-color: black;
+    border-left-width: 10px;
+    text-align: justify;
+    padding-left: 30px;
+}
+/* Question 3 */
+p strong{
+    font-size: 30px;
+}
+/* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+p strong:hover{
+    background-color: blue;
+}
+/* Question 4 */
+i{
+    text-decoration-line: line-through;
+    text-decoration-color: red;
+    font-weight:bold;
+    counter-increment: texte;
+}
+
+p{
+    counter-increment: t1;
+    counter-reset: t2;
+}
+
+p::before{
+    content: "";
+}
+
+i{
+    counter-increment: t2;
+}
+
+i::before{
+    content: counter(t1)"." counter(t2)". ";
+    color: red;
+}
+/* Question 5 */
+p strong.bacon::before{
+    content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
+    /* Err: (36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon */
+    padding: 3px;
+}
+
+p strong.bacon::after{
+    content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
+    padding: 3px;
+}
+
+p strong.bacon:nth-of-type(3){
+    background-color: green;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+p.pizza>strong.bacon{
+    color: red;
+}
+/* Question 6 */
+p.pizza.bacon{
+    /* Err: (20) La bordure doit être en tirets et non en pointillés, (1 point) */
+    border: dotted red 3px;
+    border-top-left-radius:20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px;
+}
+
+p.pizza.bacon::before{
+    content: "Pizza Bacon "counter(t1);
+    border: 1px dashed;
+    padding: 3px;
+    background-color: white;
+    position:absolute;
+    top:-15px;
+}
+/* Question 7 */
+p:nth-child(odd){
+    background-color: lightblue;
+}
+p{
+    position: relative;
+}

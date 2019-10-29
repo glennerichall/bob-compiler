@@ -13,7 +13,7 @@ export const getGroups = async (source, options) => {
   };
   const pattern = new RegExp(options.pattern);
   let files = await readdir(source);
-  
+
   if (!!options.verbose) {
     console.log(`${files.length} fichier(s) trouvé(s)`);
     console.log(`Filtrage des fichiers selon [pattern] : `);
@@ -51,11 +51,18 @@ export const getGroups = async (source, options) => {
 // ---------------------------------------------------------------------------
 export const compileGroup = async (source, commentaires, options) => {
   let groups = await getGroups(source, options);
- 
-  // flatten groups
-  groups = Object.keys(groups).map(key => groups[key]);
-  
-  for (let files of groups) {
+
+  groups = Object.keys(groups).map(key => {
+    let files = groups[key];
+    let group = new CompilationGroup(files, commentaires);
+    group.key = key;
+    if (options.dryrun) group.dryrun();
+    return group;
+  });
+
+  let results = {};
+  for (let group of groups) {
+    let files = group.files;
     if (options.verbose) {
       console.log(`Compilation du groupe de fichiers : `);
       for (let file of files) {
@@ -63,17 +70,12 @@ export const compileGroup = async (source, commentaires, options) => {
       }
       console.log('\n');
     }
-    let group = new CompilationGroup(files, commentaires);
-
-    if (options.dryrun) {
-      group.compilers.forEach(compiler => {
-        compiler.document.saveAs = () => true;
-      });
-    }
 
     await group.load();
-    await group.execute();
+    let result = await group.execute();
+    results[group.key] = result;
   }
+  return results;
 };
 
 // ---------------------------------------------------------------------------
@@ -83,7 +85,7 @@ export const compileOne = async (source, commentaires, options) => {
     compiler.document.saveAs = async () => Promise.resolve(true);
   }
   await compiler.load();
-  await compiler.execute();
+  return await compiler.execute();
 };
 
 // ---------------------------------------------------------------------------
@@ -105,13 +107,24 @@ export const compile = async (source, commentaires, options) => {
     const stats = await lstat(source);
     if (stats.isDirectory() && !options.single) {
       if (options.verbose) console.log('Compilation par groupes de fichiers');
-      await compileGroup(source, commentaires, options);
+      let results = await compileGroup(source, commentaires, options);
+      if (options.results == 'csv') {
+        for (let key in results) {
+          console.log(`${key} : ${results[key]}`);
+        }
+      } else if (options.results == 'json') {
+        console.log(JSON.stringify(results));
+      }
     } else {
-      await compileOne(source, commentaires);
+      let result = await compileOne(source, commentaires);
     }
   } catch (e) {
     console.error(e.message);
     return;
   }
-  console.log(`Compilation terminée en ${new Date() - start} milliseconde(s)`);
+  if (options.verbose) {
+    console.log(
+      `Compilation terminée en ${new Date() - start} milliseconde(s)`
+    );
+  }
 };

@@ -14,6 +14,10 @@ class CommentDbParser extends ErrorParser {
   }
 }
 
+export function asDatabase(database) {
+  return database instanceof CommentList ? database : new CommentList(database);
+}
+
 export class CommentList {
   constructor(filename) {
     this.filename = filename;

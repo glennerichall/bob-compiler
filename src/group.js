@@ -1,11 +1,12 @@
 import { Compiler } from './compiler.js';
+import { asDatabase } from './comments.js';
 
 class SubCompiler extends Compiler {
   constructor(file, database, group) {
     super(file, database);
     this.group = group;
   }
-  
+
   async updateResult(editor, sum) {
     sum = await this.group.sync(sum);
     await super.updateResult(editor, sum);
@@ -14,7 +15,11 @@ class SubCompiler extends Compiler {
 
 export class CompilationGroup {
   constructor(files, database) {
-    this.compilers = files.map(file => new SubCompiler(file, database, this));
+    this.files = files;
+    this.database = asDatabase(database);
+    this.compilers = files.map(
+      file => new SubCompiler(file, this.database, this)
+    );
   }
 
   async sync(sum) {
@@ -39,5 +44,12 @@ export class CompilationGroup {
     });
     let promises = this.compilers.map(compiler => compiler.execute());
     await Promise.all(promises);
+    return Math.max(this.database.total.points - this.sum, 0);
+  }
+
+  dryrun() {
+    this.compilers.forEach(compiler => {
+      compiler.document.saveAs = () => true;
+    });
   }
 }

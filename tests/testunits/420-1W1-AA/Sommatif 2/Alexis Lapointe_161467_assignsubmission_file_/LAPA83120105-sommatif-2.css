@@ -1,0 +1,69 @@
+/* Résultat: 11/20 */
+/* Err: (10) Tout le texte dans le document doit être justifié, (1 point) */
+body{
+    border-left: solid black 10px;
+    padding-left: 30px;
+    margin-left: 50px;
+    counter-reset:p;
+    counter-reset:i;
+}
+/* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+strong:hover{
+    background-color: blue;
+}
+p strong{
+    font-size: 30px;
+}
+/* Err: (5) Le document est mal formatté, (1 point) */
+i{
+    font-weight: bold;
+    text-decoration: red line-through;
+counter-increment: i;
+}
+i::before{
+    
+    content: counter(p)"." counter(i)".";
+    color: red;
+}
+strong.bacon:nth-of-type(3){
+background-color: green;
+border-radius: 10px;
+/* Err: (6) Utilser la propriété padding pour ajouter un remplissage au contenu, (1 point) */
+border-left: green solid 20px;
+content: 20px;
+border-right: 20px green solid;
+}
+p:nth-of-type(even){
+    background-color: lightblue;
+}
+p strong.bacon::after,p strong.bacon::before{
+    content:url(https://image.flaticon.com/icons/png/24/135/135641.png);
+    padding: 3px;
+     
+}
+p.pizza.bacon{
+    border: red 3px dashed;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px;
+    /* Err: (7) Cette déclaration doit être dans le pseudo élément ::before, (1 point) */
+    top: -15px;
+    
+}
+p{
+    counter-increment: p;
+    
+}
+p.bacon.pizza strong{
+color: red;
+}
+p.bacon.pizza::before{
+    /* Err: (8) Il manque un espace entre le numéro du compteur et le texte pizza bacon, (0.5 point) */
+content: "pizza bacon"counter(p);
+border: dashed 1px black;
+padding: 3px;
+/* Err: (38) Les pseudo-éléments des paragraphes pizza doivent être absolus et décalés en haut de -25 pixels, (1 point) */
+position: relative;
+/* Err: (9) Le pseudo-élément ::before n'a pas une couleur de fond blanc, (1 point) */
+
+}

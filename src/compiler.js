@@ -1,7 +1,6 @@
 import { ErrorParser, ResultParser } from './parser.js';
-import { CommentList, getDefaultFix } from './comments.js';
+import { asDatabase, CommentList, getDefaultFix } from './comments.js';
 import { Document } from './document.js';
-
 
 export class Comment {
   constructor(range) {
@@ -39,7 +38,10 @@ export class ResultComment extends Comment {
 
   getText(sum) {
     let { tag, prefix, suffix, max } = this.range;
-    let template = `${prefix} ${tag} ${max-sum}/${max} ${suffix}`;
+    let template = `${prefix} ${tag} ${Math.max(
+      max - sum,
+      0
+    )}/${max} ${suffix}`;
     return template;
   }
 }
@@ -47,8 +49,7 @@ export class ResultComment extends Comment {
 export class Compiler {
   constructor(filename, database) {
     this.document = new Document(filename);
-    this.database =
-      database instanceof CommentList ? database : new CommentList(database);
+    this.database = asDatabase(database);
     this.comments = [];
   }
 
@@ -93,11 +94,13 @@ export class Compiler {
   }
 
   async execute() {
+    let sum = 0;
     await this.document.edit(async editor => {
-      let sum = await this.updateErrors(editor);
+      sum = await this.updateErrors(editor);
       await this.updateResult(editor, sum);
       return true;
     });
     await this.document.save();
+    return Math.max(this.database.total.points - sum, 0);
   }
 }

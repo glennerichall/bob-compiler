@@ -1,0 +1,70 @@
+/* Résultat: 17.5/20 */
+/* Err: (30) Il manque le fichier HTML, (0.5 point) */
+body {
+    border-left: 10px solid;
+    padding-left: 30px;
+    margin-left: 50px;
+    text-align: justify;
+    counter-reset: p1;
+  }
+
+  p strong {
+    font-size: 30px;
+  }
+
+  /* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+  p strong:hover {
+    background-color: blue;
+  }
+
+  /* Err: (36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
+  p strong.bacon::before, p strong.bacon::after {
+    content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
+  }
+  
+  
+  p strong.bacon:nth-of-type(3) {
+    background-color: #8ac730;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+  }
+  
+  p.pizza.bacon strong.bacon {
+    color: red;
+  }
+  
+  p.pizza.bacon {
+    border: 3px dashed red;
+    padding: 10px;
+    border-radius: 20px 0px 20px 0px;
+  }
+
+  p.pizza.bacon::before {
+    padding: 3px;
+    border: 1px dashed;
+    content: "Pizza Bacon " counter(p1);
+    background-color: white;
+    position: absolute;
+    top: -15px;
+  }
+  
+  p:nth-of-type(even) {
+    background-color: lightblue;
+  }
+  
+  p {
+    position: relative;
+    counter-increment: p1;
+  }
+
+  i {
+    text-decoration: line-through red;
+    counter-increment: t2;
+  }
+
+  i::before {
+    content: counter(p1) "." counter(t2) ". ";
+    color: red;
+    font-weight: bold;
+  }

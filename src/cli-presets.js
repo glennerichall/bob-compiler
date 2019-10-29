@@ -34,6 +34,10 @@ export function listPresets() {
   return settings.all();
 }
 
-export function clearPresets(){
-    return settings.clear();
+export function clearPresets() {
+  return settings.clear();
+}
+
+export function removePreset(preset) {
+  settings.delete(preset);
 }

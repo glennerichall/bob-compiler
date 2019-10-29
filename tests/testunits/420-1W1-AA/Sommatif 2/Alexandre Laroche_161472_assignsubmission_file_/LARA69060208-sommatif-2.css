@@ -1,0 +1,89 @@
+/* Résultat: 18/20 */
+/*
+Auteur: Alexandre Laroche
+CodePermanent: LARA69060208
+Évaluation: Sommatif-2
+Date: 2019-10-04
+*/
+
+/*1*/
+p, body > strong{
+    text-align: justify;
+    margin-left:30px;
+    position:relative;
+    
+}
+
+/*2*/
+body{
+    border-left: 10px solid black;
+    margin-left: 50px;
+    counter-reset: par;
+    counter-reset: pizzabacon;
+}
+
+/*3*/
+p strong{
+    font-size: 30px
+}
+/* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+p strong:hover{
+    background-color:blue;
+}
+
+/*4*/
+i{
+    text-decoration: red line-through;
+    font-weight: bold;
+    counter-increment: dif;
+}
+p{
+    counter-increment: par;
+    counter-reset: dif;
+}
+i::before{
+    content: counter(par) "." counter(dif) ". ";
+    color:red;
+}
+
+/*5*/
+p strong.bacon::before{
+    content: url('https://image.flaticon.com/icons/png/24/135/135641.png');
+    margin-right:3px;
+}
+p strong.bacon::after{
+    content: url('https://image.flaticon.com/icons/png/24/135/135641.png');
+    margin-left:3px;
+}
+p strong.bacon:nth-of-type(3){
+    background-color: limegreen;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+p.bacon.pizza strong{
+    color:red;
+}
+
+/*6*/
+p.bacon.pizza{
+    border: 3px red dashed;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px;
+    
+    
+}
+p.bacon.pizza::before{
+    content: "Pizza Bacon " counter(par);
+    border: 1px black dashed;
+    background-color: white;
+    top: -15px;
+    position: absolute;
+    /* Err: (37) Les pseudo-éléments des paragraphes pizza bacon ont un remplissage de 3 pixels, (1 point) */
+}
+
+/*7*/
+p:nth-child(odd){
+    background-color: lightblue;
+}

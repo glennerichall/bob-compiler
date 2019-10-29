@@ -1,0 +1,84 @@
+/* Résultat: 11/20 */
+/* Résultat: -100.5/20 */
+/* #1 */
+body {
+    text-align: justify;
+    margin-left: 50px;
+    counter-reset: counter1;
+    border-left: 10px solid #000;
+    padding-left: 30px;
+}
+
+/* #3 */
+p strong {
+    font-size: 30px;
+}
+/* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+p strong:hover {
+    background-color: #00F;
+}
+
+/* #4 */
+i {
+    text-decoration: line-through #F00;
+    /* Err: (27) Tous les éléments de texte différenciés doivent être en gras, (1 point) */
+    font-weight: 600;
+}
+
+p {
+    counter-reset: counter2;
+    counter-increment: counter1;
+}
+
+p.pizza.bacon::before {
+	content: counter(counter1) ". ";
+}
+
+i::before {
+    counter-increment: counter2; 
+    content: counter(counter1) "." counter(counter2) " ";
+    color: #F00;
+}
+
+/* #5a */
+.bacon > strong::before, .bacon > strong::after  {
+    content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
+    /* Err: (36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
+}
+
+/* #5b */
+p strong:nth-of-type(3) {
+    background-color:#008000;
+    padding: 0 20px 0 20px;
+    border-radius: 10px;
+    /* Err: (36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
+}
+
+/* #5c */
+.bacon.pizza > strong {
+    color: #F00;
+}
+
+/* #6 */
+/* Err: (42) Mauvis sélecteur pour les paragraphes de classe « pizza » et « bacon », (1 point) */
+p:nth-last-child(7n+2) {
+    border-style: dashed;
+    border-color: #F00;
+    border-width: 3px;
+    border-radius: 20px 0 20px 0;
+    padding: 10px;
+}
+
+p:nth-of-type(3)::after {
+    position: absolute;
+    top: -15px;
+    /* Err: (9) Le pseudo-élément ::before n'a pas une couleur de fond blanc, (1 point) */
+    /* Err: (43) Il manque la bordure, (1 point) */
+    /* Err: (44) Il manque le compteur, (1 point) */
+    content: "bfbfbdg";
+}
+
+/* #7 */
+p:nth-of-type(even) {
+    background-color: #add8e6;
+}

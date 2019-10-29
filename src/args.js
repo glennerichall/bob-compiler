@@ -1,5 +1,10 @@
 import { compile } from './cli-compile.js';
-import { setPreset, listPresets, clearPresets } from './cli-presets.js';
+import {
+  setPreset,
+  listPresets,
+  clearPresets,
+  removePreset
+} from './cli-presets.js';
 
 const groupby = [
   'groupby',
@@ -39,9 +44,17 @@ const single = [
   }
 ];
 
+const results = [
+  'results',
+  {
+    choice: ['none', 'csv', 'json'],
+    describe: 'Affiche les résultats finaux'
+  }
+];
+
 // ---------------------------------------------------------------------------
 export const cpmCmd = [
-  'compile <source> <commentaires> [groupby] [pattern] [parts] [single] [preset]',
+  'compile <source> <commentaires> [groupby] [pattern] [parts] [single] [preset] [results]',
   'Compiler les points des commentaires annotés dans les fichiers.',
   y =>
     y
@@ -59,6 +72,7 @@ export const cpmCmd = [
       .option(...pattern)
       .option(...parts)
       .option(...single)
+      .option(...results)
       .option('preset', {
         type: 'array',
         default: [],
@@ -90,7 +104,7 @@ export const lstCmd = [
 
 // ---------------------------------------------------------------------------
 export const preCmd = [
-  'presets <action> [preset] [groupby] [pattern] [parts] [single]',
+  'presets <action> [preset] [groupby] [pattern] [parts] [single] [results]',
   "Ajouter un ensemble d'arguments pré-déterminés",
   y => {
     y.positional('action', {
@@ -103,6 +117,7 @@ export const preCmd = [
       .option(...groupby)
       .option(...pattern)
       .option(...parts)
+      .option(...results)
       .option(...single);
   },
   args => {
@@ -110,6 +125,8 @@ export const preCmd = [
       setPreset(args, args);
     } else if (args.action == 'clear') {
       clearPresets();
+    } else if (args.action == 'remove') {
+      removePreset(args.preset);
     } else if (args.action == 'list') {
       console.log(listPresets());
     }

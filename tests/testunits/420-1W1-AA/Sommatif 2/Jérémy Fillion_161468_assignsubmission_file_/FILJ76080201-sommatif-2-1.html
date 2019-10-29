@@ -1,0 +1,232 @@
+<!-- Résultat: 4.5/20 -->
+
+<!-- Err: (11) Le fichier est mal nommé, (0.5 point) -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!-- Err: (19) Il manque les méta-informations, (0.5 point) -->
+  <meta charset="UTF-8" />
+  <meta name="author" content="" />
+  <meta name="evaluation" content="" />
+  <meta name="codepermanent" content="" />
+  <meta name="date" content="" />
+  <title>Laboratoire-sommatif-2/</title>
+
+</head>
+<style>
+  html {
+    border-left: solid;
+    margin-left: 50px;
+    border-width: 10px;
+    /* Err: (25) Seule le remplissage gauche doit être renseigné, (1 point) */
+    padding: 10px;
+    text-align: justify;
+  }
+
+  body {
+    counter-reset: counter1;
+  }
+
+  /* Err: (18) Le sélecteur d'élément n'est pas précis, (2 points) */
+  .pizzabacon {
+    border: dashed;
+    border-color: red;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-left-width: 1px;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    padding: 15px;
+  }
+  .baconpizza {
+    border: dashed;
+    border-color: red;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /* Err: (24) Utiliser une propriété raccourcie, (0.5 point) */
+    border-left-width: 3px;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    padding: 15px;
+  }
+
+  .baconpizza :nth-child(4n+6) {
+    color: red;
+  }
+  /* Err: (21): Règle redondante, (1 point) */
+  .baconpizza :nth-child(4n+3) {
+    color: red;
+  }
+
+  /* Err: (1) Les éléments de hautes importances seulement dans les paragraphes, (1 point) */
+  strong {
+    font-size: 30px
+  }
+
+  strong:hover {
+    background-color: blue;
+  }
+
+  strong:nth-of-type(3) {
+    background-color: #99cc00;
+    border: solid;
+    border-color: #99cc00;
+    border-radius: 10px;
+    /* Err: (6) Utilser la propriété padding pour ajouter un remplissage au contenu, (1 point) */
+    border-left-width: 20px;
+    border-right-width: 20px;
+    
+  }
+
+  .bacona::before {
+    content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
+  }
+
+  .bacona::after {
+    content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
+  }
+  p:nth-child(odd) {
+    background-color: lightblue;
+  }
+
+  p {
+    counter-reset: counter2;
+  }
+
+  /* Err: (16) Les paragraphes de classe « pizza » et « bacon » ne sont pas annotés correctement avec un pseudo-élément, (6 points) */
+  p::before {
+    counter-increment: counter1;
+    content: counter(counter1)". ";
+    /* Pour les compteurs au début des paragraphes, je n'ai pas reussis a les enlever après plus de 2 heures de recherche*/
+  }
+
+  i::before {
+    counter-increment: counter2;
+    content: counter(counter1) "."counter(counter2) " ";
+    color: red;
+    font-weight: bold;
+  }
+
+  i {
+    text-decoration: line-through;
+    text-decoration-color: red;
+  }
+</style>
+
+<body>
+  <strong>Du bon bacon</strong>
+  <br>
+  <strong class="bacon">canadian bacon</strong>
+  <p>
+    Magna. Sed cupidatat ribs spare hock, ham nostrud aute velit Meatloaf
+    beef. Corned salami cillum ea et Sunt <i></i> shankle. Ribs
+    <span class="bacon pizza">beef</span> magna ut, ullamco tri-tip Tenderloin
+    in. Qui <span class="bacon pizza">in</span> non
+    <span class="bacon pizza">capicola</span> flank leberkas ut
+    <span class="bacon pizza">loin</span>
+    <span class="bacon pizza">pork</span> officia minim, <i>shoulder</i> Ad
+    <i></i> deserunt. consectetur sint chicken kielbasa nisi
+    <i>turkey</i> shank Sunt et. in ad nostrud deserunt ipsum, ex Veniam
+  </p>
+  <!-- Err: (22) Le code HTML a été modifié, (2 points) -->
+  <p class="pizzabacon">
+    Chop. pork enim et occaecat shankle eiusmod landjaeger nisi
+    <i>cillum</i> Id tail. magna cow non consectetur sunt jerky, qui chop Pork
+    consectetur. ad lorem chicken <i>beef</i> corned quis veniam ribs spare id
+    <i>tri-tip</i> nisi round ground mignon filet Duis minim. pastrami
+    prosciutto, shankle frankfurter bresaola Do landjaeger. consequat picanha
+    nostrud <span class="bacon pizza">capicola</span> ut voluptate hock ham
+    ullamco, cupim Aliqua
+  </p>
+  <p class="bacon">
+    Ham Jowl capicola round picanha short ut dolore cow shank pork
+    <span class="bacon pizza">ad</span> deserunt pastrami
+    <strong class="bacona">bacon</strong>
+    <strong class="bacona">bacon</strong> tempor beef. landjaeger. voluptate
+    chuck buffalo ex turducken id. deserunt chop, est irure ipsum, biltong
+    salami Ground cillum. shankle <strong class="bacona">bacon</strong>
+
+    <strong class="bacona">bacon</strong>
+    drumstick buffalo duis <i>cow</i> ham
+    pariatur Fugiat est amet occaecat flank. sint
+    <strong class="bacona">bacon</strong>
+    <strong class="bacona">Bacon</strong>sausage hock tenderloin belly
+    <strong>ipsum</strong> mollit <i>in</i> ribs laborum pork chuck, Ham shank
+    pork <span class="bacon pizza">proident,</span> cow. Belly
+    <i>pork</i> dolor Tongue reprehenderit
+  </p>
+  <p class="pizza">
+    sausage. chicken pancetta t-bone laborum in ea shoulder fugiat hock ham
+    in, <span class="bacon pizza">landjaeger</span> consequat minim Quis
+    shoulder. picanha kielbasa cupidatat doner t-bone
+    <span class="bacon pizza">belly</span> pork esse voluptate rump qui, minim
+    Ullamco proident. <span class="bacon pizza">shoulder</span> buffalo pig
+    nostrud pork tongue cupidatat ribs beef aliquip dolore brisket, consequat
+    anim Tempor salami. qui sint ribs short t-bone elit
+    <span class="bacon pizza">buffalo</span> dolore do
+    <span class="bacon pizza">commodo,</span> proident
+    <i>Ullamco</i> leberkas. eiusmod nostrud deserunt occaecat turkey, ullamco
+    cow meatloaf in In adipisicing. biltong chop pork <i>loin</i> Short.
+  </p>
+  <p>
+    Frankfurter. <i>reprehenderit</i> <i>capicola</i> boudin ribs short
+    turkey, veniam incididunt Bresaola velit. chuck hamburger fatback eiusmod
+    nostrud anim prosciutto sint aute
+    <span class="bacon pizza">venison</span> Veniam mignon. filet buffalo anim
+    ribs spare Mollit adipisicing. t-bone picanha cow dolore in duis capicola
+    belly pork irure flank cupim est Consequat tail. sunt flank do Turducken
+  </p>
+  <p class="bacon">
+    et. <span class="bacon pizza">jowl</span> sint occaecat Frankfurter steak.
+    strip bresaola nulla, andouille laboris tempor sunt fatback Eiusmod in.
+    <i>capicola</i> pariatur beef <i>tip</i> ball irure laboris,<strong class="bacona">bacon</strong>
+    <strong>ipsum</strong> ribs Short picanha. esse ad consectetur sausage eu
+    laborum drumstick, pancetta ribs Spare turducken. <i>porchetta</i> enim
+    kielbasa loin pork ut pancetta ham aliqua,
+    <span class="bacon pizza">voluptate</span> elit Non minim.
+    <strong class="bacona">bacon</strong><i>prosciutto</i> ribs spare in ham
+    salami cillum chop Pork cillum. meatloaf officia irure shoulder consequat,
+    in Chicken
+  </p>
+  <p>
+    Venison. commodo jowl ea aliqua qui consectetur
+    <span class="bacon pizza">biltong</span>
+    <span class="bacon pizza">round</span> <i>ground</i> Chicken shank.
+    frankfurter pig irure eu
+    <span class="bacon pizza">turducken</span> kielbasa, <i>tail</i> Fugiat
+    steak. strip meatball beef esse ea consequat exercitation quis duis ut
+    belly pork pariatur hock ham ribs Short ribs. short ham ribeye commodo sed
+    pancetta anim consectetur ribs spare sunt beef pastrami chuck loin short
+    Qui
+  </p>
+  <p class="bacon">
+    Bresaola. boudin non ut ea aliqua venison enim sint, ribs spare yes <strong class="bacona">bacon</strong>
+    yes <strong class="bacona">bacon</strong>
+    <i class="steak bacon">steak</i> Strip duis. kielbasa quis jerky eiusmod
+    boudin meatloaf esse t-bone turkey magna <strong>ipsum</strong> ex
+    consequat Veniam dolor. drumstick loin short Enim <i></i> ut. occaecat
+    eiusmod meatloaf incididunt et tempor ribs spare minim fatback cillum,
+    brisket cow Landjaeger do. cillum nisi ut <strong class="bacona">bacon</strong>
+    yo <strong class="bacona">bacon</strong>
+    <span class="bacon pizza">shank</span> et nostrud occaecat pancetta Nulla
+    eiusmod. lorem burgdoggen beef doner swine salami tenderloin ut ham
+    incididunt jowl meatball, prosciutto <i>Shankle</i> <i></i> tenderloin.
+    <i class="steak bacon">steak</i> strip hock ham sed deserunt chuck ut
+    kevin Occaecat
+  </p>
+  <p class="baconpizza">
+    Fatback. officia fugiat Reprehenderit leberkas. ex shankle qui
+    <i>belly</i> pork Commodo lorem. dolor ex cillum tip ball swine nulla ham
+    cow prosciutto do jowl quis Incididunt sunt. tempor porchetta magna ribs
+    short aute salami tri-tip biltong
+    <strong class="bacona">bacon</strong> belly Pork nulla. cow magna officia
+    Occaecat excepteur. meatloaf belly pork ut
+    <strong class="bacona">Bacon</strong> cow. exercitation <i>et</i> alcatra
+    fatback, eiusmod ribs spare Mollit <strong class="bacona">Bacon</strong>
+  </p>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+/* Résultat: 1/20 */
+/* Err: (17) Trop de fichers zip, un seul contenant tous les fichier suffit, (0.5 point) */
+/* Err: (18) Le sélecteur d'élément n'est pas précis, (2 points) */
+/* Err: (40) Image bacon non précisé dans le css, (1 point) */
+.pizzabacon{
+    /* Err: (20) La bordure doit être en tirets et non en pointillés, (1 point) */
+    border: dotted 3px;
+    border-color:red;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding:10px;
+    background-color:rgb(60, 216, 255);
+   }
+   body{
+     padding-left:30px;
+     border:solid 10px;
+     border-right-color: white;
+     border-top-color:white;
+     border-bottom-color: white;
+     border-left-style: solid;
+     /* Err: (14) La propriété margin-left doit être précisée, (1 point) */
+     margin:50px;
+   }
+  strong{
+    font-size:30px;
+    
+  }
+  strong:nth-child(0n+1){
+      font-size:16px;
+  }
+  strong:nth-child(0n+3){
+      font-size:16px;
+  }
+  strong:nth-child(0n+20){
+      font-size:30px;
+  }
+  strong:hover{
+      background-color:blue;
+  }
+ p:nth-child(odd){
+     background-color:rgb(130, 233, 252);
+ }
+ /* Err: (21) : Règle redondante, (1 point) */
+.baconpizza:nth-child(12){
+    border:dotted 3px;
+    border-color:red;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding:10px;
+    
+}
+.baconpizza>strong:nth-child(5){
+    background-color:rgb(93, 165, 93);
+    border-radius: 10px;
+    padding-left:20px; 
+    padding-right:20px;
+    color:red;
+}
+.baconpizza>strong:nth-child(3){
+    color:red;
+}
+/* Err: (5) Le document est mal formatté, (1 point) */
+.baconpizza>strong:nth-child(2){
+    color:red;}
+.bacon:nth-child(4){
+    background-color:rgb(93, 165, 93);
+    border-radius: 10px;
+    padding-left:20px; 
+    padding-right:20px;
+}
+.bacon:nth-child(8){
+    background-color:rgb(93, 165, 93);
+    border-radius: 10px;
+    padding-left:20px; 
+    padding-right:20px;
+}
+#bacon1{
+    font-size:30px;
+}
+
+
+body{
+    counter-reset:section;
+}
+i::before{
+    counter-increment: section 1;
+    /* Err: (8) Il manque un espace entre le numéro du compteur et le texte pizza bacon, (0.5 point) */
+    content:counters(section, ".")".";
+    color:red;
+    text-decoration:line-through;
+    font-weight:bold;
+}
+i{
+    text-decoration: line-through red;
+}
+.pizzabacon2{
+    border:dotted 1px black;
+    background-color:white;
+    position:relative;
+
+    top:26px;
+    right:817px;
+    padding:3px;
+}
+.pizzabacon9{
+    /* Err: (20) La bordure doit être en tirets et non en pointillés, (1 point) */
+    border:dotted 1px black;
+    background-color:white;
+    position:relative;
+    /* Err: (34) Règle non demandée dans l'énoncé, (0.5 point) */
+    top:26px;
+    right:1350px;
+
+    padding:3px;
+}
+
+/* Err: (23) Les éléments strong de classe bacon n'ont pas d'image dans leur pseudo-éléments, (1 point) */
+/* Err: (16) Les paragraphes de classe « pizza » et « bacon » ne sont pas annotés correctement avec un pseudo-élément, (6 points) */
