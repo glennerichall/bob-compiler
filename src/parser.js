@@ -66,7 +66,7 @@ export class ErrorParser extends TagParser {
   }
 }
 
-const numPattern = '(?<{name}>\\d+(\\.\\d+){0,1})';
+const numPattern = '(?<{name}>-{0,1}\\d+(\\.\\d+){0,1})';
 const resultPattern = `${tagPlaceholder}\\s*${numPattern.replace(
   '{name}',
   'result'

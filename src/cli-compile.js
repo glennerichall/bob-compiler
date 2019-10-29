@@ -4,14 +4,17 @@ import { promises } from 'fs';
 import readdir from 'recursive-readdir';
 import path from 'path';
 
-
 const { access, lstat, F_OK } = promises;
 
 export const getGroups = async (source, options) => {
-  options = options || {};
-    const pattern = new RegExp(options.pattern);
+  options = options || {
+    pattern: '.*',
+    parts: 'resolve'
+  };
+  const pattern = new RegExp(options.pattern);
   let files = await readdir(source);
-  if (options.verbose) {
+  
+  if (!!options.verbose) {
     console.log(`${files.length} fichier(s) trouvé(s)`);
     console.log(`Filtrage des fichiers selon [pattern] : `);
   }
@@ -20,7 +23,7 @@ export const getGroups = async (source, options) => {
     console.log(`${files.length} fichier(s) conservé(s)`);
   }
 
-  if (options.groupby) {
+  if (!!options.groupby) {
     let names = options.groupby;
     if (!Array.isArray(names)) names = [names];
 
@@ -39,15 +42,19 @@ export const getGroups = async (source, options) => {
       return result;
     }, {});
 
-    return Object.keys(groups).map(key => groups[key]);
+    return groups;
   }
 
-  return [files];
+  return files;
 };
 
 // ---------------------------------------------------------------------------
 export const compileGroup = async (source, commentaires, options) => {
   let groups = await getGroups(source, options);
+ 
+  // flatten groups
+  groups = Object.keys(groups).map(key => groups[key]);
+  
   for (let files of groups) {
     if (options.verbose) {
       console.log(`Compilation du groupe de fichiers : `);
@@ -85,11 +92,13 @@ export const compile = async (source, commentaires, options) => {
     await access(source, F_OK);
   } catch (e) {
     console.error(`Le chemin source ${source} n'existe pas`);
+    return;
   }
   try {
     await access(commentaires, F_OK);
   } catch (e) {
     console.error(`Le chemin commentaires ${commentaires} n'existe pas`);
+    return;
   }
   let start = new Date();
   try {

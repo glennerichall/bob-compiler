@@ -99,5 +99,13 @@ describe('ResultParser', () => {
       expect(range).to.have.property('result', 5.4);
       expect(range).to.have.property('points', 10.1);
     });
+
+    it('should parse result with negative values', () => {
+      let text = 'texte xtex xtext \n <!--Résultat:     -5.4/10.1--> ,\n text text';
+      let parser = new ResultParser('Résultat:');
+      let range = parser.parse(text);
+      expect(range).to.have.property('result', -5.4);
+      expect(range).to.have.property('points', 10.1);
+    });
   });
 });

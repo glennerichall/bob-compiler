@@ -5,7 +5,7 @@ import { expect } from 'chai';
 
 describe('CompilerGroup', () => {
   describe('#execute', () => {
-    it('should execute and sum a grup of files', async () => {
+    it('should execute and sum a group of files', async () => {
       let file1 = 'tests/file-no-result.html';
       let file2 = 'tests/FILJ76080201-sommatif-2-1.html';
       let db = 'tests/commentaires';
