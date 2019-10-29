@@ -5,7 +5,6 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha --require @babel/register tests/ ",
-    "start": "node --experimental-modules ./src/index.js",
     "build:prod": "cross-env NODE_ENV=production npx babel src --out-dir lib",
     "deploy": "npm version patch && npm run build:prod && npm publish . --access public"
   },
@@ -29,6 +28,7 @@
   },
   "dependencies": {
     "npm": "^6.12.0",
+    "npm-api": "^1.0.0",
     "recursive-readdir": "^2.2.2",
     "settings-store": "^1.4.1",
     "yargs": "^14.2.0"

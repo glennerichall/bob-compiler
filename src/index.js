@@ -5,6 +5,7 @@ import yargs from 'yargs';
 import version from './version.js';
 import { lstCmd, cpmCmd, preCmd } from './args.js';
 import { applyPresets } from './cli-presets.js';
+import NpmApi from 'npm-api';
 
 // ---------------------------------------------------------------------------
 version().then(value => {
@@ -26,7 +27,7 @@ version().then(value => {
     .middleware([
       argv => {
         if (argv['_'][0] == 'compile') {
-          if(argv.verbose) console.log('Applying presets');
+          if (argv.verbose) console.log('Applying presets');
           let presets = applyPresets(argv.preset || []);
           for (let key of Object.keys(presets)) {
             argv[key] = presets[key];
@@ -41,4 +42,13 @@ version().then(value => {
     console.log('\nCurrent effective options are:');
     console.log(argv);
   }
+
+  let npm = new NpmApi();
+  var repo = npm.repo('bob-compiler');
+
+  repo.package().then(pkg => {
+    if (pkg.version != value) {
+      console.warn(`Newer version available ${pkg.version}, consider upgrading it`);
+    }
+  });
 });
