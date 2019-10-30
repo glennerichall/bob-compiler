@@ -47,7 +47,7 @@ version().then(value => {
   var repo = npm.repo('bob-compiler');
 
   repo.package().then(pkg => {
-    if (pkg.version != value) {
+    if ('v' + pkg.version != value) {
       console.warn(`Newer version available ${pkg.version}, consider upgrading it`);
     }
   });

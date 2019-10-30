@@ -1,0 +1,2 @@
+# bob-compiler
+[![NPM version](https://img.shields.io/npm/v/bob-compiler)](https://www.npmjs.com/package/bob-compiler) [![NPM monthly downloads](https://img.shields.io/npm/dm/bob-compiler.svg)](https://npmjs.org/package/bob-compiler) [![NPM total downloads](https://img.shields.io/npm/dt/bob-compiler.svg)](https://npmjs.org/package/bob-compiler) [![Linux Build Status](https://img.shields.io/travis/glennerichall/bob-compiler.svg)](https://travis-ci.org/glennerichall/bob-compiler)
