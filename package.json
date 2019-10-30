@@ -1,7 +1,7 @@
 {
   "name": "bob-compiler",
   "version": "1.0.12",
-  "description": "",
+  "description": "Command line application to compile annotated code files in comments",
   "main": "./src/index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha --require @babel/register tests/ ",
@@ -11,6 +11,12 @@
   "bin": {
     "bobc": "./lib/index.js"
   },
+  "keywords": [
+    "Collège d'Alma",
+    "Correction",
+    "Informatique",
+    "Note étudiants"
+  ],
   "author": "Glenn Hall",
   "license": "ISC",
   "devDependencies": {
