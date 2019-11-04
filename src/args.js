@@ -122,6 +122,10 @@ export const preCmd = [
   },
   args => {
     if (args.action == 'add') {
+      if(!args.preset){
+        console.error('preset doit être renseigné');
+        return;
+      }
       setPreset(args, args);
     } else if (args.action == 'clear') {
       clearPresets();
