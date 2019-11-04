@@ -59,6 +59,9 @@ export const compileGroup = async (source, commentaires, options) => {
     if (options.dryrun) group.dryrun();
     return group;
   });
+  if (options.verbose) {
+    console.log(`${group.length} groupes de fichiers`);
+  }
 
   let results = {};
   for (let group of groups) {
