@@ -60,7 +60,7 @@ export const compileGroup = async (source, commentaires, options) => {
     return group;
   });
   if (options.verbose) {
-    console.log(`${group.length} groupes de fichiers`);
+    console.log(`${groups.length} groupes de fichiers`);
   }
 
   let results = {};
