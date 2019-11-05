@@ -44,7 +44,7 @@ export class CompilationGroup {
     });
     let promises = this.compilers.map(compiler => compiler.execute());
     await Promise.all(promises);
-    return Math.max(this.database.total.points - this.sum, 0);
+    return Math.max(this.database.total - this.sum, 0);
   }
 
   dryrun() {

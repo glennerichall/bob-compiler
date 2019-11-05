@@ -38,7 +38,8 @@ describe('cli-compile', () => {
         pattern:
           '^(?<codepermanent>\\w{4}\\d{6,8})-(?<travail>\\w+)-(?<numero>\\d+)\\.(?<lang>css|html|js)$',
         parts: 'basename',
-        groupby: 'codepermanent'
+        groupby: 'codepermanent',
+        dryrun: true
       });
       expect(results).to.deep.equal({
         RAZA641201: 17,
@@ -78,7 +79,8 @@ describe('cli-compile', () => {
           '^(?<codepermanent>\\w{4}\\d{6,8})-(?<travail>\\w+)-(?<numero>\\d+)\\.(?<lang>css|html|js)$',
         parts: 'basename',
         groupby: 'codepermanent',
-        results: 'json'
+        results: 'json',
+        dryrun: true
       });
       let expected = {
         RAZA641201: 17,

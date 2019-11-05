@@ -1,6 +1,9 @@
-import { ErrorParser, ResultParser } from './parser.js';
-import { asDatabase, CommentList, getDefaultFix } from './comments.js';
+import { asDatabase, getDefaultFix } from './comments.js';
 import { Document } from './document.js';
+import {
+  createErrorInHtmlParser as createErrorInCommentsParser,
+  createResultInHtmlParser as createResultInCommentsParser
+} from './parser.builder.js';
 
 export class Comment {
   constructor(range) {
@@ -24,9 +27,9 @@ export class ErrorComment extends Comment {
   }
 
   getText(content) {
-    let { tag, prefix, suffix, points } = this.range;
+    let { tag, begin, end, points } = this.range;
     let card = points > 1 ? 's' : '';
-    let template = `${prefix} ${tag} ${content}, (${points} point${card}) ${suffix}`;
+    let template = `${begin} ${tag} ${content}, (${points} point${card}) ${end}`;
     return template;
   }
 }
@@ -37,11 +40,8 @@ export class ResultComment extends Comment {
   }
 
   getText(sum) {
-    let { tag, prefix, suffix, max } = this.range;
-    let template = `${prefix} ${tag} ${Math.max(
-      max - sum,
-      0
-    )}/${max} ${suffix}`;
+    let { tag, begin, end, max } = this.range;
+    let template = `${begin} ${tag} ${Math.max(max - sum, 0)}/${max} ${end}`;
     return template;
   }
 }
@@ -57,21 +57,21 @@ export class Compiler {
     await this.document.load();
     await this.database.load();
     let { content } = this.document;
-    let parser = new ErrorParser('Err:');
+    let parser = createErrorInCommentsParser('Err:{0,1}', ':{0,1}');
     let range;
     while ((range = parser.parse(content))) {
       this.comments.push(new ErrorComment(range));
     }
     const tag = 'Résultat:';
     let fix = getDefaultFix(this.document.lang);
-    let r = new ResultParser(tag).parse(content) || {
+    let r = createResultInCommentsParser(tag).parse(content) || {
       first: 0,
       last: 0,
       ...fix
     };
     r = {
       ...r,
-      max: this.database.total.points,
+      max: this.database.total,
       tag
     };
     this.resultComment = new ResultComment(r);
@@ -81,10 +81,10 @@ export class Compiler {
     let sum = 0;
     for (let comment of this.comments) {
       let { id } = comment.range;
-      let { content, points } = this.database.comments[id];
+      let { target, points } = this.database.comments[id];
       comment.range.points = points;
       sum += points;
-      comment.update(editor, content);
+      comment.update(editor, target);
     }
     return sum;
   }

@@ -60,14 +60,14 @@ export const compileGroup = async (source, commentaires, options) => {
     return group;
   });
   if (options.verbose) {
-    console.log(`${groups.length} groupes de fichiers`);
+    console.log(`${groups.length} groupe(s) de fichier(s)`);
   }
 
   let results = {};
   for (let group of groups) {
     let files = group.files;
     if (options.verbose) {
-      console.log(`Compilation du groupe de fichiers : `);
+      console.log(`Compilation du groupe de fichier(s) : `);
       for (let file of files) {
         console.log(file.replace(path.join(source, '\\'), '\t'));
       }
