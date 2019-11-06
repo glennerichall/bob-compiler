@@ -4,7 +4,8 @@ import {
   listPresets,
   clearPresets,
   removePreset,
-  importPresets
+  importPresets,
+  applyPresets
 } from './cli-presets.js';
 
 const groupby = [

@@ -29,7 +29,6 @@ export function applyPresets(presets) {
       ...p
     };
   }, {});
-  return {};
 }
 
 export function listPresets() {
@@ -45,7 +44,7 @@ export function removePreset(preset) {
 }
 
 export async function importPresets(file) {
-  const content = await readFileSync(file);
+  const content = await readFile(file);
   const presets = JSON.parse(content);
   for (let preset in presets) {
     settings.setValue(preset, presets[preset]);
