@@ -1,5 +1,5 @@
-import { Compiler } from './compiler.js';
-import { CompilationGroup } from './group.js';
+import { Compiler } from '../compiler.js';
+import { CompilationGroup } from '../group.js';
 import { promises } from 'fs';
 import readdir from 'recursive-readdir';
 import path from 'path';
@@ -127,7 +127,7 @@ export const compile = async (source, commentaires, options) => {
   }
   if (options.verbose) {
     console.log(
-      `Compilation terminée en ${new Date() - start} milliseconde(s)`
+      `\nCompilation terminée en ${new Date() - start} milliseconde(s)`
     );
   }
 };

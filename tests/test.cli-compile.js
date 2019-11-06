@@ -1,4 +1,4 @@
-import { getGroups, compileGroup, compile } from '../src/cli-compile.js';
+import { getGroups, compileGroup, compile } from '../src/cli/cli-compile.js';
 import { expect } from 'chai';
 
 describe('cli-compile', () => {

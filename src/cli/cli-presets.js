@@ -1,4 +1,6 @@
 import settings from 'settings-store';
+import { promises } from 'fs';
+const readFile = promises.readFile;
 
 settings.init({
   appName: 'bob-compiler', //required,
@@ -40,4 +42,12 @@ export function clearPresets() {
 
 export function removePreset(preset) {
   settings.delete(preset);
+}
+
+export async function importPresets(file) {
+  const content = await readFileSync(file);
+  const presets = JSON.parse(content);
+  for (let preset in presets) {
+    settings.setValue(preset, presets[preset]);
+  }
 }
