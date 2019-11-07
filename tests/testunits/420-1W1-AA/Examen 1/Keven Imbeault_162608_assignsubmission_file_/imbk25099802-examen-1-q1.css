@@ -1,0 +1,63 @@
+/* 
+Auteur: Keven Imbeault
+CodePermanent: IMBK25099802
+Évaluation: Examen 1 (Q1) IMBK25099802
+Date: 2019-10-24
+*/
+
+h1, h2{
+    color: red;
+} 
+
+body{
+    border-left: 10px solid red;
+    border-right: 10px solid red;
+    border-radius: 30px;
+    padding: 0px 30px;
+    margin: 0px 60px;
+}
+
+#no-semaine{
+    text-decoration: underline;
+    text-decoration-style: double;
+}
+
+strong {
+    font-size: 30px;
+}
+
+p {
+    text-align: justify;
+}
+
+img {
+    width: 275px;
+}
+
+table{
+    border-collapse: collapse;
+} 
+
+table thead tr th,
+table tfoot tr td,
+table tfoot tr th,
+table tbody tr td {
+    background-color: #f0f8ff;
+    padding:5px;
+}
+
+table thead {
+    text-align: left;
+}
+/* Err(7) */
+.total {
+    text-align: right;
+} 
+
+dl dt {
+    font-weight: bold;
+}
+
+a {
+    color: #e74c3c;
+}

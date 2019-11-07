@@ -1,0 +1,34 @@
+h1,
+h2{
+    color:red;
+}
+
+#no-semaine{
+    text-decoration: underline double;
+}
+
+strong{
+    font-size: 30px;
+}
+
+figure img{
+    width:275px;
+}
+
+table{
+    background-color: #f0f8ff;
+}
+table td,
+table th{
+    padding: 5px;
+}
+table a{
+    color: #e74c3c;
+}
+table .total{
+    text-align: right;
+}
+
+dl dt{
+    font-weight: bold;
+}

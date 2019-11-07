@@ -104,6 +104,51 @@ describe('cli-compile', () => {
         BOUE80050101: 1,
         BRIL011099: 14.5
       };
+      console.log = log;
+      expect(JSON.parse(output)).to.deep.equal(expected);
+    });
+
+    it('should succeed another test', async () => {
+      const base = './tests/testunits/420-1W1-AA/Examen 1';
+      const source = base;
+      const commentaires = `${base}/commentaires`;
+      let output = '';
+      let log = console.log.bind(console);
+      console.log = msg => (output += msg);
+      await compile(source, commentaires, {
+        pattern:
+          '.*\\\\(?<etudiant>[\\w\\u00C0-\\u00FF]+([\\s-][\\w\\u00C0-\\u00FF]+)+)_\\d+.*\\\\.*\\.(html|css)$',
+        parts: 'resolve',
+        groupby: 'etudiant',
+        results: 'json',
+        dryrun: true
+      });
+      let expected = {
+        'Alexandre Laroche': 98,
+        'Alexis Lapointe': 91,
+        'Gabriel Bilodeau': 96,
+        'Gabriel Larouche': 98,
+        'Keven Imbeault': 99,
+        'Olivier Briand': 99,
+        'Paul Mossmann': 97,
+        'Pierre-Émile Brassard': 98,
+        'Quentin Mante': 77,
+        'Tristan Audet': 97.5,
+        'Victor Savard-Arseneault': 99,
+        'Younès Braz': 94.5,
+        'Zackary Bonneau': 100,
+        'Émile Boucher': 60.5,
+        'Adrien Razafimahatratra': 99,
+        'Axel Liam Fongue Fono': 96,
+        'David St-Pierre': 92,
+        'Francis Girard': 84.5,
+        'Lucas Bringe': 95,
+        'Léa Brouillette': 100,
+        'Maxime Bouchard': 100,
+        'Vincent Kotarski': 95.5,
+        'Xavier Lavoie': 99,
+        'Yannick Guion-Firmin': 87
+      };
       expect(JSON.parse(output)).to.deep.equal(expected);
     });
   });

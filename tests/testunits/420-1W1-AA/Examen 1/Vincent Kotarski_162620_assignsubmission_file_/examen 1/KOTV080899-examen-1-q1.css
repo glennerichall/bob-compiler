@@ -1,0 +1,33 @@
+body{
+    border-left: 1px solid blue;
+    border-right : 1px solid blue;
+    border-radius: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-right: 60px;
+    margin-left: 60px;
+}
+h1,h2{
+    color: blue;
+}
+#date {
+    text-decoration: underline;
+}
+img.exemple{
+    width: 300px;
+}
+table{
+    background-color: #f0f8ff;
+}
+th,td{
+    padding: 5px;
+}
+th{
+    text-align: left;
+}
+th.Total{
+    text-align:right;
+}
+td>a{
+    color:red;
+}

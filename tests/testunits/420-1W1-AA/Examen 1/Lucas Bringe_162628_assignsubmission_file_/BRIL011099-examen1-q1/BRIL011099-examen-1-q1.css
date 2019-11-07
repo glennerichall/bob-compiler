@@ -1,0 +1,44 @@
+/*
+Auteur: Lucas Bringe
+CodePermanant: BRIL011099
+Évaluation: Examen-1
+Date: 2019/10/24
+*/
+body{
+    border-left: 10px solid red;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-right: 10px solid red;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    /* Err(5) */
+    margin: 60px;
+    /* Err(6) */
+    padding: 30px;
+}
+h1,h2{
+    color: red;
+}
+strong{
+    font-size: 30px;
+}
+#no-semaine{
+    border-bottom: 5px double black;
+}
+figure>img{
+    width: 275px;
+}
+td,th{
+    padding: 5px;
+    background-color: #f0f8ff;
+}
+/* Err(7) */
+.total{
+    text-align: right;
+}
+a{
+    color: red;
+}
+dt{
+    font-weight: bold;
+}

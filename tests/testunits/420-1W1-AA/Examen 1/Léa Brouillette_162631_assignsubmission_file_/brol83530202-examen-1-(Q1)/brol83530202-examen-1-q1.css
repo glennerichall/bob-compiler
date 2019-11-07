@@ -1,0 +1,48 @@
+/* 
+Auteur :          Léa Brouillette
+CodePermanent :   BROL83530202
+Évaluation :      Examen 1 (Q1)
+Date :            2019-10-24
+ */
+
+body {
+  border-right: 10px solid red;
+  border-left: 10px solid red;
+  border-radius: 30px;
+  padding: 0px 30px;
+  margin: 60px;
+  text-align: justify;
+}
+
+#no-semaine {
+  text-decoration: underline double;
+}
+
+strong {
+  font-size: 30px;
+}
+
+figure img {
+  width: 275px;
+}
+
+table {
+  background-color: #f0f8ff;
+}
+
+td,
+th {
+  padding: 5px;
+}
+
+table a {
+  color: #e74c3c;
+}
+
+th.total {
+  text-align: right;
+}
+
+dl dt {
+  font-weight: bold;
+}

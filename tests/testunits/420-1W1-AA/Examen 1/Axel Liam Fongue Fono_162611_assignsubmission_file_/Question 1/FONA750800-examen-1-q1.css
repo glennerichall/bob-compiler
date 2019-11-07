@@ -1,0 +1,38 @@
+body{
+    border-left: solid 1px blue;
+    border-right: solid 1px blue;
+    border-radius: 10px;
+    /* Err(6) */
+    padding: 30px;
+    /* Err(5) */
+    margin: 60px;
+    text-align: justify;
+}
+#no-semaine{
+    text-decoration: underline;
+}
+strong{
+    font-size: 20px;
+}
+h2{
+    color: blue;
+}
+img{
+    width: 300px;
+}
+tr{
+    background-color: #f0f8ff;
+}
+td{
+    padding: 5px;
+}
+a{
+    color: #e74c3c;
+}
+/* Err(7) */
+.total:nth-child(2){
+        text-align: right;
+}
+dt{
+    font-weight: bold;
+}

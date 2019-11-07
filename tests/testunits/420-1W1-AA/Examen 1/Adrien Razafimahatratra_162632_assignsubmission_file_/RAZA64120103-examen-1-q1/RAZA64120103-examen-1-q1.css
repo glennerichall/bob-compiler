@@ -1,0 +1,42 @@
+h1, h2{
+    color: red;
+}
+
+#no-semaine{
+    /* Err(17) */
+    text-decoration: underline;
+}
+
+strong{
+    font-size: 30px;
+}
+
+p {
+    text-align: justify;
+}
+
+img{
+    width: 275px;
+}
+
+table{
+    background-color: #f0f8ff;
+    /* Err: (1) */
+    padding: 5px;
+}
+
+td img{
+    width: auto;
+}
+
+a {
+    color: #e74c3c;
+}
+
+th.total{
+    text-align: right;
+}
+
+dt{
+    font-weight: bold;
+}

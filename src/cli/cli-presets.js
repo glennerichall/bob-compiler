@@ -9,16 +9,36 @@ settings.init({
   enableReloading: false
 });
 
-export function setPreset(args, options) {
-  let value = {
-    ...args
-  };
+function clean(value) {
   delete value['$0'];
   delete value['_'];
   delete value['preset'];
   delete value['action'];
-  if (options.verbose) console.log(`Setting preset ${args.preset}`);
-  settings.setValue(args.preset, value);
+
+  for (let key in value) {
+    if (value[key] == undefined) {
+      delete value[key];
+    }
+  }
+  return value;
+}
+
+export function putPreset(name, args) {
+  let value = {
+    ...args
+  };
+  clean(value);
+  settings.setValue(name, value);
+}
+
+export function mergePreset(name, args) {
+  let preset = getPreset(name);
+  args = clean({ ...args });
+  preset = {
+    ...preset,
+    ...args
+  };
+  putPreset(name, preset);
 }
 
 export function applyPresets(presets) {
@@ -35,12 +55,22 @@ export function listPresets() {
   return settings.all();
 }
 
+export function getPreset(name) {
+  return settings.value(name);
+}
+
 export function clearPresets() {
   return settings.clear();
 }
 
+export function renamePreset(old, name) {
+  const preset = settings.value(old);
+  settings.delete(old);
+  settings.setValue(name, preset);
+}
+
 export function removePreset(preset) {
-  settings.delete(preset);
+  return settings.delete(preset);
 }
 
 export async function importPresets(file) {

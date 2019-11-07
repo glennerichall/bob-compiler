@@ -1,0 +1,17 @@
+h1,
+h2 {
+  color: red;
+}
+strong {
+  font-size: 30px;
+}
+#no-semaine {
+  text-decoration: double underline;
+}
+img{width: 275px;}
+table{background-color: #f0f8ff;}
+table tbody tr td img{width:25px;}
+td,tr{padding: 5px;}
+table tbody tr td a{color: #e74c3c;}
+th.total{text-align: right;}
+dt{text-emphasis:bold}

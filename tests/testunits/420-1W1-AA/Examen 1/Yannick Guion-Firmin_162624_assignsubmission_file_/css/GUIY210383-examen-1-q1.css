@@ -1,0 +1,24 @@
+/* Err(43) */
+div:nth-child(1) {
+    text-align: justify;
+}
+
+b {
+    font-size: 30px;
+}
+
+figure img {
+    width: 275px;
+}
+tr>th[colspan]:nth-child(2) {
+    text-align: left;
+}
+
+/* Err(7) */
+tr:last-child>th {
+    text-align: right;
+}
+
+/* Err(47) */
+/* Err(49) Termes des listes de définitions */
+/* Err(53) */

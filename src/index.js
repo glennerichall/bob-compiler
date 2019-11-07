@@ -4,9 +4,7 @@
 import yargs from 'yargs';
 import version from './version.js';
 import { lstCmd, cpmCmd, preCmd } from './cli/cli-args.js';
-import { applyPresets } from './cli/cli-presets.js';
 import NpmApi from 'npm-api';
-import { strict } from 'assert';
 
 // ---------------------------------------------------------------------------
 version().then(value => {

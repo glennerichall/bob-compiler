@@ -1,0 +1,51 @@
+body{
+    border-left: 10px red solid;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-right: 10px red solid;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+b{
+    font-size: 30px;
+}
+
+#no-semaine{
+    border-bottom-style: double;
+}
+
+h2{
+    color: red
+}
+
+p{
+    text-align: justify;
+}
+
+p + figure img{
+    width: 275px;
+}
+
+table{
+    background-color: #f0f8ff;
+}
+
+a{
+    color: #e74c3c;
+}
+td, th{
+    padding: 5px;
+}
+
+dt{
+    font-weight: bold;
+}
+
+td.total{
+    text-align: right;
+}

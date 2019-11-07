@@ -1,0 +1,55 @@
+/*#1 #2 #3 #8*/
+body{
+    border-left-color: blue;
+    border-right-color: blue;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-radius: 1%;;
+    padding-left: 30px;
+    padding-right: 30px;
+    /* Err(5) */
+    margin: 60px;
+    text-align: justify;
+}
+/*#5*/
+p#no-semaine{
+    text-decoration: underline;
+}
+/*#6*/
+strong{
+    font-size: 20px;
+}
+/*#7*/
+h2{
+    color: blue;
+}
+/*#9*/
+p+img{
+    width: 300px;
+    margin-left: 40px;
+}
+figcaption{
+    margin-left: 40px;
+}
+/*#10*/
+table{
+    background-color: #f0f8ff;
+}
+/*#11*/
+table>tbody>tr>td{
+    padding: 5px;
+}
+/*#12*/
+a{
+    color: #e74c3c;
+}
+/*#13*/
+table>tfoot>tr>td.total{
+    text-align:right;
+}
+/*#14*/
+dt{
+    font-weight: 900;;
+}

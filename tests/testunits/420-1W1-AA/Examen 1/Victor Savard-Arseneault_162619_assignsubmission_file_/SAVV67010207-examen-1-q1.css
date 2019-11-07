@@ -1,0 +1,59 @@
+/*
+Auteur: Victor Savard-Arseneault
+CodePermanent: SAVV67010207
+Évaluation: Examen-1-q1
+Date: 2019-10-25
+*/
+body {
+    border: 1px solid darkblue;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 60px;
+    margin-right: 60px;
+    text-align: justify;
+}
+
+#no-semaine {
+    text-decoration: underline;
+}
+
+strong {
+    font-size: 20px;
+}
+
+img {
+    width: 300px;
+}
+
+.total {
+    font-size: small;
+}
+
+dt {
+    font-weight: bold;
+}
+
+table {
+    background-color: #f0f8ff;
+}
+
+td {
+    padding: 5px;
+}
+
+td:first-child::before {
+    content: url(file-video-icon.png);
+    padding: 1px;
+}
+
+table .total {
+    font-size: medium;
+    text-align: right;
+}
+
+a {
+    color: #e74c3c;
+}

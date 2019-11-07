@@ -1,0 +1,48 @@
+html {
+    border-left: red 10px solid;
+    border-right: red 10px solid;
+    border-radius: 30px;
+    margin: 30px;
+    padding: 0px 30px;
+}
+
+#no-semaine {
+    border-bottom: double 8px black;
+}
+
+h1:nth-of-type(3), #no-semaine {
+    color: black;
+}
+
+figure img {
+    width: 275px;
+}
+
+dt {
+    font-weight: bold;
+}
+
+a {
+    color: #e74c3c
+}
+
+.total {
+    text-align: right;
+}
+
+th, td {
+    padding: 5px;
+}
+
+table {
+    background-color: #f0f8ff;
+}
+
+strong {
+    font-size: 30px;
+}
+
+tr:first-of-type th:nth-of-type(2) {
+    text-align: left;
+}
+

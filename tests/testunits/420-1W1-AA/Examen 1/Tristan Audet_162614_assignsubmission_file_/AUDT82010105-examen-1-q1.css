@@ -1,0 +1,48 @@
+body{
+    border-left:10px red solid;
+    border-right: 10px red solid;
+    border-radius: 30px;
+    margin-left:60px;
+    margin-right:60px;
+    padding-left:30px;
+    padding-right: 30px;
+}
+strong{
+    font-size:30px;
+}
+#no-semaine{
+    text-decoration:underline double;
+}
+p{
+    text-align: justify;
+}
+img{
+    width: 275px;
+}
+td,th{
+    padding:5px;
+}
+table{
+    background-color: #f0f8ff;
+    width: 500px;
+}
+a{
+    color: #e74c3c;
+    
+}
+dt{
+    font-weight: bold;
+}
+tr td:first-child{
+    content: url(file-video-icon.png); 
+}
+/* Err(7) */
+.total{
+    /* Err(51) */
+    position: absolute;
+    left:490px;
+}
+td:nth-child(2){
+position:relative;
+right: 40px;
+}

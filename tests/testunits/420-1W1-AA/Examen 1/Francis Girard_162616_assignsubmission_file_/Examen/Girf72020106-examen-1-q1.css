@@ -1,0 +1,46 @@
+/* Err(34) */
+h1{
+    color: red;
+}
+h2{
+    color: red;
+}
+strong{
+    font-size: 30px;
+}
+body{
+    border-left: solid red 10px;
+    border-right: solid red 10px;
+    border-radius: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    /* Err(5) */
+    margin: 60px;
+}
+
+.no-semaine{
+    text-decoration:underline double;
+}
+p{
+    text-align: justify;
+}
+table{
+    background-color: #F0F8FF;
+    text-align: left;
+    /* Err(1) */
+    padding: 5px;
+}
+/* Err(7) */
+.total{
+    text-align: right;
+}
+a{
+    color: #e74c3c;
+}
+
+h2 + ul{
+    list-style: none;
+}
+ul>ul{
+    list-style: none;
+}

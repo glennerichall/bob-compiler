@@ -1,0 +1,53 @@
+body {
+    border-left: 1px solid blue;
+    border-right: 1px solid blue;
+    border-radius: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    /* Err(5) */
+    margin: 60px;
+}
+
+strong {
+    font-style: 20px;
+}
+
+figure img {
+    width: 300px;
+}
+
+#no-semaine {
+    text-decoration: underline;
+}
+
+h1, h2 {
+    color: blue;
+}
+
+p {
+    text-align: justify;
+}
+
+th {
+    text-align: left;
+}
+
+td a {
+    color: #e74c3c;
+}
+
+td,th {
+    padding: 5px;
+}
+
+table {
+    background-color: #f0f8ff;
+}
+
+th.total {
+    text-align: right;
+}
+dt {
+    font-weight: bold;
+    font-style: italic;
+}

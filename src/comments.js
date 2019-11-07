@@ -11,7 +11,7 @@ function loadFromCDbP(content, options) {
   content = content.split('\n').filter(x => x.trim().length);
 
   const pattern = new RegExp(
-    `(?<points>${positiveFloat})\\s+${errorTag('Err:')}`
+    `(?<points>${positiveFloat})\\s+${errorTag('Err:{0,1}', ':{0,1}')}`
   );
   for (let i = 1; i < content.length; i++) {
     let comment = stripCommentTags(content[i]);

@@ -1,12 +1,8 @@
 import { compile } from './cli-compile.js';
-import {
-  setPreset,
-  listPresets,
-  clearPresets,
-  removePreset,
-  importPresets,
-  applyPresets
-} from './cli-presets.js';
+import * as localPresets from './cli-presets.js';
+import * as remotePresets from './cli-remote.js';
+import { promises } from 'fs';
+const { stat } = promises;
 
 const groupby = [
   'groupby',
@@ -89,7 +85,7 @@ export const cpmCmd = [
         argv => {
           if (argv['_'][0] == 'compile') {
             if (argv.verbose) console.log('Applying presets');
-            let presets = applyPresets(argv.preset || []);
+            let presets = localPresets.applyPresets(argv.preset || []);
             for (let key of Object.keys(presets)) {
               argv[key] = presets[key];
             }
@@ -120,71 +116,210 @@ export const lstCmd = [
 ];
 
 // ---------------------------------------------------------------------------
+const add_args = '<preset> [groupby] [pattern] [parts] [single] [results]';
+const add_build = y =>
+  y
+    .positional('preset', {
+      type: 'string',
+      describe: 'Nom du preset'
+    })
+    .option(groupby[0], { ...groupby[1], default: undefined })
+    .option(pattern[0], { ...pattern[1], default: undefined })
+    .option(parts[0], { ...parts[1], default: undefined })
+    .option(results[0], { ...results[1], default: undefined })
+    .option(single[0], { ...single[1], default: undefined })
+    .group(
+      ['groupby', 'pattern', 'parts', 'results', 'single'],
+      'Preset parameters'
+    )
+    .check(
+      args =>
+        args.groupby != undefined ||
+        args.pattern != undefined ||
+        args.parts != undefined ||
+        args.results != undefined ||
+        args.single != undefined
+    );
+
+const check_exists = preset => {
+  const presets = localPresets.listPresets();
+  if (presets[preset] == undefined) {
+    throw new Error(`Le preset ${preset} n'existe pas`);
+  }
+  return true;
+};
+
 export const preCmd = [
   'presets',
-  "Gérer les groupes d'arguments prédéfinis",
+  "Gérer les groupes d'arguments prédéfinis (preset)",
   yargs =>
     yargs
       .usage('$0 presets <cmd> [args]')
       .command(
-        'add <preset> [groupby] [pattern] [parts] [single] [results]',
-        "Ajouter un groupe d'arguments",
+        `add ${add_args}`,
+        'Ajouter un preset',
+        y => add_build(y),
+        args => {
+          localPresets.putPreset(args.preset, args);
+          console.log('done');
+        }
+      )
+      .command(
+        `append ${add_args}`,
+        'Ajouter des arguments à un preset',
+        y => add_build(y).check(args => check_exists(args.preset)),
+        args => {
+          localPresets.mergePreset(args.preset, args);
+          console.log('done');
+        }
+      )
+      .command(
+        'rename <old> <new>',
+        'Renommer un preset',
+        y =>
+          y
+            .positional('old', {
+              type: 'string',
+              describe: 'Le preset a renommer'
+            })
+            .positional('new', {
+              type: {
+                type: 'string',
+                describe: 'Le nouveau nom'
+              }
+            }),
+        args => {
+          const presets = localPresets.listPresets();
+          if (presets[args.old] == undefined) {
+            console.error(`Le preset ${args.old} n'existe pas`);
+          } else if (presets[args.new] != undefined) {
+            console.error(`Le preset ${args.new} existe déjà`);
+          } else {
+            localPresets.renamePreset(args.old, args.new);
+            console.log('done');
+          }
+        }
+      )
+      .command(
+        'list [shared]',
+        'Afficher tous les presets',
+        y =>
+          y.option('shared', {
+            type: 'boolean',
+            describe: 'Affiche les presets partagés'
+          }),
+        async args => {
+          let manager;
+          if (args.shared) {
+            manager = remotePresets;
+          } else {
+            manager = localPresets;
+          }
+          let preset = await manager.listPresets();
+          let string = JSON.stringify(preset, undefined, 2);
+          string = string.replace(/\\\\/g, '\\');
+          console.log(string);
+        }
+      )
+      .command(
+        'clear',
+        'Supprimer tous les presets',
+        y => {},
+        args => {
+          localPresets.clearPresets();
+          console.log('done');
+        }
+      )
+      .command(
+        'import <file|name> [shared]',
+        "Importer une liste de presets d'un fichier json ou un preset partagé",
+        y =>
+          y
+            .positional('file', {
+              type: 'string',
+              describe: 'Fichier json'
+            })
+            .option('shared', {
+              type: 'boolean',
+              describe: 'Import le preset partagé'
+            }),
+        async args => {
+          if (args.shared) {
+            const preset = await remotePresets.getPreset(args.file);
+            if (preset == undefined) {
+              console.error(`Le preset ${args.file} n'existe pas`);
+              return;
+            }
+            localPresets.putPreset(args.file, preset);
+          } else {
+            let file = await stat(args.file);
+            if (!file.isFile) {
+              console.error(`Le fichier ${args.file} n'existe pas`);
+              return;
+            }
+            await localPresets.importPresets(args.file);
+            console.log('done');
+          }
+        }
+      )
+      .command(
+        'remove <preset> [shared]',
+        'Supprimer un preset',
         y =>
           y
             .positional('preset', {
               type: 'string',
-              describe: "Nom du groupe d'arguments"
+              describe: 'Nom du groupe'
             })
-            .option(groupby[0], { ...groupby[1], default: undefined })
-            .option(pattern[0], { ...pattern[1], default: undefined })
-            .option(parts[0], { ...parts[1], default: undefined })
-            .option(results[0], { ...results[1], default: undefined })
-            .option(single[0], { ...single[1], default: undefined })
-            .group(
-              ['groupby', 'pattern', 'parts', 'results', 'single'],
-              'Preset parameters'
-            )
-            .check(
-              args =>
-                args.groupby != undefined ||
-                args.pattern != undefined ||
-                args.parts != undefined ||
-                args.results != undefined ||
-                args.single != undefined
-            ),
-        args => setPreset(args, args)
+            .option('shared', {
+              type: 'boolean',
+              describe: 'Supprime un preset partagé'
+            }),
+        async args => {
+          if (args.shared) {
+            await remotePresets.removePreset(args.preset);
+          } else {
+            localPresets.removePreset(args.preset);
+          }
+          console.log('done');
+        }
       )
       .command(
-        'list',
-        "Afficher tous les groupes d'arguents prédéfinis",
-        y => {},
-        args => console.log(listPresets())
-      )
-      .command(
-        'clear',
-        "Supprime tous les groupes d'arguments prédéfinis",
-        y => {},
-        args => clearPresets()
-      )
-      .command(
-        'import <file>',
-        "Import une liste d'argument prédéfinis à partir d'un fihier json",
-        y =>
-          y.positional('file', {
-            type: 'string',
-            describe: 'Fichier json'
-          }),
-        async args => importPresets(args.file)
-      )
-      .command(
-        'remove <preset>',
-        "Supprime un groupe d'arguments prédéfinis",
+        'share <preset>',
+        'Partager un preset',
         y =>
           y.positional('preset', {
             type: 'string',
-            describe: 'Nom du groupe'
+            describe: 'Nom du preset'
           }),
-        args => removePreset(args.preset)
+        async args => {
+          let name = args.preset;
+          const preset = localPresets.getPreset(name);
+          if (preset == undefined) {
+            console.error(`Le preset ${name} n'existe pas`);
+            return;
+          }
+          await remotePresets.putPreset(name, preset);
+          console.log('done');
+        }
+      )
+      .command('remote <cmd> [args]', false /* hidden */, yargs =>
+        yargs
+          .command(
+            'list',
+            'Afficher tous les presets partagés',
+            y => {},
+            async args => console.log(await remotePresets.listPresets())
+          )
+          .command(
+            'clear',
+            false /* hidden */,
+            y => {},
+            async args => {
+              await remotePresets.clearPresets();
+              console.log('done');
+            }
+          )
       )
       .demandCommand(1, '')
       .strict()

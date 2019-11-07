@@ -42,7 +42,7 @@ describe('Compiler', () => {
   });
 
   describe('#execute', async () => {
-    it('should save document', async () => {
+    it('should call document.#save', async () => {
       const compiler = new Compiler(file, db);
       let saved = false;
       compiler.document.save = () => {

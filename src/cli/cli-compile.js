@@ -67,7 +67,7 @@ export const compileGroup = async (source, commentaires, options) => {
   for (let group of groups) {
     let files = group.files;
     if (options.verbose) {
-      console.log(`Compilation du groupe de fichier(s) : `);
+      console.log(`Compilation du groupe de fichier(s) : ${group.key}`);
       for (let file of files) {
         console.log(file.replace(path.join(source, '\\'), '\t'));
       }

@@ -1,0 +1,47 @@
+body {
+    border-right-style: solid;
+    border-left-style: solid;
+    border-color: blue;
+    border-width: 1px;
+    border-radius: 10px;
+    text-align: justify;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+#no-semaine {
+    text-decoration: underline;
+}
+
+strong {
+    font-size: 20px;
+}
+
+figure img {
+    width: 300px;
+}
+
+th, td {
+    padding: 5px;
+}
+
+tr td:nth-child(2) {
+    color: #e74c3c;
+    text-decoration: underline;
+}
+
+th.total {
+    text-align: right;
+}
+
+table {
+    background-color: #f0f8ff;
+}
+
+dt {
+    font-weight: bold;
+    font-style: italic;
+    font-weight: normal;
+}

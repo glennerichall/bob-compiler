@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="auteur" content="Gabriel Bilodeau"/>
+        <meta name="evaluation" content="Examen 1"/>
+        <meta name="code permanent" content="BILG12109904"/>
+        <meta name="date" content="25 octobre 2019"/>
+        <title>Examen 1(Q1) BILG12109904</title>
+        <link href="BILG12109904-examen-1-q1.css" rel="stylesheet"/>
+        <style>
+        /*#4*/
+        h1{
+            color: blue;
+        }
+        </style>
+    </head>
+
+    <body>
+        <h1>Semaine 1 (Introduction)</h1>
+        <p id="no-semaine"><strong>Semaine du 20 août 2018</strong></p>
+        <p><strong>BILG12109904</strong></p>
+        <ul>
+            <li>Présentation du plan de cours.</li>
+            <li>Introduction à la programmation par balisage.</li>
+            <li>Présentation des différents navigateurs Web.</li>
+            <li>Règles syntaxiques des documents HTML.</li>
+            <li>Structure sémantique des documents HTML.</li>
+            <li>Principales balises HTML.</li>
+        </ul>
+        <h2>Lisez l'article suivant</h2>
+        <p class="total"><small>Total: 1 article</small></p>
+        <p>HyperText Markup Language (HTML) est le code utilisé pour structurer une page web et son contenu. Par exemple, le contenu de votre page pourra être structuré en un ensemble de paragraphes, une liste à puces ou avec des images et des tableaux de données. Comme le suggère le titre, cet article vous fournit les bases de compréhension du HTML et de ses fonctions.</p>
+        <p>HTML n'est pas un langage de programmation. C'est un langage de balises qui définit la structure de votre contenu. HTML se compose d'une série d'éléments, utilisés pour entourer, ou envelopper, les diverses parties du contenu pour les faire apparaître ou agir d'une certaine façon. Les balises entourantes peuvent être rendues par un mot ou une image lien hypertexte vers quelque chose d'autre, un texte en italique, une police plus grande ou plus petite, et ainsi de suite. Par exemple, avec la ligne de contenu suivante :</p>
+        <!-- Err(29) -->
+        <img src="https://mdn.mozillademos.org/files/14739/chat-grincheuxl.png" alt="Diagramme décrivant la structure d'un élément HTML"/>
+        <figcaption>Exemple de paragraphe HTML</figcaption>
+        <p>Les composants principaux de notre élément sont :</p>
+        <ol>
+            <li>La balise ouvrante : celle-ci se compose du nom de l'élément (ici « <code>p</code> »), entre deux chevrons. Cela indique le début de l'élément, où l'endroit à partir duquel celui-ci prend effet. Pour notre exemple, cela indique le début du paragraphe.</li>
+            <li>La balise fermante : ici on a également des chevrons et le nom de l'élément, auxquels on ajoute un barre oblique avant le nom de l'élément. Cela indique la fin de l'élément. Pour notre exemple, cela indique la fin du paragraphe. Oublier la balise fermante est une erreur courante de débutant et peut conduire à de curieux résultats.</li>
+            <li>Le contenu : C'est le contenu de l'élément, ici c'est simplement du texte.</li>
+            <li>L'élément : Il est composé de la balise ouvrante, de la balise fermante et du contenu.</li>
+        </ol>
+        <p>Les éléments peuvent aussi avoir des « attributs », ce qui ressemble à :</p>
+        <img src="https://mdn.mozillademos.org/files/14741/attribut-chat-grincheux.png" alt="Diagramme explicitant un attribut"/>
+        <figcaption>Exemple d'attribut d'élément</figcaption>
+        <p>Les attributs contiennent des informations supplémentaires qui portent sur l'élément et qu'on ne souhaite pas afficher avec le contenu. Dans cet exemple, l'attribut class permet d'utiliser un nom pour identifier l'élément et ce nom pourra être utilisé plus tard pour la mise en forme ou autre chose.</p>
+        <p>Vous pouvez placer des éléments au sein d'autres éléments, c'est ce qu'on appelle l'imbrication. Par exemple, si vous souhaitez montrer que votre chat est très grincheux, vous pouvez placer le mot « très » dans un élement <code>strong</code>, signifiant que le mot sera fortement mis en relief:</p>
+        <h2>Visionnez les capsules suivantes</h2>
+        <!-- Err(15) -->
+        <caption>Capsules vidéo de la semaine 1</caption>
+        <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Capsule</th>
+                <th>Durée</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td class="total">Total</td>
+                <td>29:13</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <!-- Err(36) -->
+                <td><img src="https://calma.moodle.decclic.qc.ca/mod/resource/view.php?id=101542" alt="Icône de lien vidéo"></td>
+                <td><a href="https://www.youtube.com/watch?v=dlE4EUXU09s">HTML & CSS : Définitions et rôles</a></td>
+                <td>07:20</td>
+            </tr>
+            <tr>
+                <td><img src="https://calma.moodle.decclic.qc.ca/mod/resource/view.php?id=101542" alt="Icône de lien vidéo"></td>
+                <td><a href="https://www.youtube.com/watch?v=y1MkakQdM64">Les versions HTML & CSS</a></td>
+                <td>03:22</td>
+            </tr>
+            <tr>
+                <td><img src="https://calma.moodle.decclic.qc.ca/mod/resource/view.php?id=101542" alt="Icône de lien vidéo"></td>
+                <td><a href="https://www.youtube.com/watch?v=nwpARFlhjXQ">Eléments, balises, attributs HTML</a></td>
+                <td>11:08</td>
+            </tr>
+            <tr>
+                <td><img src="https://calma.moodle.decclic.qc.ca/mod/resource/view.php?id=101542" alt="Icône de lien vidéo"></td>
+                <td><a href="https://www.youtube.com/watch?v=KSg2WJ6QK4g">Structure d'une page HTML URL</a></td>
+                <td>07:23</td>
+            </tr>
+        </tbody>
+        
+        </table>
+        <h2>Définitions</h2>
+        <dl>
+            <dt>HTML</dt>
+            <dd>HyperText Markup Language</dd>
+            <dd>Langage de balisage</dd>
+            <dd>Structurer sémantiquement et logiquement du contenu</dd>
+            <dt>CSS</dt>
+            <dd>Cascading Style Sheets</dd>
+            <dd>Feuilles de style en cascade</dd>
+            <dd>Décrit la présentation des documents HTML</dd>
+        </dl>
+    </body>
+</html>
