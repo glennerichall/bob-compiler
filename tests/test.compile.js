@@ -77,5 +77,21 @@ describe('Compiler', () => {
       let content = await readFile('tests/saved-no-result.html', 'utf8');
       expect(compiler.document.content).to.be.equal(content);
     });
+
+    it('should indicate missing keys', async () => {
+      let file = 'tests/missing-key.html';
+      const compiler = new Compiler(file, db);
+      let error = console.error.bind(console);
+      let output = '';
+      console.error = msg => (output += msg);
+      compiler.document.save = () => {
+        // let content = compiler.document.content;
+        // require('fs').writeFileSync('tests/saved-no-result.html', content, 'utf8');
+      };
+      await compiler.load();
+      await compiler.execute();
+      console.error = error;
+      expect(output).to.equal('Tag 191 not found in tests/commentaires at line 6 of tests/missing-key.html');
+    });
   });
 });

@@ -81,6 +81,15 @@ export class Compiler {
     let sum = 0;
     for (let comment of this.comments) {
       let { id } = comment.range;
+      if (!this.database.comments[id]) {
+        const line = this.document.content
+          .substring(0, comment.range.first)
+          .split('\n').length;
+        console.error(
+          `Tag ${id} not found in ${this.database.filename} at line ${line} of ${this.document.filename}`
+        );
+        continue;
+      }
       let { target, points } = this.database.comments[id];
       comment.range.points = points;
       sum += points;
