@@ -1,17 +1,35 @@
 import {
-  createTagInHtmlParser,
-  createErrorInHtmlParser,
-  createResultInHtmlParser
+  createCommentParser,
+  createResultParser,
+  createTagParser,
+  createErrorParser
 } from '../src/parser.builder';
 import { expect } from 'chai';
 
 describe('Parser builders', () => {
-  describe('#createTagInHtmlParser', () => {
+  describe('#createCommentParser', () => {
+    it('should parse any comments', () => {
+      let txt =
+        'blahhh blah <!-- comment <!--\ninline --> blah\nblahhh blah // comment \nf vf/*inline */ blah';
+      let p = createCommentParser();
+
+      let a = p.parse(txt);
+      expect(a.content).to.deep.equal(' comment <!--\ninline ');
+      expect(a.first).to.equal(12);
+      expect(a.last).to.equal(39);
+      expect(a.begin).to.equal('<!--');
+      expect(a.end).to.equal('-->');
+      expect(p.parse(txt).content).to.deep.equal(' comment ');
+      expect(p.parse(txt).content).to.deep.equal('inline ');
+    });
+  });
+
+  describe('#createTagParser', () => {
     it('should parse comments <!-- comment --> using a given tag', () => {
       const text =
         'text textec texte \n text <!--   bob: aaabbbbccc dddeeff    --> text \n text text';
       const tag = 'bob:';
-      const parser = createTagInHtmlParser(tag);
+      const parser = createTagParser(tag);
       const range = parser.parse(text);
       expect(range).to.have.property('begin', '<!--');
       expect(range).to.have.property('end', '-->');
@@ -21,11 +39,12 @@ describe('Parser builders', () => {
       expect(range).to.have.property('last', 61);
     });
 
+    
     it('should parse comments /* comment */ using a given tag', () => {
       let text =
         'text textec texte \n text /*   bob: aaabbbbccc dddeeff    */ text \n text text';
       let tag = 'bob:';
-      let parser = createTagInHtmlParser(tag);
+      let parser = createTagParser(tag);
       let range = parser.parse(text);
       expect(range).to.have.property('begin', '/*');
       expect(range).to.have.property('end', '*/');
@@ -39,7 +58,7 @@ describe('Parser builders', () => {
       let text =
         'text textec texte \n text /*   bill: aaabbbbccc dddeeff    */ text \n text text';
       let tag = '(bob|bill):';
-      let parser = createTagInHtmlParser(tag);
+      let parser = createTagParser(tag);
       let range = parser.parse(text);
       expect(range).to.have.property('begin', '/*');
       expect(range).to.have.property('end', '*/');
@@ -53,7 +72,7 @@ describe('Parser builders', () => {
       let text =
         'text textec texte \n text /*   bill: aaabbbbccc dddeeff    */ text \n text text  <!-- bob: yo -->';
       let tag = '(bob|bill):';
-      let parser = createTagInHtmlParser(tag);
+      let parser = createTagParser(tag);
       let range = parser.parse(text);
       expect(range).to.have.property('begin', '/*');
       expect(range).to.have.property('end', '*/');
@@ -73,20 +92,20 @@ describe('Parser builders', () => {
     });
   });
 
-  describe('#createErrorInHtmlParser', () => {
+  describe('#createErrorParser', () => {
     it('should parse error with id', () => {
       let text =
         'texte xtex xtext \n <!-- Err: (45) Message erruer --> ,\n text text';
-      let parser = createErrorInHtmlParser('Err:');
+      let parser = createErrorParser('Err:');
       let range = parser.parse(text);
       expect(range).to.have.property('sequence', 45);
     });
   });
 
-  describe('#createResultInHtmlParser', () => {
+  describe('#createResultParser', () => {
     it('should parse result with int values', () => {
       let text = 'texte xtex xtext \n <!--Résultat:5/10--> ,\n text text';
-      let parser = createResultInHtmlParser('Résultat:');
+      let parser = createResultParser('Résultat:');
       let range = parser.parse(text);
       expect(range.result).to.have.property('numerator', 5);
       expect(range.result).to.have.property('denominator', 10);
@@ -95,7 +114,7 @@ describe('Parser builders', () => {
     it('should parse result with float values', () => {
       let text =
         'texte xtex xtext \n <!--Résultat:     5.4/10--> ,\n text text';
-      let parser = createResultInHtmlParser('Résultat:');
+      let parser = createResultParser('Résultat:');
       let range = parser.parse(text);
       expect(range.result).to.have.property('numerator', 5.4);
       expect(range.result).to.have.property('denominator', 10);

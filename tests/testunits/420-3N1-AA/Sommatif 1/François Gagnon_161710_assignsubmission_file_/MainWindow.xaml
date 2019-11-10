@@ -1,0 +1,150 @@
+<!-- Résultat: 18.5/20 -->
+<!-- Résultat: -21.5/20 -->
+    <Window x:Class="GAGF28109908_Somma_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GAGF28109908_Somma_1"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Icon="font.png"
+        ResizeMode="NoResize"
+        Title="Police" Height="450" Width="600">
+    <DockPanel>
+
+        <TabControl >
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="text.png" Width="20" Height="20"></Image>
+                        <TextBlock Margin="4,4,4,4" VerticalAlignment="Bottom">Police, styles et attributs</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <StackPanel>
+
+                    <Grid Margin="30,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Element de police-->
+                        <Label Margin="-5,0,0,0" Grid.Column="0" Grid.Row="0" >Police :</Label>
+                        <TextBox Style="{StaticResource txbMargin}" Grid.Column="0" Grid.Row="1" Name="TxbPolice" Width="250" IsReadOnly="True" HorizontalAlignment="Left" ></TextBox>
+                        <ListBox Style="{StaticResource lsbMargin}" Grid.Column="0" Grid.Row="2" Name="LsbPolices" Height="100" Width="300" SelectionChanged="LsbPolices_SelectionChanged"/>
+
+                        <!-- Element de style-->
+
+                        <Label Grid.Column="1" Grid.Row="0" Content="Style de police:" />
+                        <TextBox Style="{StaticResource txbMargin}" Grid.Column="1" Grid.Row="1" Name="TxbStyle" IsReadOnly="True" VerticalAlignment="Bottom"></TextBox>
+                        <ListBox Style="{StaticResource lsbMargin}" Grid.Column="1" Grid.Row="2" x:Name="LsbStyle" Height="100" Width="90" HorizontalAlignment="Left" SelectionChanged="LsbStyle_SelectionChanged">
+                            <ListBoxItem>Normal</ListBoxItem>
+                            <ListBoxItem>Italique</ListBoxItem>
+                            <ListBoxItem>Gras</ListBoxItem>
+                            <ListBoxItem>Gras Italique</ListBoxItem>
+                        </ListBox>
+
+                        <!-- Element de taille-->
+
+                        <Label Grid.Column="2" Grid.Row="0" Content="Taille:" />
+                        <TextBox Style="{StaticResource txbMargin}" Grid.Column="2" Grid.Row="1" Name="TxbTaille" IsReadOnly="True"></TextBox>
+                        <ListBox Style="{StaticResource lsbMargin}" Grid.Column="2" Grid.Row="2" x:Name="LsbTaille" Height="100" Width="70" HorizontalAlignment="Left" SelectionChanged="LsbTaille_SelectionChanged">
+
+                        </ListBox>
+
+
+                        <!--Couleur et souslignement-->
+                        <WrapPanel Grid.Column="0" Grid.Row="3">
+                            <StackPanel>
+                                <TextBlock Margin="0,0,23,0">Couleur de police:</TextBlock>
+                                <xctk:ColorPicker Name="clrPick" Margin="0,0,10,0" SelectedColorChanged="ClrPick_OnSelectedColorChanged">
+                                </xctk:ColorPicker>
+                            </StackPanel>
+                            <StackPanel>
+
+                                <TextBlock>Soulignement:</TextBlock>
+                                <ComboBox Name="cbbPolice" SelectionChanged="CbbPolice_SelectionChanged">
+                                    <ComboBoxItem IsSelected="True">
+                                        <TextBlock>Aucun</TextBlock>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        <TextBlock TextDecorations="Underline">Un texte souligné</TextBlock>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        <TextBlock>
+                                            <TextBlock.TextDecorations>
+                                                <TextDecoration Location="Underline">
+                                                    <TextDecoration.Pen>
+                                                        <Pen Brush="Black" Thickness="4"></Pen>
+                                                    </TextDecoration.Pen>
+                                                </TextDecoration>
+                                            </TextBlock.TextDecorations>
+                                    Un texte souligné
+                                        </TextBlock>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem>
+                                        <TextBlock>
+                                            <TextBlock.TextDecorations>
+                                                <TextDecoration Location="Underline">
+                                                    <TextDecoration.Pen>
+                                                        <Pen Brush="Black" Thickness="1">
+                                                            <Pen.DashStyle>
+                                                                <DashStyle Dashes="10,5"></DashStyle>
+                                                            </Pen.DashStyle>
+                                                        </Pen>
+                                                    </TextDecoration.Pen>
+                                                </TextDecoration>
+                                            </TextBlock.TextDecorations>
+                                    Un texte souligné
+                                        </TextBlock>
+                                    </ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </WrapPanel>
+
+
+                    </Grid>
+                    <Grid Margin="30,40,30,0" VerticalAlignment="Bottom">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <!--La ligne-->
+                        <!-- Err: (1) La ligne et le libellé doivent être décalés un peu vers la gauche, (1 point) -->
+                        <Line Grid.Column="0" Grid.Row="0" Stretch="Fill" StrokeThickness="2" Y1="0" Y2="0" X1="0" X2="7" Stroke="LightGray"></Line>
+						<!-- Err: (11) Fautes de français, (0.5 point) -->
+                        <Label Margin="-5,0,0,0" Grid.Column="0" Grid.Row="0" Background="White" HorizontalAlignment="Left">Aperçus</Label>
+                        <!--boite de rendu-->
+                        <TextBox Name="txbRender" Style="{StaticResource brdTxtBox}" Grid.Column="0" Height="120" Grid.Row="1" IsReadOnly="True" 
+                             FontStyle="Normal" FontWeight="Normal"
+                             HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="{Binding ElementName=TxbTaille,Path=Text}" FontFamily="{Binding ElementName=LsbPolices, Path=SelectedItem.Content}">
+                        </TextBox>
+                    </Grid>
+
+                </StackPanel>
+
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="edit-text.png" Width="20" Height="20"></Image>
+                        <TextBlock Margin="4,4,4,4" VerticalAlignment="center">Paramètres avancés</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
+
+    </DockPanel>
+</Window>

@@ -1,0 +1,17 @@
+Total: 20
+1	<!-- Err: (1) La ligne et le libellé doivent être décalés un peu vers la gauche -->
+1	<!-- Err: (2) Panel inutile ne participant pas à la présentation -->
+1 	<!-- Err: (3) Contrôle n'a pas le bon alignement à gauche -->
+1 	<!-- Err: (5) Inutile de nommer le style -->
+1	<!-- Err: (6) Ressource inutilisée -->
+1	<!-- Err: (7) Contrôle du mauvais type -->
+1	<!-- Err: (8) Les marges entre les colonnes ne sont pas uniformes) -->
+1	/* Err: (9) Variables inutilisées */
+1	<!-- Err: (10) Les valeurs initiales ne sont pas précisées -->
+0.5	<!-- Err: (11) Fautes de français -->
+1	/* Err: (12) Il manque la gestion pour le soulignement Normal */
+1	<!-- Err: (13) Il manque la ligne -->
+2	<!-- Err: (14) Le soulignement n'est pas mis-à-jour -->
+0.5	/* Err: (15) Instruction inadéquate */
+0.5	<!-- Err: (16) Nom des contrôles ne respectent pas la convention de nomenclature -->
+1	<!-- Err: (17) Contrôle à l'extérieur des limites de la grille -->

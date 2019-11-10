@@ -1,30 +1,37 @@
-import {
-  tagCapture,
-  tagInHtml,
-  tagSequence,
-  errorTagInHtml,
-  ratio,
-  commentHtmlCapture
-} from './patterns.js';
+import { tagCapture, errorTag, ratio, comment } from './patterns.js';
 import Parser from './parser.js';
 
-export function createTagParser(tag) {
-  const pattern = new RegExp(tagCapture(tag, '.*'));
-  return new Parser(pattern);
-}
+const chain = (a, b, map0, maps) => {
+  return {
+    parse(txt) {
+      let res;
+      let range;
+      do {
+        res = a.parse(txt);
+        if (!res) return null;
+        range = b.parse(res[map0]);
+      } while (range == null);
+      maps.forEach(key => {
+        res[key] = range[key];
+      });
+      return res;
+    }
+  };
+};
 
-export function createTagInHtmlParser(tag) {
-  const pattern = new RegExp(tagInHtml(tag, '.*'), 'g');
-  return new Parser(pattern, {
+export function createTagParser(tag) {
+  const pattern = new RegExp(tagCapture(tag, '.*'), 'm');
+  let parser = new Parser(pattern, {
     transformers: {
       target: content => content.trim()
     }
   });
+  return chain(createCommentParser(), parser, 'content', ['target', 'tag']);
 }
 
-export function createErrorInHtmlParser(tag) {
-  const pattern = new RegExp(errorTagInHtml(tag), 'g');
-  return new Parser(pattern, {
+export function createErrorParser(tag) {
+  const pattern = new RegExp(errorTag(tag), 'm');
+  const parser = new Parser(pattern, {
     transformers: {
       target: content => content.trim(),
       tag: content => content.trim(),
@@ -37,12 +44,18 @@ export function createErrorInHtmlParser(tag) {
       }
     ]
   });
+  return chain(createCommentParser(), parser, 'content', [
+    'target',
+    'tag',
+    'sequence',
+    'id'
+  ]);
 }
 
-export function createResultInHtmlParser(tag) {
+export function createResultParser(tag) {
   let content = `${tag}\\s*(?<result>${ratio})`;
-  const pattern = new RegExp(commentHtmlCapture(content), 'g');
-  return new Parser(pattern, {
+  const pattern = new RegExp(content, 'm');
+  let parser = new Parser(pattern, {
     transformers: {
       content: content => content.trim(),
       result: r => {
@@ -56,13 +69,31 @@ export function createResultInHtmlParser(tag) {
       }
     }
   });
+
+  return chain(createCommentParser(), parser, 'content', ['result']);
 }
 
-const inner = new RegExp(commentHtmlCapture());
+export function createCommentParser(local) {
+  let pattern = new RegExp(comment, !local ? 'gm' : 'm');
+  return new Parser(pattern, {
+    postprocessors: [
+      range => {
+        let o = range.matches.slice(2).filter(x => x);
+        range.begin = o[0];
+        range.content = o[1];
+        range.end = o[2];
+        return range;
+      }
+    ]
+  });
+}
+
+const inner = createCommentParser(true);
 export function stripCommentTags(text) {
-  let matches = inner.exec(text);
-  if (!!matches) {
-    return text.replace(matches[0], matches.groups.content.trim());
+  const range = inner.parse(text);
+  if (!!range) {
+    let content = range.content.trim();
+    return text.replace(range.matches[0], content);
   }
   return text;
 }

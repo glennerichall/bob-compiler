@@ -108,7 +108,7 @@ describe('cli-compile', () => {
       expect(JSON.parse(output)).to.deep.equal(expected);
     });
 
-    it('should succeed another test', async () => {
+    it('should succeed test files 1', async () => {
       const base = './tests/testunits/420-1W1-AA/Examen 1';
       const source = base;
       const commentaires = `${base}/commentaires`;
@@ -149,6 +149,37 @@ describe('cli-compile', () => {
         'Xavier Lavoie': 99,
         'Yannick Guion-Firmin': 87
       };
+      expect(JSON.parse(output)).to.deep.equal(expected);
+    });
+
+    it('should succeed test files 2', async () => {
+      const base = './tests/testunits/420-3N1-AA/Sommatif 1';
+      const source = base;
+      const commentaires = `${base}/commentaires.txt`;
+      let output = '';
+      let log = console.log.bind(console);
+      console.log = msg => (output += msg);
+      await compile(source, commentaires, {
+        pattern:
+          '.*\\\\(?<etudiant>[\\w\\u00C0-\\u00FF]+([\\s-][\\w\\u00C0-\\u00FF]+)+)_\\d+.*\\\\.*\\.(cs|xaml)$',
+        parts: 'resolve',
+        groupby: 'etudiant',
+        results: 'json',
+        dryrun: true
+      });
+      let expected = {
+        'Francis Guindon': 19.5,
+        'François Gagnon': 18.5,
+        'Guy Williams Bossakene': 17,
+        'Julien Jennequin': 13.5,
+        'Kevin Francis Jean-Paul Richard Lasserre': 16.5,
+        'Nicola Martel': 12,
+        'Raphael Hudon-Murray': 19,
+        'Simon-Olivier Lachance-Gagné': 17,
+        'Vincent Lechasseur': 16.5
+      };
+      // log(output);
+      // log(JSON.parse(output,null,2));
       expect(JSON.parse(output)).to.deep.equal(expected);
     });
   });

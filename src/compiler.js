@@ -1,9 +1,6 @@
 import { asDatabase, getDefaultFix } from './comments.js';
 import { Document } from './document.js';
-import {
-  createErrorInHtmlParser as createErrorInCommentsParser,
-  createResultInHtmlParser as createResultInCommentsParser
-} from './parser.builder.js';
+import { createErrorParser, createResultParser } from './parser.builder.js';
 
 export class Comment {
   constructor(range) {
@@ -57,14 +54,14 @@ export class Compiler {
     await this.document.load();
     await this.database.load();
     let { content } = this.document;
-    let parser = createErrorInCommentsParser('Err:{0,1}', ':{0,1}');
+    let parser = createErrorParser('Err:{0,1}', ':{0,1}');
     let range;
     while ((range = parser.parse(content))) {
       this.comments.push(new ErrorComment(range));
     }
     const tag = 'Résultat:';
     let fix = getDefaultFix(this.document.lang);
-    let r = createResultInCommentsParser(tag).parse(content) || {
+    let r = createResultParser(tag).parse(content) || {
       first: 0,
       last: 0,
       ...fix

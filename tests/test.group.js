@@ -1,7 +1,7 @@
 import { CompilationGroup } from '../src/group';
 
 import { expect } from 'chai';
-import { createResultInHtmlParser } from '../src/parser.builder';
+import { createResultParser } from '../src/parser.builder';
 
 describe('CompilerGroup', () => {
   describe('#execute', () => {
@@ -14,7 +14,7 @@ describe('CompilerGroup', () => {
       compiler.compilers.forEach(compiler => {
         // disable saving
         compiler.document.save = () => {
-            let parser = createResultInHtmlParser('Résultat:');
+            let parser = createResultParser('Résultat:');
             let content = compiler.document.content;
             let range = parser.parse(content);
             // console.log(content)

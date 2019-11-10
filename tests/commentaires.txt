@@ -20,6 +20,7 @@ Total: 30
 3	Err: (17) Q3. Gestion des événements
 2	Err: (18) Q3. Exécution des actions selon les événements
 
+    # un commentaire bidon
 1	Err: (19) Q4. Mise-à-jour du titre de la fenêtre
 3	Err: (20) Q4. Affichage en valeur entière de la largeur de la fenêtre
 0.5	Err: (21) Q4. Sauvegarde des préférences utilisateur

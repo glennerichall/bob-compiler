@@ -8,7 +8,11 @@ const readFile = promises.readFile;
 function loadFromCDbP(content, options) {
   options = options || {};
   let comments = [];
-  content = content.split('\n').filter(x => x.trim().length);
+  content = content
+    .split('\n')
+    .map(x => x.trim())
+    .filter(x => !x.startsWith('#'))
+    .filter(x => x.length);
 
   const pattern = new RegExp(
     `(?<points>${positiveFloat})\\s+${errorTag('Err:{0,1}', ':{0,1}')}`
@@ -94,8 +98,8 @@ export function getDefaultFix(lang) {
     lang == 'c++' ||
     lang == 'java'
   ) {
-    begin = '/*';
-    end = '*/';
+    begin = '(/*|//)';
+    end = '(*/|$)';
   } else if (lang == 'html' || lang == 'xaml') {
     begin = '<!--';
     end = '-->';
