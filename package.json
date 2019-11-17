@@ -1,6 +1,6 @@
 {
   "name": "bob-compiler",
-  "version": "1.1.22",
+  "version": "1.1.23",
   "description": "Command line application to compile annotated code files in comments",
   "main": "./src/index.js",
   "scripts": {
