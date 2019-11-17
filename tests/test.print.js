@@ -7,9 +7,9 @@ const readFile = promises.readFile;
 
 describe("print", () => {
   describe("#printContent", () => {
-    it.only("should create pdf from string", async () => {
+    it("should create pdf from string", async () => {
       const html = `<html><body><h1>Hello World!</h1></body></html>`;
-      const outfile = "./test.printcontent.pdf";
+      const outfile = "./tests/test.printcontent.pdf";
         const pdf = await printContent(html, outfile);
     //   const pdf = await printContent(html);
       const content = await readFile(outfile);

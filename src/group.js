@@ -1,5 +1,5 @@
-import { Compiler } from './compiler.js';
-import { asDatabase } from './comments.js';
+import { Compiler } from "./compiler.js";
+import { asDatabase } from "./comments.js";
 
 class SubCompiler extends Compiler {
   constructor(file, database, group) {
@@ -45,6 +45,11 @@ export class CompilationGroup {
     let promises = this.compilers.map(compiler => compiler.execute());
     await Promise.all(promises);
     return Math.max(this.database.total - this.sum, 0);
+  }
+
+  async export() {
+    let promises = this.compilers.map(compiler => compiler.document.export());
+    return Promise.all(promises);
   }
 
   dryrun() {

@@ -1,15 +1,15 @@
-import { Compiler } from '../compiler.js';
-import { CompilationGroup } from '../group.js';
-import { promises } from 'fs';
-import readdir from 'recursive-readdir';
-import path from 'path';
+import { Compiler } from "../compiler.js";
+import { CompilationGroup } from "../group.js";
+import { promises } from "fs";
+import readdir from "recursive-readdir";
+import path from "path";
 
 const { access, lstat, F_OK } = promises;
 
 export const getGroups = async (source, options) => {
   options = options || {
-    pattern: '.*',
-    parts: 'resolve'
+    pattern: ".*",
+    parts: "resolve"
   };
   const pattern = new RegExp(options.pattern);
   let files = await readdir(source);
@@ -33,7 +33,7 @@ export const getGroups = async (source, options) => {
         let key = names.reduce((result, key) => {
           result += match.groups[key];
           return result;
-        }, '');
+        }, "");
         if (!result[key]) {
           result[key] = [];
         }
@@ -69,14 +69,18 @@ export const compileGroup = async (source, commentaires, options) => {
     if (options.verbose) {
       console.log(`Compilation du groupe de fichier(s) : ${group.key}`);
       for (let file of files) {
-        console.log(file.replace(path.join(source, '\\'), '\t'));
+        console.log(file.replace(path.join(source, "\\"), "\t"));
       }
-      console.log('\n');
+      console.log("\n");
     }
 
     await group.load();
     let result = await group.execute();
     results[group.key] = result;
+
+    if (options.print) {
+      await group.export();
+    }
   }
   return results;
 };
@@ -88,7 +92,11 @@ export const compileOne = async (source, commentaires, options) => {
     compiler.document.saveAs = async () => Promise.resolve(true);
   }
   await compiler.load();
-  return await compiler.execute();
+  let res = await compiler.execute();
+  if (options.print) {
+    await compiler.document.export();
+  }
+  return res;
 };
 
 // ---------------------------------------------------------------------------
@@ -109,13 +117,13 @@ export const compile = async (source, commentaires, options) => {
   try {
     const stats = await lstat(source);
     if (stats.isDirectory() && !options.single) {
-      if (options.verbose) console.log('Compilation par groupes de fichiers');
+      if (options.verbose) console.log("Compilation par groupes de fichiers");
       let results = await compileGroup(source, commentaires, options);
-      if (options.results == 'csv') {
+      if (options.results == "csv") {
         for (let key in results) {
           console.log(`${key} : ${results[key]}`);
         }
-      } else if (options.results == 'json') {
+      } else if (options.results == "json") {
         console.log(JSON.stringify(results));
       }
     } else {

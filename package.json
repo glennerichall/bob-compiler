@@ -34,8 +34,10 @@
     "nodemon": "^1.19.4"
   },
   "dependencies": {
+    "jsdom": "^15.2.1",
     "npm": "^6.13.0",
     "npm-api": "^1.0.0",
+    "prismjs": "^1.17.1",
     "recursive-readdir": "^2.2.2",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
