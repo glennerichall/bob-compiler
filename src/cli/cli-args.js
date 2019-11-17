@@ -106,9 +106,6 @@ export const cpmCmd = [
   async args => {
     const { source, commentaires } = args;
     await compile(source, commentaires, args);
-    if (args.print) {
-      await print(source, commentaires);
-    }
   }
 ];
 
@@ -128,7 +125,7 @@ export const lstCmd = [
 ];
 
 // ---------------------------------------------------------------------------
-const add_args = "<preset> [groupby] [pattern] [parts] [single] [results]";
+const add_args = "<preset> [groupby] [pattern] [parts] [single] [results] [print]";
 const add_build = y =>
   y
     .positional("preset", {
@@ -140,8 +137,9 @@ const add_build = y =>
     .option(parts[0], { ...parts[1], default: undefined })
     .option(results[0], { ...results[1], default: undefined })
     .option(single[0], { ...single[1], default: undefined })
+    .option(print[0], { ...print[1], default: undefined })
     .group(
-      ["groupby", "pattern", "parts", "results", "single"],
+      ["groupby", "pattern", "parts", "results", "single", "print"],
       "Preset parameters"
     )
     .check(

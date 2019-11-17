@@ -37,8 +37,7 @@ export class Document {
   }
 
   async export() {
-    const ext = path.extname(this.filename);
-    const outfile = this.filename.replace(ext, ".pdf");
+    const outfile = this.filename + '.pdf';
     let content = Prism.highlight(
       this.content,
       Prism.languages[this.lang],
@@ -57,7 +56,7 @@ export class Document {
       }
       span.token.comment.error {
         color: red;
-        font-size: 1.5em;
+        font-size: 1.2em;
         border-color: red;
         border-radius: 3px;
       }
