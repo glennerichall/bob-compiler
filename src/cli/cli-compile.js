@@ -127,7 +127,7 @@ export const compile = async (source, commentaires, options) => {
         console.log(JSON.stringify(results));
       }
     } else {
-      let result = await compileOne(source, commentaires);
+      let result = await compileOne(source, commentaires, options);
     }
   } catch (e) {
     console.error(e.message);

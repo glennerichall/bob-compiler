@@ -12,7 +12,8 @@ export function createPdf(content) {
     method: "POST",
     uri,
     body: {
-      html: content
+      html: content,
+      printBackground: true
     },
     json: true
   };
