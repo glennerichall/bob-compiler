@@ -14,20 +14,20 @@ $ npm install -g bob-compiler
 ## Usage
 
 ```sh
-$ bobc compile <file|dir­> <comments> [--groupby] [--pattern] [--parts] [--single] [--preset] [--results]
+$ bobc compile <file|dir­> <comments> [--groupby] [--pattern] [--parts] [--single] [--preset] [--results] [--print]
 ```
 
 Compiles *file* or files in *dir*, replacing tags in every files with text in *comments*.
 
 ## Examples
-Here is an example of *comments* file content:
+Here is an example of *comments* file content Iit may be in that format or in JSON format):
 ```properties
 Total:60
-1   <!-- Err: (4)The URL has the wrong value -->
-1   /* Err: (9) Pseudo-element has wrong background-color */
-1   /* Err: (10) All text must be justified */
-0.5 <!-- Err: (11) File is badly named -->
-1   <!-- Err: (19) Missing information -->
+1   Err: (4)The URL has the wrong value
+1   Err: (9) Pseudo-element has wrong background-color
+1   Err: (10) All text must be justified
+0.5 Err: (11) File is badly named
+1   Err: (19) Missing information
 ```
 
 And a file annotated with tags
@@ -65,10 +65,9 @@ And a file annotated with tags
 </html>
 ```
 
-
 So, in a HTML file for instance, add comments containing the error tags `<!-- Err: (n) -->` where errors are encountered.
 
-`bobc` will replace all comments with comments found in *comments* file and sum-up all the points lost in the file adding a comment 
+`bobc` will replace all comments with in *comments* file and sum-up all the points lost in the file adding a comment 
 ## Commands
 
 ### compile
@@ -94,6 +93,8 @@ optional. Parts of file to use in *pattern*.
 
 optional. Parameter indicating that a named group in *pattern* is to be used to group files from *dir* into a single summation unit.
 
+#### presets
+
 ##### Example
 ```sh
 --pattern "(?<usercode>\w{4}\d{4|6}).*\.(html|cs))" --groupby usercode
@@ -107,7 +108,8 @@ optional. Print results summed for every group defined by *groupby*
 #### preset
 optional. Use a preset for optional paramters defined with *presets* command.
 
-### presets
+#### print
+optional. Export all compiled files to pdf.
 
 ```sh
 presets <action> [name] [--groupby] [--pattern] [--parts] [--single] [--preset] [--results]
@@ -119,3 +121,4 @@ Actions may be:
 * remove
 * list
 * clear
+* share
