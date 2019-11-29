@@ -98,8 +98,8 @@ export function getDefaultFix(lang) {
     lang == 'c++' ||
     lang == 'java'
   ) {
-    begin = '(/*|//)';
-    end = '(*/|$)';
+    begin = '/*';
+    end = '*/';
   } else if (lang == 'html' || lang == 'xaml') {
     begin = '<!--';
     end = '-->';
