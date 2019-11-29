@@ -67,6 +67,16 @@ describe('Editor', () => {
     });
   });
 
+  describe('#insertPosition', ()=>{
+    it('should insert at 0', () => {
+      let doc = { content: '01234567890abcdefghijklmnop' };
+      let editor = new Editor(doc);
+      editor.insertPosition(0, 'bob');
+      editor.done();
+      expect(doc.content).to.equal('bob01234567890abcdefghijklmnop');
+    });
+  })
+
   describe('#done', () => {
     it('should apply actions', () => {
       let doc = { content: '01234567890abcdefghijklmnop' };

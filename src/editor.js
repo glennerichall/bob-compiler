@@ -2,7 +2,7 @@ import {
   ReplaceRangeAction,
   NoopAction,
   InsertRangeAction
-} from './actions.js';
+} from "./actions.js";
 
 export class Editor {
   constructor(document) {
@@ -35,7 +35,7 @@ export class Editor {
       if (i != 0) {
         let previous = commands[i - 1].range.last + 1;
         if (previous < first) {
-          if(commands[i - 1] instanceof InsertRangeAction){
+          if (commands[i - 1] instanceof InsertRangeAction) {
             previous--;
           }
           let noop = new NoopAction({
@@ -57,7 +57,7 @@ export class Editor {
     } while (i < commands.length);
     if (cursor < n) {
       let noop = new NoopAction({
-        first: cursor + 1,
+        first: cursor + (cursor == 0 ? 0 : 1),
         last: n - 1
       });
       result.push(noop);
@@ -67,7 +67,7 @@ export class Editor {
 
   done() {
     let commands = this.prepare();
-    let text = '';
+    let text = "";
     for (let i = 0; i < commands.length; i++) {
       text += commands[i].execute(this);
     }

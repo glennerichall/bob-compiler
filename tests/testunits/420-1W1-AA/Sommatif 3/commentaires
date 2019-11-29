@@ -1,0 +1,19 @@
+Total:15
+1   Err(1) 	Le document est mal formatté
+0.5	Err(2) 	Utiliser la variable contenant le div nouvellement créé
+1	Err(3) 	Vérifier la présence des attributs name et content
+0.5	Err(4) 	Manque les accolades
+0.5	Err(5) 	Le fichier est mal nommé
+1	Err(6) 	Logique invalide
+1	Err(7) 	Transformation du code permanent en majuscule
+1	Err(8) 	Modification du titre du document 
+1	Err(9) 	Écriture du code permanent dans le document
+1	Err(10) Utilisation de code inadéquat
+1	Err(11) Obtention des éléments meta du document
+1	Err(12) Iteration sur les éléments meta
+1	Err(13) Lecture des attributs d'élément
+1	Err(14) Création des lignes
+1	Err(15) Création des cellules
+1	Err(16)	Création des entêtes de ligne et colonne
+1	Err(17) Code redondant
+1	Err(18)	Affichage du contenu de l'élément seulement

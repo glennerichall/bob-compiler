@@ -1,0 +1,75 @@
+<!-- INTERDIT DE MODIFIER CE CODE (autre que l'ajout de JavaScript) -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- INTERDIT DE MODIFIER CE CODE (autre que l'ajout de JavaScript) -->
+    <meta charset="UTF-8" />
+    <meta name="author" content="" />
+    <meta name="evaluation" content="Sommatif-3" />
+    <meta name="codepermanent" content="Code Permanent" />
+    <meta name="date" content="" />
+    <title>Sommatif-3</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table td {
+            text-align: center;
+            padding: 3px;
+            border: 1px solid black;
+        }
+
+        table tr~tr td:first-of-type,
+        table tr:first-of-type td {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- INTERDIT DE MODIFIER CE CODE (autre que l'ajout de JavaScript) -->
+    <table id="table-mult"></table>
+    <script>
+        var listeTr = document.getElementsByTagName("tr");
+        var listeTd = document.getElementsByTagName("td");
+
+        var tableMulti = prompt("Entrer un nombre entre 5 et 9");
+        if (tableMulti < 5) {
+            tableMulti = 5;
+        }
+        else if (tableMulti > 9) {
+            tableMulti = 9;
+        }
+        var newTr = document.createElement("tr");
+        var newTd = document.createElement("td");
+
+        document.getElementById("table-mult").appendChild(newTr);
+        for (var i = 0; i < tableMulti; i++) {
+            listeTr[listeTr.length - 1].appendChild(newTd);
+            listeTd[listeTd.length - 1].innerText = i + 1;
+            var newTd = document.createElement("td");
+        }
+
+        for (var i = 0; i < tableMulti - 1; i++) {
+            var newTr = document.createElement("tr");
+            document.getElementById("table-mult").appendChild(newTr);
+            listeTr[listeTr.length - 1].appendChild(newTd);
+            listeTd[listeTd.length - 1].innerText = i + 2;
+            var newTd = document.createElement("td");
+        }
+
+        for (var i = 0; i < tableMulti; i++) {
+            for (var j = 0; j < tableMulti - 1; j++) {
+                var newTd = document.createElement("td");
+                listeTr[i + 1].appendChild(newTd);
+                listeTr[i + 1].childNodes[j+1].innerText = (i + 2) * (j + 2);
+            }
+        }
+    </script>
+</body>
+
+</html>

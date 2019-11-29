@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Razafimahatratra Adrien" />
+    <meta name="evaluation" content="Sommatif 3" />
+    <meta name="codepermanent" content="RAZA64120103" />
+    <meta name="date" content="2019-11-21" />
+    <title>Sommatif-3</title>
+</head>
+
+<body>
+
+    <script>
+        var listeMeta = document.getElementsByTagName("meta");
+        var listeDiv = document.getElementsByTagName("div");
+    for(var i =1; i< listeMeta.length; i++){
+        var newDiv = document.createElement("div");
+        document.body.appendChild(newDiv);
+        listeDiv[listeDiv.length-1].innerText =listeMeta[i].name + ": " + listeMeta[i].content;
+    }    
+    </script>
+</body>
+
+</html>
