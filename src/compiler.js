@@ -26,7 +26,7 @@ export class ErrorComment extends Comment {
   getText(content) {
     let { tag, begin, end, points } = this.range;
     let card = points > 1 ? 's' : '';
-    let template = `${begin} ${tag} ${content}, (${points} point${card}) ${end}`;
+    let template = `${begin} ${tag} ${content}, (${points} point${card}) ${end||''}`;
     return template;
   }
 }

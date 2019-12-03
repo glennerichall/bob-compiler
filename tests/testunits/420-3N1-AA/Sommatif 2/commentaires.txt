@@ -1,0 +1,14 @@
+Total: 20
+1	Err(1)	Générez au moins 1000 données contenant
+1	Err(2)	Aucune donnée ne peut être ajoutée ou retirée
+1	Err(3)	Seules les données dela colonne «Avancement» peuvent être modifiées
+1	Err(4)	Les colonnes «Ident»et «Couleur»ne peuvent être redimensionnées
+1	Err(5)	Toutes les colonnes peuvent être triées en ordre croissant ou décroissant
+1	Err(6)	À la sélection d’un enregistrement dans la grille, la photo de l’utilisateur est affichée
+1	Err(7)	Les photos sont dansun sous-répertoire dans le même répertoire que le programme
+1	Err(8)	La base de données est une base de données SQLite dont le fichier est dans le même répertoire que le programme
+1	Err(9)	La colonne utilisateur peut être filtrée à l’aide d’un combo boxd ans l’entête
+1	Err(10)	Placer la photo absent.png dans les resources
+1	Err(11) Vérifier que l'index est à l'intérieur des limites de la grille
+1	Err(12) Utiliser des paramètres de commande SQL
+1	Err(13) Utiliser la connection existante

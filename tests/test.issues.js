@@ -82,8 +82,7 @@ describe("issues", () => {
   });
 
   it("should fix issue #18", async () => {
-    const base =
-      "./tests/testunits/420-1W1-AA/Sommatif 3";
+    const base = "./tests/testunits/420-1W1-AA/Sommatif 3";
     const file = `${base}/RAZA64120103/RAZA64120103-sommatif-Q2.html`;
     const db = `${base}/commentaires`;
 
@@ -99,8 +98,7 @@ describe("issues", () => {
   });
 
   it("should fix issue #18", async () => {
-    const base =
-      "./tests/testunits/420-1W1-AA/Sommatif 3";
+    const base = "./tests/testunits/420-1W1-AA/Sommatif 3";
     const file = `${base}/RAZA64120103/RAZA64120103-sommatif-3-Q1.js`;
     const db = `${base}/commentaires`;
 
@@ -109,9 +107,30 @@ describe("issues", () => {
     await compiler.load();
     await compiler.execute();
 
-    const expected = ["/* Résultat: 15/15 */", 'var codePermanent = prompt("Entrer votre code permanent.");'];
+    const expected = [
+      "/* Résultat: 15/15 */",
+      'var codePermanent = prompt("Entrer votre code permanent.");'
+    ];
 
     expect(compiler.document.content.split("\n")[0]).to.be.equal(expected[0]);
     expect(compiler.document.content.split("\n")[1]).to.be.equal(expected[1]);
+  });
+
+  it("should fix issue #22", async () => {
+    const base = "./tests/testunits/420-3N1-AA/Sommatif 2";
+    const file = `${base}/MainWindow.xaml.cs`;
+    const db = `${base}/commentaires.txt`;
+
+    const compiler = new Compiler(file, db);
+    compiler.document.save = () => {};
+    await compiler.load();
+    await compiler.execute();
+
+    expect(compiler.document.content.split("\n")[58].trim()).to.be.equal(
+      "/* Err(10) Placer la photo absent.png dans les resources, (1 point) */"
+    );
+    expect(compiler.document.content.split("\n")[82].trim()).to.be.equal(
+      "// Err(11) Vérifier que l'index est à l'intérieur des limites de la grille, (1 point)"
+    );
   });
 });
