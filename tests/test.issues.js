@@ -87,14 +87,14 @@ describe("issues", () => {
     const db = `${base}/commentaires`;
 
     const compiler = new Compiler(file, db);
-    compiler.document.save = () => {};
+    compiler.document.save = () => { };
     await compiler.load();
     await compiler.execute();
 
     const expected = ["<!-- Résultat: 15/15 -->", "<!DOCTYPE html>"];
 
-    expect(compiler.document.content.split("\n")[0]).to.be.equal(expected[0]);
-    expect(compiler.document.content.split("\n")[1]).to.be.equal(expected[1]);
+    expect(compiler.document.content.split("\n")[0].trim()).to.be.equal(expected[0]);
+    expect(compiler.document.content.split("\n")[1].trim()).to.be.equal(expected[1]);
   });
 
   it("should fix issue #18", async () => {
@@ -103,7 +103,7 @@ describe("issues", () => {
     const db = `${base}/commentaires`;
 
     const compiler = new Compiler(file, db);
-    compiler.document.save = () => {};
+    compiler.document.save = () => { };
     await compiler.load();
     await compiler.execute();
 
@@ -112,8 +112,8 @@ describe("issues", () => {
       'var codePermanent = prompt("Entrer votre code permanent.");'
     ];
 
-    expect(compiler.document.content.split("\n")[0]).to.be.equal(expected[0]);
-    expect(compiler.document.content.split("\n")[1]).to.be.equal(expected[1]);
+    expect(compiler.document.content.split("\n")[0].trim()).to.be.equal(expected[0]);
+    expect(compiler.document.content.split("\n")[1].trim()).to.be.equal(expected[1]);
   });
 
   it("should fix issue #22", async () => {
@@ -122,7 +122,7 @@ describe("issues", () => {
     const db = `${base}/commentaires.txt`;
 
     const compiler = new Compiler(file, db);
-    compiler.document.save = () => {};
+    compiler.document.save = () => { };
     await compiler.load();
     await compiler.execute();
 

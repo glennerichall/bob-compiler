@@ -108,10 +108,6 @@ describe("cli-compile", () => {
       expect(JSON.parse(output)).to.deep.equal(expected);
     });
 
-    it.skip("should print results in pdf", async () => {
-
-    });
-
 
   });
 });

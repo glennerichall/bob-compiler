@@ -1,8 +1,5 @@
 import { Editor } from "./editor.js";
-import { printContent } from "./print.js";
 import path from "path";
-import Prism from "prismjs";
-import { JSDOM } from "jsdom";
 import { promises } from "fs";
 const { writeFile, readFile } = promises;
 
