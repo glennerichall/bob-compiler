@@ -47,17 +47,9 @@ const results = [
   }
 ];
 
-const print = [
-  "print",
-  {
-    type: "boolean",
-    describe: "Exporter les sources en pdf"
-  }
-];
-
 // ---------------------------------------------------------------------------
 export const cpmCmd = [
-  "compile <source> <commentaires> [groupby] [pattern] [parts] [single] [preset] [results] [verbose] [dryrun] [print]",
+  "compile <source> <commentaires> [groupby] [pattern] [parts] [single] [preset] [results] [verbose] [dryrun]",
   "Compiler les points des commentaires annotés dans les fichiers.",
   y =>
     y
@@ -76,7 +68,6 @@ export const cpmCmd = [
       .option(...parts)
       .option(...single)
       .option(...results)
-      .option(...print)
       .option("preset", {
         type: "array",
         default: [],
@@ -125,7 +116,7 @@ export const lstCmd = [
 ];
 
 // ---------------------------------------------------------------------------
-const add_args = "<preset> [groupby] [pattern] [parts] [single] [results] [print]";
+const add_args = "<preset> [groupby] [pattern] [parts] [single] [results]";
 const add_build = y =>
   y
     .positional("preset", {
@@ -137,9 +128,8 @@ const add_build = y =>
     .option(parts[0], { ...parts[1], default: undefined })
     .option(results[0], { ...results[1], default: undefined })
     .option(single[0], { ...single[1], default: undefined })
-    .option(print[0], { ...print[1], default: undefined })
     .group(
-      ["groupby", "pattern", "parts", "results", "single", "print"],
+      ["groupby", "pattern", "parts", "results", "single"],
       "Preset parameters"
     )
     .check(

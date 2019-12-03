@@ -47,11 +47,6 @@ export class CompilationGroup {
     return Math.max(this.database.total - this.sum, 0);
   }
 
-  async export() {
-    let promises = this.compilers.map(compiler => compiler.document.export());
-    return Promise.all(promises);
-  }
-
   dryrun() {
     this.compilers.forEach(compiler => {
       compiler.document.saveAs = () => true;
