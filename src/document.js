@@ -1,6 +1,7 @@
 import { Editor } from "./editor.js";
 import path from "path";
 import { promises } from "fs";
+import { threadId } from "worker_threads";
 const { writeFile, readFile } = promises;
 
 export class Document {
@@ -12,6 +13,9 @@ export class Document {
 
   async load() {
     this.content = await readFile(this.filename, "utf8");
+    // https://stackoverflow.com/questions/24356713/node-js-readfile-error-with-utf8-encoded-file-on-windows
+    // issue #8
+    this.content = this.content.replace(/^\uFEFF/, '');
   }
 
   async edit(edition) {
