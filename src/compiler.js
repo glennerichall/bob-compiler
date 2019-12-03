@@ -1,6 +1,7 @@
 import { asDatabase, getDefaultFix } from './comments.js';
 import { Document } from './document.js';
 import { createErrorParser, createResultParser } from './parser.builder.js';
+const { EOL } = require('os');
 
 export class Comment {
   constructor(range) {
@@ -9,7 +10,7 @@ export class Comment {
 
   update(editor, content) {
     if (this.range.first == this.range.last) {
-      editor.insertPosition(this.range.first, this.getText(content) + '\n');
+      editor.insertPosition(this.range.first, this.getText(content) + EOL);
     } else {
       editor.replaceRange(this.range, this.getText(content));
     }
