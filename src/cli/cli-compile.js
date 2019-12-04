@@ -3,6 +3,7 @@ import { CompilationGroup } from "../group.js";
 import { promises } from "fs";
 import readdir from "recursive-readdir";
 import path from "path";
+import logger from '../logger.js';
 
 const { access, lstat, F_OK } = promises;
 
@@ -14,14 +15,12 @@ export const getGroups = async (source, options) => {
   const pattern = new RegExp(options.pattern);
   let files = await readdir(source);
 
-  if (!!options.verbose) {
-    console.log(`${files.length} fichier(s) trouvé(s)`);
-    console.log(`Filtrage des fichiers selon [pattern] : `);
-  }
+  logger.info(`${files.length} fichier(s) trouvé(s)`);
+  logger.info(`Filtrage des fichiers selon [pattern] : `);
+
   files = files.filter(file => pattern.test(path[options.parts](file)));
-  if (options.verbose) {
-    console.log(`${files.length} fichier(s) conservé(s)`);
-  }
+
+  logger.info(`${files.length} fichier(s) conservé(s)`);
 
   if (!!options.groupby) {
     let names = options.groupby;
@@ -59,20 +58,17 @@ export const compileGroup = async (source, commentaires, options) => {
     if (options.dryrun) group.dryrun();
     return group;
   });
-  if (options.verbose) {
-    console.log(`${groups.length} groupe(s) de fichier(s)`);
-  }
+
+  logger.info(`${groups.length} groupe(s) de fichier(s)`);
 
   let results = {};
   for (let group of groups) {
     let files = group.files;
-    if (options.verbose) {
-      console.log(`Compilation du groupe de fichier(s) : ${group.key}`);
-      for (let file of files) {
-        console.log(file.replace(path.join(source, "\\"), "\t"));
-      }
-      console.log("\n");
+    logger.info(`Compilation du groupe de fichier(s) : ${group.key}`);
+    for (let file of files) {
+      logger.info(file.replace(path.join(source, "\\"), "\t"));
     }
+    logger.info("\n");
 
     await group.load();
     let result = await group.execute();
@@ -117,7 +113,7 @@ export const compile = async (source, commentaires, options) => {
   try {
     const stats = await lstat(source);
     if (stats.isDirectory() && !options.single) {
-      if (options.verbose) console.log("Compilation par groupes de fichiers");
+      logger.info("Compilation par groupes de fichiers");
       let results = await compileGroup(source, commentaires, options);
       if (options.results == "csv") {
         for (let key in results) {
@@ -130,12 +126,8 @@ export const compile = async (source, commentaires, options) => {
       let result = await compileOne(source, commentaires, options);
     }
   } catch (e) {
-    console.error(e.message);
+    logger.error(e.message);
     return;
   }
-  if (options.verbose) {
-    console.log(
-      `\nCompilation terminée en ${new Date() - start} milliseconde(s)`
-    );
-  }
+  logger.info(`\nCompilation terminée en ${new Date() - start} milliseconde(s)`);
 };

@@ -5,6 +5,8 @@ import yargs from 'yargs';
 import version from './version.js';
 import { lstCmd, cpmCmd, preCmd } from './cli/cli-args.js';
 import NpmApi from 'npm-api';
+import logger from './logger.js';
+import { levels } from './logger.js';
 
 // ---------------------------------------------------------------------------
 version().then(value => {
@@ -24,9 +26,11 @@ version().then(value => {
       .help().argv;
 
     if (argv.verbose) {
-      console.log('\nCurrent effective options are:');
-      console.log(argv);
+      logger.level = levels.info;
     }
+
+    logger.info('\nCurrent effective options are:');
+    logger.info(argv);
 
     let npm = new NpmApi();
     var repo = npm.repo('bob-compiler');

@@ -3,6 +3,7 @@ import * as localPresets from "./cli-presets.js";
 import * as remotePresets from "./cli-remote.js";
 import { promises } from "fs";
 const { stat } = promises;
+import logger from '../logger.js';
 
 const groupby = [
   "groupby",
@@ -47,6 +48,13 @@ const results = [
   }
 ];
 
+const watch = [
+  "watch",
+  {
+    type: "boolean",
+    describe: "Observe et recompile les fichiers lors de la correction"
+  }
+]
 // ---------------------------------------------------------------------------
 export const cpmCmd = [
   "compile <source> <commentaires> [groupby] [pattern] [parts] [single] [preset] [results] [verbose] [dryrun]",
@@ -68,6 +76,7 @@ export const cpmCmd = [
       .option(...parts)
       .option(...single)
       .option(...results)
+      .option(...watch)
       .option("preset", {
         type: "array",
         default: [],
@@ -84,7 +93,7 @@ export const cpmCmd = [
       .middleware([
         argv => {
           if (argv["_"][0] == "compile") {
-            if (argv.verbose) console.log("Applying presets");
+            console.info("Applying presets");
             let presets = localPresets.applyPresets(argv.preset || []);
             for (let key of Object.keys(presets)) {
               argv[key] = presets[key];
@@ -191,12 +200,12 @@ export const preCmd = [
         args => {
           const presets = localPresets.listPresets();
           if (presets[args.old] == undefined) {
-            console.error(`Le preset ${args.old} n'existe pas`);
+            logger.error(`Le preset ${args.old} n'existe pas`);
           } else if (presets[args.new] != undefined) {
-            console.error(`Le preset ${args.new} existe déjà`);
+            logger.error(`Le preset ${args.new} existe déjà`);
           } else {
             localPresets.renamePreset(args.old, args.new);
-            console.log("done");
+            logger.log("done");
           }
         }
       )

@@ -34,6 +34,7 @@
     "nodemon": "^1.19.4"
   },
   "dependencies": {
+    "chokidar": "^3.3.0",
     "npm": "^6.13.0",
     "npm-api": "^1.0.0",
     "recursive-readdir": "^2.2.2",
