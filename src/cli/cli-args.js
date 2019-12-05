@@ -57,7 +57,7 @@ const watch = [
 ]
 // ---------------------------------------------------------------------------
 export const cpmCmd = [
-  "compile <source> <commentaires> [groupby] [pattern] [parts] [single] [preset] [results] [verbose] [dryrun]",
+  "compile <source> <commentaires> [groupby] [pattern] [parts] [single] [preset] [results] [verbose] [dryrun] [watch]",
   "Compiler les points des commentaires annotés dans les fichiers.",
   y =>
     y
@@ -93,7 +93,7 @@ export const cpmCmd = [
       .middleware([
         argv => {
           if (argv["_"][0] == "compile") {
-            console.info("Applying presets");
+            logger.info("Applying presets");
             let presets = localPresets.applyPresets(argv.preset || []);
             for (let key of Object.keys(presets)) {
               argv[key] = presets[key];
@@ -104,8 +104,21 @@ export const cpmCmd = [
       .implies("groupby", "pattern")
       .implies("parts", "pattern"),
   async args => {
-    const { source, commentaires } = args;
-    await compile(source, commentaires, args);
+    const { source, commentaires, watch } = args;
+    if (watch) {
+      function sleep(ms) {
+        return new Promise(resolve => {
+          setTimeout(resolve, ms);
+        });
+      }
+      while (true) {
+        await compile(source, commentaires, args);
+        await sleep(5000);
+        console.clear();
+      }
+    } else {
+      await compile(source, commentaires, args);
+    }
   }
 ];
 
@@ -233,7 +246,7 @@ export const preCmd = [
       .command(
         "clear",
         "Supprimer tous les presets",
-        y => {},
+        y => { },
         args => {
           localPresets.clearPresets();
           console.log("done");
@@ -317,13 +330,13 @@ export const preCmd = [
           .command(
             "list",
             "Afficher tous les presets partagés",
-            y => {},
+            y => { },
             async args => console.log(await remotePresets.listPresets())
           )
           .command(
             "clear",
             false /* hidden */,
-            y => {},
+            y => { },
             async args => {
               await remotePresets.clearPresets();
               console.log("done");
