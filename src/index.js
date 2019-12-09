@@ -41,7 +41,7 @@ version().then(value => {
           `Newer version available ${pkg.version}, consider upgrading it`
         );
       }
-    });
+    }).catch(() => { });
   } catch (e) { }
 
 
