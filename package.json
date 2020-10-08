@@ -7,7 +7,7 @@
     "test": "node_modules/.bin/mocha --require @babel/register tests/ ",
     "build:prod": "cross-env NODE_ENV=production npx babel src --out-dir lib",
     "start:prod": "npm run build:prod && node ./lib/index.js",
-    "deploy": "npm version patch && npm run build:prod && npm publish . --access public && git add . && git commit -m \"version bump\" && git push"
+    "deploy": "npm version patch && npm run build:prod && npm publish . --access public && git push origin master"
   },
   "bin": {
     "bobc": "./lib/index.js"
