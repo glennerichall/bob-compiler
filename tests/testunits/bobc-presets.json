@@ -1,0 +1,7 @@
+{
+  "dummy-preset": {
+    "groupby": "codepermanent",
+    "pattern": "(?<codepermanent>\w{4}\d{8})-(sommatif|formatif)-\d{1,2}\.(html|css|js)",
+    "parts": "resolve"
+  }
+}

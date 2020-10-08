@@ -74,7 +74,11 @@ export function removePreset(preset) {
 }
 
 export async function importPresets(file) {
-  const content = await readFile(file);
+  let content = await readFile(file);
+
+  // replace single backslash \ with double backslash \\ to unescape it
+  content = content.toString().replace(/\\/g,'\\\\',);
+  console.log(content);
   const presets = JSON.parse(content);
   for (let preset in presets) {
     settings.setValue(preset, presets[preset]);

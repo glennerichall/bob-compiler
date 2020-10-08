@@ -13,7 +13,7 @@ describe("issues", () => {
     console.log = msg => (output += msg);
     await compile(source, commentaires, {
       pattern:
-        ".*\\\\(?<etudiant>[\\w\\u00C0-\\u00FF]+([\\s-][\\w\\u00C0-\\u00FF]+)+)_\\d+.*\\\\.*\\.(html|css)$",
+      ".*(\\\\|/)(?<etudiant>[\\w\\u00C0-\\u00FF]+([\\s-][\\w\\u00C0-\\u00FF]+)+)_\\d+.*(\\\\|/).*\\.(html|css)$",
       parts: "resolve",
       groupby: "etudiant",
       results: "json",
@@ -59,7 +59,7 @@ describe("issues", () => {
     console.log = msg => (output += msg);
     await compile(source, commentaires, {
       pattern:
-        ".*\\\\(?<etudiant>[\\w\\u00C0-\\u00FF]+([\\s-][\\w\\u00C0-\\u00FF]+)+)_\\d+.*\\\\.*\\.(cs|xaml)$",
+        ".*(\\\\|/)(?<etudiant>[\\w\\u00C0-\\u00FF]+([\\s-][\\w\\u00C0-\\u00FF]+)+)_\\d+.*(\\\\|/).*\\.(cs|xaml)$",
       parts: "resolve",
       groupby: "etudiant",
       results: "json",
