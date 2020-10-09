@@ -3,7 +3,7 @@
 
 import yargs from 'yargs';
 import version from './version.js';
-import { lstCmd, cpmCmd, preCmd } from './cli/cli-args.js';
+import { lstCmd, cpmCmd, preCmd, initCmd } from './cli/cli-args.js';
 import NpmApi from 'npm-api';
 import logger from './logger.js';
 import { levels } from './logger.js';
@@ -19,6 +19,7 @@ version()
         .command(...lstCmd)
         .command(...preCmd)
         .command(...cpmCmd)
+        .command(...initCmd)
         .wrap(yargs.terminalWidth())
         .demandCommand(1, '')
         .strict()
