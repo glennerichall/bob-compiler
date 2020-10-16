@@ -13,10 +13,14 @@ export const getGroups = async (source, options) => {
     parts: "resolve"
   };
   const pattern = new RegExp(options.pattern);
-  let files = await readdir(source);
 
+  try {
+  let files = await readdir(source);
   logger.info(`${files.length} fichier(s) trouvé(s)`);
   logger.info(`Filtrage des fichiers selon [pattern] : `);
+  }catch(e) {
+    console.trace(e);
+  }
 
   files = files.filter(file => pattern.test(path[options.parts](file)));
 
