@@ -42,7 +42,7 @@ version()
       .then((pkg) => {
         if ('v' + pkg.version != value) {
           console.warn(
-            `Newer version available ${pkg.version}, consider upgrading it`
+            `Newer version available ${pkg.version}, consider upgrading it ($> npm upgrade -g bob-compiler)`
           );
         }
       })
