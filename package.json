@@ -9,7 +9,7 @@
     "deploy": "npm version patch && npm publish . --access public && git push origin master"
   },
   "bin": {
-    "bobc": "./lib/index.js"
+    "bobc": "./src/index.js"
   },
   "keywords": [
     "Collège d'Alma",
