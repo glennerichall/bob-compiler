@@ -1,4 +1,4 @@
-export const files = [
+module.exports.files = [
   {
     name: '(Compile) Windows Drop Over Me.bat',
     content: `@echo off

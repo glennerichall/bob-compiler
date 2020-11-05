@@ -1,10 +1,10 @@
-import {
+const {
   ReplaceRangeAction,
   NoopAction,
-  InsertRangeAction
-} from "./actions.js";
+  InsertRangeAction,
+} = require('./actions.js');
 
-export class Editor {
+module.exports.Editor = class Editor {
   constructor(document) {
     this.document = document;
     this.commands = [];
@@ -40,14 +40,14 @@ export class Editor {
           }
           let noop = new NoopAction({
             first: previous,
-            last: first - 1
+            last: first - 1,
           });
           result.push(noop);
         }
       } else if (first != 0) {
         let noop = new NoopAction({
           first: 0,
-          last: first - 1
+          last: first - 1,
         });
         result.push(noop);
       }
@@ -58,7 +58,7 @@ export class Editor {
     if (cursor < n) {
       let noop = new NoopAction({
         first: cursor + (cursor == 0 ? 0 : 1),
-        last: n - 1
+        last: n - 1,
       });
       result.push(noop);
     }
@@ -67,10 +67,10 @@ export class Editor {
 
   done() {
     let commands = this.prepare();
-    let text = "";
+    let text = '';
     for (let i = 0; i < commands.length; i++) {
       text += commands[i].execute(this);
     }
     this.document.content = text;
   }
-}
+};

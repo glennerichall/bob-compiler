@@ -1,28 +1,30 @@
-import { Compiler } from "../compiler.js";
-import { CompilationGroup } from "../group.js";
-import { promises } from "fs";
-import readdir from "recursive-readdir";
-import path from "path";
-import logger from '../logger.js';
+const { Compiler } = require('../compiler.js');
+const { CompilationGroup } = require('../group.js');
+const { promises } = require('fs');
+const readdir = require('recursive-readdir');
+const path = require('path');
+const logger = require('../logger.js');
 
 const { access, lstat, F_OK } = promises;
 
-export const getGroups = async (source, options) => {
+const getGroups = async (source, options) => {
   options = options || {
-    pattern: ".*",
-    parts: "resolve"
+    pattern: '.*',
+    parts: 'resolve',
   };
   const pattern = new RegExp(options.pattern);
+  let files;
 
   try {
-  let files = await readdir(source);
-  logger.info(`${files.length} fichier(s) trouvé(s)`);
-  logger.info(`Filtrage des fichiers selon [pattern] : `);
-  }catch(e) {
+    files = await readdir(source);
+    logger.info(`${files.length} fichier(s) trouvé(s)`);
+    logger.info(`Filtrage des fichiers selon [pattern] : `);
+  } catch (e) {
     console.trace(e);
+    throw e;
   }
 
-  files = files.filter(file => pattern.test(path[options.parts](file)));
+  files = files.filter((file) => pattern.test(path[options.parts](file)));
 
   logger.info(`${files.length} fichier(s) conservé(s)`);
 
@@ -36,7 +38,7 @@ export const getGroups = async (source, options) => {
         let key = names.reduce((result, key) => {
           result += match.groups[key];
           return result;
-        }, "");
+        }, '');
         if (!result[key]) {
           result[key] = [];
         }
@@ -52,10 +54,10 @@ export const getGroups = async (source, options) => {
 };
 
 // ---------------------------------------------------------------------------
-export const compileGroup = async (source, commentaires, options) => {
+const compileGroup = async (source, commentaires, options) => {
   let groups = await getGroups(source, options);
 
-  groups = Object.keys(groups).map(key => {
+  groups = Object.keys(groups).map((key) => {
     let files = groups[key];
     let group = new CompilationGroup(files, commentaires);
     group.key = key;
@@ -70,9 +72,9 @@ export const compileGroup = async (source, commentaires, options) => {
     let files = group.files;
     logger.info(`Compilation du groupe de fichier(s) : ${group.key}`);
     for (let file of files) {
-      logger.info(file.replace(path.join(source, "\\"), "\t"));
+      logger.info(file.replace(path.join(source, '\\'), '\t'));
     }
-    logger.info("\n");
+    logger.info('\n');
 
     await group.load();
     let result = await group.execute();
@@ -86,7 +88,7 @@ export const compileGroup = async (source, commentaires, options) => {
 };
 
 // ---------------------------------------------------------------------------
-export const compileOne = async (source, commentaires, options) => {
+const compileOne = async (source, commentaires, options) => {
   let compiler = new Compiler(source, commentaires);
   if (options.dryrun) {
     compiler.document.saveAs = async () => Promise.resolve(true);
@@ -100,7 +102,7 @@ export const compileOne = async (source, commentaires, options) => {
 };
 
 // ---------------------------------------------------------------------------
-export const compile = async (source, commentaires, options) => {
+const compile = async (source, commentaires, options) => {
   try {
     await access(source, F_OK);
   } catch (e) {
@@ -117,13 +119,13 @@ export const compile = async (source, commentaires, options) => {
   try {
     const stats = await lstat(source);
     if (stats.isDirectory() && !options.single) {
-      logger.info("Compilation par groupes de fichiers");
+      logger.info('Compilation par groupes de fichiers');
       let results = await compileGroup(source, commentaires, options);
-      if (options.results == "csv") {
+      if (options.results == 'csv') {
         for (let key in results) {
           console.log(`${key} : ${results[key]}`);
         }
-      } else if (options.results == "json") {
+      } else if (options.results == 'json') {
         console.log(JSON.stringify(results));
       }
     } else {
@@ -133,5 +135,15 @@ export const compile = async (source, commentaires, options) => {
     logger.error(e.message);
     return;
   }
-  logger.info(`\nCompilation terminée en ${new Date() - start} milliseconde(s)`);
+  logger.info(
+    `\nCompilation terminée en ${new Date() - start} milliseconde(s)`
+  );
+};
+
+
+module.exports = {
+  getGroups,
+  compileGroup,
+  compileOne,
+  compile
 };

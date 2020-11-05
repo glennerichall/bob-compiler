@@ -1,4 +1,4 @@
-export const files = [
+module.exports.files = [
   {
     name: '(Compile) Linux Drop Over Me.desktop',
     content: `[Desktop Entry]

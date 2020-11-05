@@ -1,7 +1,8 @@
-import { expect } from 'chai';
-import { Comment, Compiler } from '../src/compiler.js';
-import fs from 'fs';
-import { promisify } from 'util';
+const { expect } = require('chai');
+
+const { Comment, Compiler } = require('../src/compiler.js');
+const fs = require('fs');
+const { promisify } = require('util');
 
 let readFile = promisify(fs.readFile);
 
@@ -83,7 +84,7 @@ describe('Compiler', () => {
       const compiler = new Compiler(file, db);
       let error = console.error.bind(console);
       let output = '';
-      console.error = msg => (output += msg);
+      console.error = (msg) => (output += msg);
       compiler.document.save = () => {
         // let content = compiler.document.content;
         // require('fs').writeFileSync('tests/saved-no-result.html', content, 'utf8');
@@ -91,7 +92,9 @@ describe('Compiler', () => {
       await compiler.load();
       await compiler.execute();
       console.error = error;
-      expect(output).to.equal('Tag 191 not found in tests/commentaires at line 6 of tests/missing-key.html');
+      expect(output).to.equal(
+        'Tag 191 not found in tests/commentaires at line 6 of tests/missing-key.html'
+      );
     });
   });
 });

@@ -1,7 +1,7 @@
-import { promises } from 'fs';
-import path from 'path';
-import { errorTag, positiveFloat } from './patterns.js';
-import { stripCommentTags } from './parser.builder.js';
+const { promises } = require('fs');
+const path = require('path');
+const { errorTag, positiveFloat } = require('./patterns.js');
+const { stripCommentTags } = require('./parser.builder.js');
 
 const readFile = promises.readFile;
 
@@ -10,9 +10,9 @@ function loadFromCDbP(content, options) {
   let comments = [];
   content = content
     .split('\n')
-    .map(x => x.trim())
-    .filter(x => !x.startsWith('#'))
-    .filter(x => x.length);
+    .map((x) => x.trim())
+    .filter((x) => !x.startsWith('#'))
+    .filter((x) => x.length);
 
   const pattern = new RegExp(
     `(?<points>${positiveFloat})\\s+${errorTag('Err:{0,1}', ':{0,1}')}`
@@ -43,11 +43,11 @@ function loadFromJson(content) {
   }
   return {
     comments,
-    total
+    total,
   };
 }
 
-export function determineType(filename, content) {
+function determineType(filename, content) {
   if (path.extname(filename) == '.json') {
     return 'json';
   }
@@ -69,11 +69,11 @@ async function loadComments(filename, options) {
   return null;
 }
 
-export function asDatabase(database) {
+function asDatabase(database) {
   return database instanceof CommentList ? database : new CommentList(database);
 }
 
-export class CommentList {
+class CommentList {
   constructor(filename, options) {
     this.filename = filename;
     this.comments = null;
@@ -87,7 +87,7 @@ export class CommentList {
   }
 }
 
-export function getDefaultFix(lang) {
+function getDefaultFix(lang) {
   let begin, end;
   if (
     lang == 'js' ||
@@ -106,6 +106,14 @@ export function getDefaultFix(lang) {
   }
   return {
     begin,
-    end
+    end,
   };
 }
+
+
+module.exports = {
+  determineType,
+  asDatabase,
+  CommentList,
+  getDefaultFix
+};

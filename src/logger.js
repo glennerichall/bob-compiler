@@ -1,6 +1,6 @@
 
 
-export const levels = {
+const levels = {
     trace: 0,
     debug: 1,
     info: 2,
@@ -50,4 +50,6 @@ class Logger {
     }
 }
 
-export default new Logger();
+
+module.exports = new Logger();
+module.exports.levels = levels;

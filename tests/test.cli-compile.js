@@ -1,45 +1,48 @@
-import { getGroups, compileGroup, compile } from "../src/cli/cli-compile.js";
-import { expect } from "chai";
-
-describe("cli-compile", () => {
-  describe("#getGroups", () => {
-    it("should get group all files in a single group by default", async () => {
-      let files = await getGroups("./tests/folders");
+const {
+  getGroups,
+  compileGroup,
+  compile,
+} = require('../src/cli/cli-compile.js');
+const { expect } = require('chai');
+describe('cli-compile', () => {
+  describe('#getGroups', () => {
+    it('should get group all files in a single group by default', async () => {
+      let files = await getGroups('./tests/folders');
       expect(files).to.have.length(10);
     });
 
-    it("should filter using regexp pattern", async () => {
-      let files = await getGroups("./tests/folders", {
-        pattern: ".*.toto",
-        parts: "resolve"
+    it('should filter using regexp pattern', async () => {
+      let files = await getGroups('./tests/folders', {
+        pattern: '.*.toto',
+        parts: 'resolve',
       });
       expect(files).to.have.length(4);
     });
 
-    it("should group by regexp pattern", async () => {
-      let files = await getGroups("./tests/folders", {
-        pattern: "(?<name>.*).(toto|bob)",
-        parts: "basename",
-        groupby: "name"
+    it('should group by regexp pattern', async () => {
+      let files = await getGroups('./tests/folders', {
+        pattern: '(?<name>.*).(toto|bob)',
+        parts: 'basename',
+        groupby: 'name',
       });
-      expect(files).to.have.keys(["a", "b", "c"]);
+      expect(files).to.have.keys(['a', 'b', 'c']);
       expect(files.a).to.have.length(4);
       expect(files.b).to.have.length(4);
       expect(files.c).to.have.length(2);
     });
   });
 
-  describe("#compileGroup", () => {
-    it("should return results", async () => {
-      const base = "./tests/testunits/420-1W1-AA/Sommatif 2";
+  describe('#compileGroup', () => {
+    it('should return results', async () => {
+      const base = './tests/testunits/420-1W1-AA/Sommatif 2';
       const source = base;
       const commentaires = `${base}/commentaires`;
       let results = await compileGroup(source, commentaires, {
         pattern:
-          "^(?<codepermanent>\\w{4}\\d{6,8})-(?<travail>\\w+)-(?<numero>\\d+)\\.(?<lang>css|html|js)$",
-        parts: "basename",
-        groupby: "codepermanent",
-        dryrun: true
+          '^(?<codepermanent>\\w{4}\\d{6,8})-(?<travail>\\w+)-(?<numero>\\d+)\\.(?<lang>css|html|js)$',
+        parts: 'basename',
+        groupby: 'codepermanent',
+        dryrun: true,
       });
       expect(results).to.deep.equal({
         RAZA641201: 17,
@@ -61,26 +64,26 @@ describe("cli-compile", () => {
         GUIY210383: 11,
         BONZ66090109: 15.5,
         BOUE80050101: 1,
-        BRIL011099: 14.5
+        BRIL011099: 14.5,
       });
     });
   });
 
-  describe("#compile", () => {
-    it("should print results in json", async () => {
-      const base = "./tests/testunits/420-1W1-AA/Sommatif 2";
+  describe('#compile', () => {
+    it('should print results in json', async () => {
+      const base = './tests/testunits/420-1W1-AA/Sommatif 2';
       const source = base;
       const commentaires = `${base}/commentaires`;
-      let output = "";
+      let output = '';
       let log = console.log.bind(console);
-      console.log = msg => (output += msg);
+      console.log = (msg) => (output += msg);
       await compile(source, commentaires, {
         pattern:
-          "^(?<codepermanent>\\w{4}\\d{6,8})-(?<travail>\\w+)-(?<numero>\\d+)\\.(?<lang>css|html|js)$",
-        parts: "basename",
-        groupby: "codepermanent",
-        results: "json",
-        dryrun: true
+          '^(?<codepermanent>\\w{4}\\d{6,8})-(?<travail>\\w+)-(?<numero>\\d+)\\.(?<lang>css|html|js)$',
+        parts: 'basename',
+        groupby: 'codepermanent',
+        results: 'json',
+        dryrun: true,
       });
       let expected = {
         RAZA641201: 17,
@@ -102,12 +105,10 @@ describe("cli-compile", () => {
         GUIY210383: 11,
         BONZ66090109: 15.5,
         BOUE80050101: 1,
-        BRIL011099: 14.5
+        BRIL011099: 14.5,
       };
       console.log = log;
       expect(JSON.parse(output)).to.deep.equal(expected);
     });
-
-
   });
 });

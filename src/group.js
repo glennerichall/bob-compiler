@@ -1,5 +1,5 @@
-import { Compiler } from "./compiler.js";
-import { asDatabase } from "./comments.js";
+const { Compiler } = require('./compiler.js');
+const { asDatabase } = require('./comments.js');
 
 class SubCompiler extends Compiler {
   constructor(file, database, group) {
@@ -13,12 +13,12 @@ class SubCompiler extends Compiler {
   }
 }
 
-export class CompilationGroup {
+class CompilationGroup {
   constructor(files, database) {
     this.files = files;
     this.database = asDatabase(database);
     this.compilers = files.map(
-      file => new SubCompiler(file, this.database, this)
+      (file) => new SubCompiler(file, this.database, this)
     );
   }
 
@@ -32,7 +32,7 @@ export class CompilationGroup {
   }
 
   async load() {
-    let promises = this.compilers.map(compiler => compiler.load());
+    let promises = this.compilers.map((compiler) => compiler.load());
     await Promise.all(promises);
   }
 
@@ -42,14 +42,18 @@ export class CompilationGroup {
     this.syncPromise = new Promise((resolve, reject) => {
       this.resolve = resolve;
     });
-    let promises = this.compilers.map(compiler => compiler.execute());
+    let promises = this.compilers.map((compiler) => compiler.execute());
     await Promise.all(promises);
     return Math.max(this.database.total - this.sum, 0);
   }
 
   dryrun() {
-    this.compilers.forEach(compiler => {
+    this.compilers.forEach((compiler) => {
       compiler.document.saveAs = () => true;
     });
   }
+}
+
+module.exports = {
+  CompilationGroup,
 }

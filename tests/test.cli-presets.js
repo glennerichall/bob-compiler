@@ -1,10 +1,11 @@
-import {
+const {
   importPresets,
   listPresets,
   getPreset,
   removePreset,
-} from '../src/cli/cli-presets.js';
-import { expect } from 'chai';
+} = require('../src/cli/cli-presets.js');
+
+const { expect } = require('chai');
 
 describe('cli-presets', () => {
   describe('#importPresets', async () => {

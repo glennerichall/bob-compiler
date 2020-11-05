@@ -1,7 +1,7 @@
-import { CompilationGroup } from '../src/group';
+const { CompilationGroup } = require('../src/group');
 
-import { expect } from 'chai';
-import { createResultParser } from '../src/parser.builder';
+const { expect } = require('chai');
+const { createResultParser } = require('../src/parser.builder');
 
 describe('CompilerGroup', () => {
   describe('#execute', () => {
@@ -10,16 +10,16 @@ describe('CompilerGroup', () => {
       let file2 = 'tests/FILJ76080201-sommatif-2-1.html';
       let db = 'tests/commentaires';
       let compiler = new CompilationGroup([file1, file2], db);
-      
-      compiler.compilers.forEach(compiler => {
+
+      compiler.compilers.forEach((compiler) => {
         // disable saving
         compiler.document.save = () => {
-            let parser = createResultParser('Résultat:');
-            let content = compiler.document.content;
-            let range = parser.parse(content);
-            // console.log(content)
-            // console.log(range);
-            expect(range.result.numerator).to.equal(60-31);
+          let parser = createResultParser('Résultat:');
+          let content = compiler.document.content;
+          let range = parser.parse(content);
+          // console.log(content)
+          // console.log(range);
+          expect(range.result.numerator).to.equal(60 - 31);
         };
       });
       await compiler.load();

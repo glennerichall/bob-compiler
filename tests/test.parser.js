@@ -1,10 +1,10 @@
-import {
+const {
   createCommentParser,
   createResultParser,
   createTagParser,
-  createErrorParser
-} from '../src/parser.builder';
-import { expect } from 'chai';
+  createErrorParser,
+} = require('../src/parser.builder');
+const { expect } = require('chai');
 
 describe('Parser builders', () => {
   describe('#createCommentParser', () => {
@@ -39,7 +39,6 @@ describe('Parser builders', () => {
       expect(range).to.have.property('last', 61);
     });
 
-    
     it('should parse comments /* comment */ using a given tag', () => {
       let text =
         'text textec texte \n text /*   bob: aaabbbbccc dddeeff    */ text \n text text';

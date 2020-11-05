@@ -1,9 +1,9 @@
-import { promises } from 'fs';
-import path from 'path';
+const { promises } = require('fs');
+const path = require('path');
 
 const readFile = promises.readFile;
 
-export default async function version() {
+module.exports = async function version() {
   const pkg = await readFile(
     path.join(__dirname, '..', 'package.json'),
     'utf8'

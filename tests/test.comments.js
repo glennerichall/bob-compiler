@@ -1,6 +1,6 @@
-import { expect } from 'chai';
-import { CommentList, determineType } from '../src/comments.js';
-import { promises } from 'fs';
+const { expect } = require('chai');
+const { CommentList, determineType } = require('../src/comments.js');
+const { promises } = require('fs');
 
 describe('CommentList', () => {
   describe('#load', () => {

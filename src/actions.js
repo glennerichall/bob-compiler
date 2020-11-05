@@ -1,4 +1,4 @@
-export class EditorAction {
+class EditorAction {
   constructor(range) {
     this.range = range;
   }
@@ -13,7 +13,7 @@ export class EditorAction {
   }
 }
 
-export class ReplaceRangeAction extends EditorAction {
+class ReplaceRangeAction extends EditorAction {
   constructor(range, content) {
     super(range);
     this.content = content;
@@ -27,7 +27,7 @@ export class ReplaceRangeAction extends EditorAction {
   
 }
 
-export class DeleteRangeAction extends EditorAction {
+class DeleteRangeAction extends EditorAction {
   constructor(range) {
     super(range);
   }
@@ -38,7 +38,7 @@ export class DeleteRangeAction extends EditorAction {
   }
 }
 
-export class InsertRangeAction extends EditorAction {
+class InsertRangeAction extends EditorAction {
   constructor(range, content) {
     super(range);
     this.content = content;
@@ -59,7 +59,7 @@ export class InsertRangeAction extends EditorAction {
   }
 }
 
-export class NoopAction extends EditorAction {
+class NoopAction extends EditorAction {
   constructor(range) {
     super(range);
   }
@@ -72,3 +72,12 @@ export class NoopAction extends EditorAction {
     );
   }
 }
+
+
+module.exports = {
+  EditorAction,
+  ReplaceRangeAction,
+  DeleteRangeAction,
+  InsertRangeAction,
+  NoopAction
+};

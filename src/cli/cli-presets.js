@@ -1,12 +1,12 @@
-import settings from 'settings-store';
-import { promises } from 'fs';
+const settings = require('settings-store');
+const { promises } = require('fs');
 const readFile = promises.readFile;
 
 settings.init({
   appName: 'bob-compiler', //required,
   publisherName: 'Glenn Hall', //optional
   reverseDNS: 'com.velor.bob-compiler', //required for macOS
-  enableReloading: false
+  enableReloading: false,
 });
 
 function clean(value) {
@@ -23,63 +23,76 @@ function clean(value) {
   return value;
 }
 
-export function putPreset(name, args) {
+function putPreset(name, args) {
   let value = {
-    ...args
+    ...args,
   };
   clean(value);
   settings.setValue(name, value);
 }
 
-export function mergePreset(name, args) {
+function mergePreset(name, args) {
   let preset = getPreset(name);
   args = clean({ ...args });
   preset = {
     ...preset,
-    ...args
+    ...args,
   };
   putPreset(name, preset);
 }
 
-export function applyPresets(presets) {
+function applyPresets(presets) {
   return presets.reduce((result, preset) => {
     let p = settings.value(preset, {});
     return {
       ...result,
-      ...p
+      ...p,
     };
   }, {});
 }
 
-export function listPresets() {
+function listPresets() {
   return settings.all();
 }
 
-export function getPreset(name) {
+function getPreset(name) {
   return settings.value(name);
 }
 
-export function clearPresets() {
+function clearPresets() {
   return settings.clear();
 }
 
-export function renamePreset(old, name) {
+function renamePreset(old, name) {
   const preset = settings.value(old);
   settings.delete(old);
   settings.setValue(name, preset);
 }
 
-export function removePreset(preset) {
+function removePreset(preset) {
   return settings.delete(preset);
 }
 
-export async function importPresets(file) {
+async function importPresets(file) {
   let content = await readFile(file);
 
   // replace single backslash \ with double backslash \\ to unescape it
-  content = content.toString().replace(/\\/g,'\\\\',);
+  content = content.toString().replace(/\\/g, '\\\\');
   const presets = JSON.parse(content);
   for (let preset in presets) {
     settings.setValue(preset, presets[preset]);
   }
 }
+
+
+module.exports = {
+  putPreset,
+  mergePreset,
+  applyPresets,
+  listPresets,
+  getPreset,
+  clearPresets,
+  renamePreset,
+  removePreset,
+  importPresets
+};

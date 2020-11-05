@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 //#!/usr/bin/env node --experimental-modules --no-warnings
 
-import yargs from 'yargs';
-import version from './version.js';
-import { lstCmd, cpmCmd, preCmd, initCmd } from './cli/cli-args.js';
-import NpmApi from 'npm-api';
-import logger from './logger.js';
-import { levels } from './logger.js';
+const yargs = require('yargs');
+const version = require('./version.js');
+const { lstCmd, cpmCmd, preCmd, initCmd } = require('./cli/cli-args.js');
+const NpmApi = require('npm-api');
+const logger = require('./logger.js');
+const { levels } = require('./logger.js');
 
 // ---------------------------------------------------------------------------
 version()

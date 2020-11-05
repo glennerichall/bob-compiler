@@ -1,9 +1,12 @@
-import { asDatabase, getDefaultFix } from './comments.js';
-import { Document } from './document.js';
-import { createErrorParser, createResultParser } from './parser.builder.js';
+const { asDatabase, getDefaultFix } = require('./comments.js');
+const { Document } = require('./document.js');
+const {
+  createErrorParser,
+  createResultParser,
+} = require('./parser.builder.js');
 const { EOL } = require('os');
 
-export class Comment {
+class Comment {
   constructor(range) {
     this.range = range;
   }
@@ -19,7 +22,7 @@ export class Comment {
   getText() {}
 }
 
-export class ErrorComment extends Comment {
+class ErrorComment extends Comment {
   constructor(range) {
     super(range);
   }
@@ -27,12 +30,14 @@ export class ErrorComment extends Comment {
   getText(content) {
     let { tag, begin, end, points } = this.range;
     let card = points > 1 ? 's' : '';
-    let template = `${begin} ${tag} ${content}, (${points} point${card}) ${end||''}`;
+    let template = `${begin} ${tag} ${content}, (${points} point${card}) ${
+      end || ''
+    }`;
     return template;
   }
 }
 
-export class ResultComment extends Comment {
+class ResultComment extends Comment {
   constructor(range) {
     super(range);
   }
@@ -44,7 +49,7 @@ export class ResultComment extends Comment {
   }
 }
 
-export class Compiler {
+class Compiler {
   constructor(filename, database) {
     this.document = new Document(filename);
     this.database = asDatabase(database);
@@ -65,12 +70,12 @@ export class Compiler {
     let r = createResultParser(tag).parse(content) || {
       first: 0,
       last: 0,
-      ...fix
+      ...fix,
     };
     r = {
       ...r,
       max: this.database.total,
-      tag
+      tag,
     };
     this.resultComment = new ResultComment(r);
   }
@@ -102,7 +107,7 @@ export class Compiler {
 
   async execute() {
     let sum = 0;
-    await this.document.edit(async editor => {
+    await this.document.edit(async (editor) => {
       sum = await this.updateErrors(editor);
       await this.updateResult(editor, sum);
       return true;
@@ -111,3 +116,11 @@ export class Compiler {
     return Math.max(this.database.total.points - sum, 0);
   }
 }
+
+
+module.exports = {
+  Comment,
+  ErrorComment,
+  ResultComment,
+  Compiler
+};

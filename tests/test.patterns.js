@@ -1,5 +1,5 @@
-import * as patterns from '../src/patterns.js';
-import { expect } from 'chai';
+const patterns = require('../src/patterns.js');
+const { expect } = require('chai');
 
 describe('patterns', () => {
   describe('comments', () => {
@@ -32,7 +32,7 @@ describe('patterns', () => {
         'blahhh blah <!-- comment <!--\ninline --> blah\nblahhh blah // comment \nf vf/*inline */ blah';
       let p = new RegExp(patterns.comment, 'gm');
 
-      let r = e =>
+      let r = (e) =>
         e
           .slice(2)
           .filter((_, i) => i % 3 == 1)

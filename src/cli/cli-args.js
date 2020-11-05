@@ -1,8 +1,8 @@
-import { compile } from './cli-compile.js';
-import * as localPresets from './cli-presets.js';
-import { promises } from 'fs';
+const { compile } = require('./cli-compile.js');
+const localPresets = require('./cli-presets.js');
+const { promises } = require('fs');
 const { stat, writeFile } = promises;
-import logger from '../logger.js';
+const logger = require('../logger.js');
 
 const groupby = [
   'groupby',
@@ -56,17 +56,14 @@ const watch = [
 ];
 
 // ---------------------------------------------------------------------------
-export const initCmd = [
+const initCmd = [
   'init [preset]',
   'Créer des fichiers de scripts pour faciliter la correction.',
   (y) => {
-    y.option(
-      'preset',
-      {
-        type: 'string',
-        describe: 'Le preset à utiliser pour ce fichier de facilitation',
-      },
-    );
+    y.option('preset', {
+      type: 'string',
+      describe: 'Le preset à utiliser pour ce fichier de facilitation',
+    });
   },
   async (args) => {
     let { preset } = args;
@@ -107,7 +104,7 @@ export const initCmd = [
 ];
 
 // ---------------------------------------------------------------------------
-export const cpmCmd = [
+const cpmCmd = [
   'compile <source> <commentaires> [groupby] [pattern] [parts] [single] [preset] [results] [verbose] [dryrun] [watch]',
   'Compiler les points des commentaires annotés dans les fichiers.',
   (y) =>
@@ -174,7 +171,7 @@ export const cpmCmd = [
 ];
 
 // ---------------------------------------------------------------------------
-export const lstCmd = [
+const lstCmd = [
   'list <commentaires>',
   'Afficher la liste des commentaires contenu dans le fichier',
   (y) =>
@@ -222,7 +219,7 @@ const check_exists = (preset) => {
   return true;
 };
 
-export const preCmd = [
+const preCmd = [
   'presets',
   "Gérer les groupes d'arguments prédéfinis (preset)",
   (yargs) =>
@@ -328,3 +325,11 @@ export const preCmd = [
       .strict()
       .showHelpOnFail(true),
 ];
+
+
+module.exports = {
+  initCmd,
+  cpmCmd,
+  lstCmd,
+  preCmd
+};

@@ -1,5 +1,5 @@
-import { expect } from 'chai';
-import { Editor } from '../src/editor.js';
+const { expect } = require('chai');
+const { Editor } = require('../src/editor.js');
 
 describe('Editor', () => {
   describe('#prepare', () => {
@@ -54,7 +54,7 @@ describe('Editor', () => {
       editor.replaceRange(b, 'qqqq');
       editor.replaceRange(a, 'wwww');
       editor.replaceRange(c, 'eeee');
-      editor.insertPosition(0,'bob');
+      editor.insertPosition(0, 'bob');
       let actions = editor.prepare();
 
       expect(actions[0].execute(editor)).to.equal('bob');
@@ -67,7 +67,7 @@ describe('Editor', () => {
     });
   });
 
-  describe('#insertPosition', ()=>{
+  describe('#insertPosition', () => {
     it('should insert at 0', () => {
       let doc = { content: '01234567890abcdefghijklmnop' };
       let editor = new Editor(doc);
@@ -75,7 +75,7 @@ describe('Editor', () => {
       editor.done();
       expect(doc.content).to.equal('bob01234567890abcdefghijklmnop');
     });
-  })
+  });
 
   describe('#done', () => {
     it('should apply actions', () => {

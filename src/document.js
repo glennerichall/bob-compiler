@@ -1,18 +1,18 @@
-import { Editor } from "./editor.js";
-import path from "path";
-import { promises } from "fs";
-import { threadId } from "worker_threads";
+const { Editor } = require('./editor.js');
+const path = require('path');
+const { promises } = require('fs');
+const { threadId } = require('worker_threads');
 const { writeFile, readFile } = promises;
 
-export class Document {
+module.exports.Document = class Document {
   constructor(filename) {
     this.filename = filename;
     this.content = null;
-    this.lang = path.extname(filename).replace(".", "");
+    this.lang = path.extname(filename).replace('.', '');
   }
 
   async load() {
-    this.content = await readFile(this.filename, "utf8");
+    this.content = await readFile(this.filename, 'utf8');
     // https://stackoverflow.com/questions/24356713/node-js-readfile-error-with-utf8-encoded-file-on-windows
     // issue #8
     this.content = this.content.replace(/^\uFEFF/, '');
@@ -28,12 +28,11 @@ export class Document {
 
   async saveAs(filename) {
     if (!this.modified) return Promise.resolve(false);
-    await writeFile(filename, this.content, "utf8");
+    await writeFile(filename, this.content, 'utf8');
     return Promise.resolve(true);
   }
 
   async save() {
     return this.saveAs(this.filename);
   }
-
 }

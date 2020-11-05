@@ -1,8 +1,8 @@
-import { expect } from "chai";
-import { Document } from "../src/document.js";
-import { CommentList } from "../src/comments.js";
-import fs from "fs";
-import { promisify } from "util";
+const { expect } = require( "chai");
+const { Document } = require( "../src/document.js");
+const { CommentList } = require( "../src/comments.js");
+const fs = require( "fs");
+const { promisify } = require( "util");
 
 let readFile = promisify(fs.readFile);
 

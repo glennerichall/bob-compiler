@@ -1,4 +1,4 @@
-export default class Parser {
+module.exports = class Parser {
   constructor(pattern, options) {
     this.pattern = pattern;
     this.options = options || {};
