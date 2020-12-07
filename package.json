@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node_modules/.bin/mocha tests/ ",
     "start:prod": "npm run ./src/index.js",
-    "deploy": "npm version patch && npm publish . --access public && git push origin master"
+    "bump": "npm version patch && git push origin master",
+    "deploy": "npm publish . --access public"
   },
   "bin": {
     "bobc": "./src/index.js"

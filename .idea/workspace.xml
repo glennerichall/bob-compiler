@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3f3cf17b-6b4e-43c4-8ddb-fe8c1f597010" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/cli-args.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/cli-args.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/cli-compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/cli-compile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/document.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lKze07qq0tIDxPuranwEIP7Dc0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/index.js" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="index.js" type="NodeJSConfigurationType" application-parameters="compile &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2&quot; &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\commentaires&quot; --preset 420-3N1-AA --results csv --verbose" nameIsGenerated="true" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f3cf17b-6b4e-43c4-8ddb-fe8c1f597010" name="Default Changelist" comment="" />
+      <created>1607360666458</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607360666458</updated>
+      <workItem from="1607360672673" duration="3725000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
