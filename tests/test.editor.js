@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { Editor } = require('../src/editor.js');
+const { Editor } = require('../src/editor/editor.js');
 
 describe('Editor', () => {
   describe('#prepare', () => {

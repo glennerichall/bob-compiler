@@ -2,7 +2,7 @@ const {
   getGroups,
   compileGroup,
   compile,
-} = require('../src/cli/cli-compile.js');
+} = require('../src/cli/compile.js');
 const { expect } = require('chai');
 describe('cli-compile', () => {
   describe('#getGroups', () => {

@@ -1,5 +1,5 @@
 const { asDatabase, getDefaultFix } = require('./comments.js');
-const { Document } = require('./document.js');
+const { Document } = require('../editor/document.js');
 const {
   createErrorParser,
   createResultParser,

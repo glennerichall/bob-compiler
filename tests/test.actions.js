@@ -3,7 +3,7 @@ const {
   EditorAction,
   ReplaceRangeAction,
   NoopAction,
-} = require('../src/actions.js');
+} = require('../src/editor/actions.js');
 
 describe('EditorAction', () => {
   describe('#compare', () => {

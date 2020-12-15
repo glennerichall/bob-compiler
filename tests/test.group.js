@@ -1,7 +1,7 @@
-const { CompilationGroup } = require('../src/group');
+const { CompilationGroup } = require('../src/compiler/group');
 
 const { expect } = require('chai');
-const { createResultParser } = require('../src/parser.builder');
+const { createResultParser } = require('../src/compiler/parser.builder');
 
 describe('CompilerGroup', () => {
   describe('#execute', () => {

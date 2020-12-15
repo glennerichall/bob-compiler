@@ -1,6 +1,6 @@
 const { expect } = require( "chai");
-const { Document } = require( "../src/document.js");
-const { CommentList } = require( "../src/comments.js");
+const { Document } = require( "../src/editor/document.js");
+const { CommentList } = require( "../src/compiler/comments.js");
 const fs = require( "fs");
 const { promisify } = require( "util");
 

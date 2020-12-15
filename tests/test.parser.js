@@ -3,7 +3,7 @@ const {
   createResultParser,
   createTagParser,
   createErrorParser,
-} = require('../src/parser.builder');
+} = require('../src/compiler/parser.builder');
 const { expect } = require('chai');
 
 describe('Parser builders', () => {

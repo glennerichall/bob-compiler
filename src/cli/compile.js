@@ -1,5 +1,5 @@
-const { Compiler } = require('../compiler.js');
-const { CompilationGroup } = require('../group.js');
+const { Compiler } = require('../compiler/compiler.js');
+const { CompilationGroup } = require('../compiler/group.js');
 const { promises } = require('fs');
 const readdir = require('recursive-readdir');
 const path = require('path');
@@ -20,7 +20,7 @@ const getGroups = async (source, options) => {
     logger.info(`${files.length} fichier(s) trouvé(s)`);
     logger.info(`Filtrage des fichiers selon [pattern] : `);
   } catch (e) {
-    console.trace(e);
+    logger.trace(e);
     throw e;
   }
 

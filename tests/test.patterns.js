@@ -1,4 +1,4 @@
-const patterns = require('../src/patterns.js');
+const patterns = require('../src/compiler/patterns.js');
 const { expect } = require('chai');
 
 describe('patterns', () => {

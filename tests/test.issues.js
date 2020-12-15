@@ -2,8 +2,8 @@ const {
   getGroups,
   compileGroup,
   compile,
-} = require('../src/cli/cli-compile.js');
-const { Comment, Compiler } = require('../src/compiler.js');
+} = require('../src/cli/compile.js');
+const { Comment, Compiler } = require('../src/compiler/compiler.js');
 const { expect } = require('chai');
 
 describe('issues', () => {

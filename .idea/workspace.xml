@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cli/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cli/switches.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cli/verbs/compile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cli/verbs/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cli/verbs/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cli/verbs/list.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cli/verbs/presets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/cli-args.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/cli-compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/compile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/cli-presets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/presets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/comments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/compiler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor/document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor/editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/group.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parser.builder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/parser.builder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/parser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patterns.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/patterns.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.cli-compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.cli-compile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.cli-presets.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.cli-presets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.comments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.compile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.document.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.group.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.group.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.issues.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.issues.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.parser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.patterns.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.patterns.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1lKwbdBNKwRKl1zbJPajqeJlRQC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
+    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/compiler" />
+      <recent name="$PROJECT_DIR$/src/editor" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Test All" type="mocha-javascript-test-runner">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>PATTERN</test-kind>
+      <test-pattern>tests/test.*.js</test-pattern>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="" />
+      <created>1607359163276</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607359163276</updated>
+      <workItem from="1607359164517" duration="1087000" />
+      <workItem from="1608039393459" duration="2730000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

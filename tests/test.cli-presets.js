@@ -3,7 +3,7 @@ const {
   listPresets,
   getPreset,
   removePreset,
-} = require('../src/cli/cli-presets.js');
+} = require('../src/cli/presets.js');
 
 const { expect } = require('chai');
 

@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { CommentList, determineType } = require('../src/comments.js');
+const { CommentList, determineType } = require('../src/compiler/comments.js');
 const { promises } = require('fs');
 
 describe('CommentList', () => {
