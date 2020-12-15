@@ -15,6 +15,15 @@ const pattern = [
     },
 ];
 
+const exclude = [
+    'exclude',
+    {
+        type: 'string',
+        default: 'null',
+        describe: 'Exclure certains fichiers selon une expression régulière'
+    }
+];
+
 const parts = [
     'parts',
     {
@@ -52,6 +61,7 @@ const watch = [
 module.exports = {
     groupby,
     pattern,
+    exclude,
     parts,
     single,
     results,

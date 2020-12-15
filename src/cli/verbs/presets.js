@@ -1,6 +1,7 @@
 const {
     groupby,
     pattern,
+    exclude,
     parts,
     single,
     watch
@@ -9,7 +10,7 @@ const {
 const localPresets = require('../cli-presets.js');
 const logger = require('../../logger.js');
 
-const add_args = '<preset> [groupby] [pattern] [parts] [single] [results]';
+const add_args = '<preset> [groupby] [pattern] [exclude] [parts] [single] [results]';
 
 const check_exists = (preset) => {
     const presets = localPresets.listPresets();
@@ -28,11 +29,12 @@ const add_build = (y) =>
         })
         .option(groupby[0], { ...groupby[1], default: undefined })
         .option(pattern[0], { ...pattern[1], default: undefined })
+        .option(exclude[0], {...exclude[1], default: undefined})
         .option(parts[0], { ...parts[1], default: undefined })
         .option(results[0], { ...results[1], default: undefined })
         .option(single[0], { ...single[1], default: undefined })
         .group(
-            ['groupby', 'pattern', 'parts', 'results', 'single'],
+            ['groupby', 'pattern', 'exclude', 'parts', 'results', 'single'],
             'Preset parameters'
         )
         .check(

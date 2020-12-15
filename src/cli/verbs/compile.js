@@ -1,6 +1,7 @@
 const {
     groupby,
     pattern,
+    exclude,
     parts,
     single,
     watch
@@ -10,7 +11,7 @@ const localPresets = require('../cli-presets.js');
 const { compile } = require('../cli-compile.js');
 
 const cpmCmd = [
-    'compile <source> <commentaires> [groupby] [pattern] [parts] [single] [preset] [results] [verbose] [dryrun] [watch]',
+    'compile <source> <commentaires> [groupby] [pattern] [exclude] [parts] [single] [preset] [results] [verbose] [dryrun] [watch]',
     'Compiler les points des commentaires annotés dans les fichiers.',
     (y) =>
         y
@@ -26,6 +27,7 @@ const cpmCmd = [
             })
             .option(...groupby)
             .option(...pattern)
+            .option(...exclude)
             .option(...parts)
             .option(...single)
             .option(...results)

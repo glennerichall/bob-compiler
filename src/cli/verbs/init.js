@@ -30,7 +30,7 @@ const initCmd = [
                 files = require('../../assets/win32.js').files;
                 break;
             case 'darwin':
-                logger.error("MacOS n'est pas supporté pour cette fonctionnalité");
+                logger.error("MacOS n'est pas supporté pour cette fonctionnalité pour l'instant");
                 return;
             case 'linux':
                 files = require('../../assets/linux.js').files;
@@ -41,13 +41,18 @@ const initCmd = [
                 );
                 return;
         }
-        files.forEach(async (file) => {
-            let { name, content } = file;
-            content = content
-                .replace('@{preset}', pt)
-                .replace('@{curdir}', process.cwd());
-            writeFile(name, content);
-        });
+        try {
+            const promises = files.map(async (file) => {
+                let {name, content} = file;
+                content = content
+                    .replace('@{preset}', pt)
+                    .replace('@{curdir}', process.cwd());
+                return writeFile(name, content);
+            });
+            await Promise.all(promises);
+        } catch (e) {
+            logger.trace(e);
+        }
     },
 ];
 

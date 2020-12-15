@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/cli/index.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/cli/switches.js" afterDir="false" />
@@ -33,12 +34,20 @@
       <change beforePath="$PROJECT_DIR$/tests/test.issues.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.issues.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test.parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.parser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test.patterns.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.patterns.js" afterDir="false" />
+=======
+    <list default="true" id="3f3cf17b-6b4e-43c4-8ddb-fe8c1f597010" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/cli-args.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/cli-args.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/cli-compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/cli-compile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/document.js" afterDir="false" />
+>>>>>>> a3c3f6882aac92383dd163f571f500b27f6fcfa8
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -47,6 +56,13 @@
     </option>
   </component>
   <component name="ProjectId" id="1lKwbdBNKwRKl1zbJPajqeJlRQC" />
+=======
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lKze07qq0tIDxPuranwEIP7Dc0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+>>>>>>> a3c3f6882aac92383dd163f571f500b27f6fcfa8
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -55,6 +71,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
@@ -78,12 +95,21 @@
       <extra-mocha-options />
       <test-kind>PATTERN</test-kind>
       <test-pattern>tests/test.*.js</test-pattern>
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/index.js" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="index.js" type="NodeJSConfigurationType" application-parameters="compile &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2&quot; &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\commentaires&quot; --preset 420-3N1-AA --results csv --verbose" nameIsGenerated="true" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+>>>>>>> a3c3f6882aac92383dd163f571f500b27f6fcfa8
       <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="" />
       <created>1607359163276</created>
       <option name="number" value="Default" />
@@ -91,6 +117,14 @@
       <updated>1607359163276</updated>
       <workItem from="1607359164517" duration="1087000" />
       <workItem from="1608039393459" duration="2730000" />
+=======
+      <changelist id="3f3cf17b-6b4e-43c4-8ddb-fe8c1f597010" name="Default Changelist" comment="" />
+      <created>1607360666458</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607360666458</updated>
+      <workItem from="1607360672673" duration="3725000" />
+>>>>>>> a3c3f6882aac92383dd163f571f500b27f6fcfa8
     </task>
     <servers />
   </component>
