@@ -73,7 +73,7 @@
                         <TextBlock Text="aucun" Name="txtblc1"></TextBlock>
                     </ComboBoxItem>
                     <ComboBoxItem Name="souligner1">
-                        <!-- Err: (11) Fautes de français, (0.5 point) -->
+                        <!-- Err:(11) Fautes de français, (0.5 point) -->
                         <TextBlock TextDecorations="Underline" Text="un texte souligner"></TextBlock>
                     </ComboBoxItem>
                     <ComboBoxItem Name="souligner2">
@@ -106,7 +106,7 @@
                 <Label Grid.Row="4" Grid.Column="0">Aperçu</Label>
                 <Line Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" X1="50" Y1="15" X2="800" Y2="15" Stroke="Gray" StrokeThickness="1" Margin="0,0,10,0" />
                 <Border Grid.Column="0" Grid.Row="5" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="4" Margin="20,0,20,20">
-                    <!-- Err: (16) Nom des contrôles ne respectent pas la convention de nomenclature, (0.5 point) -->
+                    <!-- Err:(16) Nom des contrôles ne respectent pas la convention de nomenclature, (0.5 point) -->
                     <TextBlock Name="apercu" Text="Agency FB" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                     </TextBlock>

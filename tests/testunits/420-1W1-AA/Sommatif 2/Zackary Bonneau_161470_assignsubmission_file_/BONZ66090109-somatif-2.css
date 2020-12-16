@@ -1,9 +1,9 @@
 
-/* Err: (30) Il manque le fichier HTML, (0.5 point) */
+/* Err:(30) Il manque le fichier HTML, (0.5 point) */
 body {
-    /* Err: (14) La propriété margin-left doit être précisée, (1 point) */
+    /* Err:(14) La propriété margin-left doit être précisée, (1 point) */
 
-    /* Err: (46) Mauvaise valeur, (1 point) */
+    /* Err:(46) Mauvaise valeur, (1 point) */
     /* padding-left: 40px; */
     padding-left: 30px;
     margin-left: 50px;
@@ -42,7 +42,7 @@ i::before {
 
 p strong.bacon::before, p strong.bacon::after {
     content: url("https://image.flaticon.com/icons/png/24/135/135641.png")
-    /* Err: (36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
+    /* Err:(36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
 }
 
 p strong.bacon:nth-of-type(3) {
@@ -64,7 +64,7 @@ p.bacon.pizza {
 }
 
 p.bacon.pizza::before {
-    /* Err: (37) Les pseudo-éléments des paragraphes pizza bacon ont un remplissage de 3 pixels, (1 point) */
+    /* Err:(37) Les pseudo-éléments des paragraphes pizza bacon ont un remplissage de 3 pixels, (1 point) */
     content: "Pizza Bacon" " " counter(para);
     position: absolute;
     top: -15px;

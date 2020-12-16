@@ -65,7 +65,7 @@ namespace Sommatif_2
         private void LstColorChange(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
             var color = LstColor.SelectedColor.Value;
-            // Err: (9) Variables inutilisées, (1 point) 
+            // Err:(9) Variables inutilisées, (1 point)
             var red = color.R;
             var green = color.G;
             var blue = color.B;

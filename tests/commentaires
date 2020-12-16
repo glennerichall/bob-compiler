@@ -1,47 +1,49 @@
 Total:60
-1   /* Err: (1) Les éléments de hautes importances seulement dans les paragraphes */
-1   /* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon */
-0.5 <!-- Err: (3) Le fichier n'est pas zippé -->
-1   <!-- Err: (4) L'url du style n'est pas bon -->
-1   /* Err: (5) Le document est mal formatté */
-1   /* Err: (6) Utilser la propriété padding pour ajouter un remplissage au contenu */
-1   /* Err: (7) Cette déclaration doit être dans le pseudo élément ::before */
-0.5 /* Err: (8) Il manque un espace entre le numéro du compteur et le texte pizza bacon */
-1   /* Err: (9) Le pseudo-élément ::before n'a pas une couleur de fond blanc */
-1   /* Err: (10) Tout le texte dans le document doit être justifié */
-0.5 <!-- Err: (11) Le fichier est mal nommé -->
-1   /* Err: (12) La valeur n'est pas correctement déclarée */
-1   /* Err: (13) Seulement les pseudo-éléments des strong de classe bacon à l'intérieur des paragraphes */
-1   /* Err: (14) La propriété margin-left doit être précisée */
-1   /* Err: (15) Le texte différencié n'est pas correctement numéroté */
-6   /* Err: (16) Les paragraphes de classe « pizza » et « bacon » ne sont pas annotés correctement avec un pseudo-élément */
-0.5 /* Err: (17) Trop de fichers zip, un seul contenant tous les fichier suffit */
-2   /* Err: (18) Le sélecteur d'élément n'est pas précis */
-0.5 <!-- Err: (19) Il manque les méta-informations -->
-1   /* Err: (20) La bordure doit être en tirets et non en pointillés */
-1   /* Err: (21) Règle redondante */
-2   <!-- Err: (22) Le code HTML a été modifié -->
-1   /* Err: (23) Les éléments strong de classe bacon n'ont pas d'image dans leur pseudo-éléments */
-0.5 /* Err: (24) Utiliser une propriété raccourcie */
-1   /* Err: (25) Seule le remplissage gauche doit être renseigné */
-1   /* Err: (26) Tous les éléments de hautes importances dans les paragraphes, y compris ceux qui ne sont pas de classe bacon */
-1   /* Err: (27) Tous les éléments de texte différenciés doivent être en gras */
-0.5 <!-- Err: (28) Trop de fichiers remis -->
-0.5 /* Err: (29) Le fichier est mal nommé */
-0.5 /* Err: (30) Il manque le fichier HTML */
-0.5 /* Err: (31) Il y a un espace en trop dans la numérotation */
-0.5 <!-- Err: (32) Remettre seulement le ficher sans répertoire -->
-1   /* Err: (33) La propriété margin-left doit être précisée */
-0.5 /* Err: (34) Règle non demandée dans l'énoncé */
-0.5 /* Err: (35) Caractère résiduel */
-1   /* Err: (36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon */
-1   /* Err: (37) Les pseudo-éléments des paragraphes pizza bacon ont un remplissage de 3 pixels */
-1   /* Err: (38) Les pseudo-éléments des paragraphes pizza doivent être absolus et décalés en haut de -25 pixels */
-1   /* Err: (39) Le remplissage et l'espacement ont été permutés */
-1   /* Err: (40) Image bacon non précisé dans le css */
-1   /* Err: (41) Déclaration doublée */
-1   /* Err: (42) Mauvis sélecteur pour les paragraphes de classe « pizza » et « bacon » */
-1   /* Err: (43) Il manque la bordure */
-1   /* Err: (44) Il manque le compteur */
-20  /* Err: (45) Rien n'a été fait */
-1   /* Err: (46) Mauvaise valeur */
+-1    Err:(1) Les éléments de hautes importances seulement dans les paragraphes 
+-1    Err:(2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon 
+-0.5 Err:(3) Le fichier n'est pas zippé
+-1   Err:(4) L'url du style n'est pas bon
+-1    Err:(5) Le document est mal formatté 
+-1    Err:(6) Utilser la propriété padding pour ajouter un remplissage au contenu 
+-1    Err:(7) Cette déclaration doit être dans le pseudo élément ::before 
+-0.5  Err:(8) Il manque un espace entre le numéro du compteur et le texte pizza bacon 
+-1    Err:(9) Le pseudo-élément ::before n'a pas une couleur de fond blanc 
+-1    Err:(10) Tout le texte dans le document doit être justifié 
+-0.5 Err:(11) Le fichier est mal nommé
+-1    Err:(12) La valeur n'est pas correctement déclarée 
+-1    Err:(13) Seulement les pseudo-éléments des strong de classe bacon à l'intérieur des paragraphes 
+-1    Err:(14) La propriété margin-left doit être précisée 
+-1    Err:(15) Le texte différencié n'est pas correctement numéroté 
+-6    Err:(16) Les paragraphes de classe « pizza » et « bacon » ne sont pas annotés correctement avec un pseudo-élément 
+-0.5  Err:(17) Trop de fichers zip, un seul contenant tous les fichier suffit 
+-2    Err:(18) Le sélecteur d'élément n'est pas précis 
+-0.5 Err:(19) Il manque les méta-informations
+-1    Err:(20) La bordure doit être en tirets et non en pointillés 
+-1    Err:(21) Règle redondante 
+-2   Err:(22) Le code HTML a été modifié
+-1    Err:(23) Les éléments strong de classe bacon n'ont pas d'image dans leur pseudo-éléments 
+-0.5  Err:(24) Utiliser une propriété raccourcie 
+-1    Err:(25) Seule le remplissage gauche doit être renseigné 
+-1    Err:(26) Tous les éléments de hautes importances dans les paragraphes, y compris ceux qui ne sont pas de classe bacon 
+-1    Err:(27) Tous les éléments de texte différenciés doivent être en gras 
+-0.5 Err:(28) Trop de fichiers remis
+-0.5  Err:(29) Le fichier est mal nommé 
+-0.5  Err:(30) Il manque le fichier HTML 
+-0.5  Err:(31) Il y a un espace en trop dans la numérotation 
+-0.5 Err:(32) Remettre seulement le ficher sans répertoire
+-1    Err:(33) La propriété margin-left doit être précisée 
+-0.5  Err:(34) Règle non demandée dans l'énoncé 
+-0.5  Err:(35) Caractère résiduel 
+-1    Err:(36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon 
+-1    Err:(37) Les pseudo-éléments des paragraphes pizza bacon ont un remplissage de 3 pixels 
+-1    Err:(38) Les pseudo-éléments des paragraphes pizza doivent être absolus et décalés en haut de -25 pixels 
+-1    Err:(39) Le remplissage et l'espacement ont été permutés 
+-1    Err:(40) Image bacon non précisé dans le css 
+-1    Err:(41) Déclaration doublée 
+-1    Err:(42) Mauvis sélecteur pour les paragraphes de classe « pizza » et « bacon » 
+-1    Err:(43) Il manque la bordure 
+-1    Err:(44) Il manque le compteur 
+-20   Err:(45) Rien n'a été fait 
+-1    Err:(46) Mauvaise valeur 
+-0.5	Err:(Q1.1) Top bidon
+-0.5	Err:(Q_1-1.2) Top top bidon

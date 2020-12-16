@@ -107,7 +107,7 @@
 
                     <!-- Option #4 -->
                     <ComboBoxItem>
-					<!-- Err: (16) Nom des contrôles ne respectent pas la convention de nomenclature, (0.5 point) -->
+					<!-- Err:(16) Nom des contrôles ne respectent pas la convention de nomenclature, (0.5 point) -->
                         <TextBlock Name="SoulignePointille" Text="Un texte souligné">
                             <TextBlock.TextDecorations>
                                 <TextDecoration Location="Underline">

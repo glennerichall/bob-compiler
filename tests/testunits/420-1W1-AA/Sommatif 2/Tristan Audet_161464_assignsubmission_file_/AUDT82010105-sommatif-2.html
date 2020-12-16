@@ -40,7 +40,7 @@
     p strong.bacon::before,
     p strong.bacon::after {
       content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
-      /* Err: (36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
+      /* Err:(36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
     }
 
     strong.bacon:nth-of-type(3) {
@@ -66,7 +66,7 @@
     }
 
     p.pizza.bacon::before {
-      /* Err: (35) Caractère résiduel, (0.5 point) */
+      /* Err:(35) Caractère résiduel, (0.5 point) */
       content: "Pizza Bacon"" "counter(paragraphe);
       border: 1px dashed black;
       padding: 3px;

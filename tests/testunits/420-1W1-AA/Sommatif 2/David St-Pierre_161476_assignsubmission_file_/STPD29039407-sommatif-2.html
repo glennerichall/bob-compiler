@@ -13,7 +13,7 @@
     body {
       text-align: justify;
       border-left: black 10px solid;
-      /* Err: (14) La propriété margin-left doit être précisée, (1 point) */
+      /* Err:(14) La propriété margin-left doit être précisée, (1 point) */
       margin: 50px;
       padding-left: 30px;
       counter-reset: compteur;
@@ -40,14 +40,14 @@
       font-size: 30px;
     }
 
-    /* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+    /* Err:(2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
     p>strong:hover {
       background-color: blue;
     }
 
     p>strong.bacon::before {
       content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
-      /* Err: (36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
+      /* Err:(36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
       padding-right: 3px;
     }
 
@@ -74,14 +74,14 @@
       font-weight: bold;
       
     }
-    /* Err: (15) Le texte différencié n'est pas correctement numéroté, (1 point) */
+    /* Err:(15) Le texte différencié n'est pas correctement numéroté, (1 point) */
     i::before{
       counter-increment: compteur;
       content: counters(compteur, ".") " ";
       color:red;
     }
 
-    /* Err: (16) Les paragraphes de classe « pizza » et « bacon » ne sont pas annotés correctement avec un pseudo-élément, (6 points) */
+    /* Err:(16) Les paragraphes de classe « pizza » et « bacon » ne sont pas annotés correctement avec un pseudo-élément, (6 points) */
   </style>
 
 </head>

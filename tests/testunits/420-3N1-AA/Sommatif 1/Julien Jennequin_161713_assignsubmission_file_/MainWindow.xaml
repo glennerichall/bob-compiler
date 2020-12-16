@@ -26,11 +26,11 @@
         Title="Police">
 
     <Window.Resources>
-        <!-- Err: (6) Ressource inutilisée, (1 point) -->
+        <!-- Err:(6) Ressource inutilisée, (1 point) -->
         <componentModel:StringConverter x:Key="StrConverter"></componentModel:StringConverter>
     </Window.Resources>
 
-    <!-- Err: (2) Panel inutile ne participant pas à la présentation, (1 point) -->
+    <!-- Err:(2) Panel inutile ne participant pas à la présentation, (1 point) -->
     <DockPanel Name="DockPanel">
 
         <TabControl>
@@ -60,12 +60,12 @@
                         <RowDefinition Height="115*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <!-- Err: (8) Les marges entre les colonnes ne sont pas uniformes), (1 point) -->
+                    <!-- Err:(8) Les marges entre les colonnes ne sont pas uniformes), (1 point) -->
                     <Label Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="5,0,0,42.4" Grid.RowSpan="2" Width="46">Police :</Label>
                     <Label Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" Margin="27,7,0,8.2" Width="98">Style de police :</Label>
                     <Label Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" Margin="0.8,7,0,8.2">Taille :</Label>
 
-                    <!-- Err: (7) Contrôle du mauvais type, (1 point) -->
+                    <!-- Err:(7) Contrôle du mauvais type, (1 point) -->
                     <Label Content="{Binding ElementName=LstPlcFamily,Path=SelectedItem.Content}" Margin="10,25,126.2,33.4" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2"/>
                     <Label  Content="{Binding ElementName=LstStyle,Path=SelectedItem.Content}"  Margin="31,27,22.2,33.4" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2"/>
                     <Label Name="lblSize" Content="{Binding ElementName=LstSize,Path=SelectedItem.Content}" Margin="147,27,58,33.4" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" RenderTransformOrigin="0.609,0.485" Grid.ColumnSpan="2"/>
@@ -102,7 +102,7 @@
                     </ListBox>
 
                     <Label Grid.Column="0" Grid.Row="3"  VerticalAlignment="Top" RenderTransformOrigin="0.413,-0.615" Margin="5,35.4,18.8,0">Couleur de la police :</Label>
-                    <!-- Err: (10) Les valeurs initiales ne sont pas précisées, (1 point) -->
+                    <!-- Err:(10) Les valeurs initiales ne sont pas précisées, (1 point) -->
                     <xctk:ColorPicker  SelectedColorChanged="LstColorChange" x:Name="LstColor" Margin="0,0,9.8,42.8" Width="127" Grid.Column="0" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" DisplayColorTooltip="True" Grid.RowSpan="2"></xctk:ColorPicker>
 
                     <Label VerticalAlignment="Top" Grid.Column="1"  Grid.Row="3" Margin="10.2,35.4,2,0">Soulignement :</Label>
@@ -162,7 +162,7 @@
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Height="20" Width="20" Source="edit-text.png"></Image>
-                        <!-- Err: (11) Fautes de français, (0.5 point) -->
+                        <!-- Err:(11) Fautes de français, (0.5 point) -->
                         <TextBlock  Margin="10,0,0,0">Parametres avances</TextBlock>
                     </StackPanel>
                 </TabItem.Header>

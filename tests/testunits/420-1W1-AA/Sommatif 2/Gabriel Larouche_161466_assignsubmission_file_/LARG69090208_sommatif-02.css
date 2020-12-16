@@ -1,7 +1,7 @@
 /* Résultat: 18/20 */
 
-/* Err: (29) Le fichier est mal nommé, (0.5 point) */
-/* Err: (30) Il manque le fichier HTML, (0.5 point) */
+/* Err:(29) Le fichier est mal nommé, (0.5 point) */
+/* Err:(30) Il manque le fichier HTML, (0.5 point) */
 /* 
 auteur: Gabriel Larouche 
 CodePermanent: LARG69090208
@@ -15,7 +15,7 @@ body {
     margin-left: 50px;
 }
 
-/* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+/* Err:(2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
 p strong:hover {
     background-color: blue;
 }
@@ -41,7 +41,7 @@ p i::before {
 }
 
 p strong.bacon::before, p strong.bacon::after {
-    /* Err: (36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon */
+    /* Err:(36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon */
     padding: 3px;
     content: url("https://image.flaticon.com/icons/png/24/135/135641.png");
 }

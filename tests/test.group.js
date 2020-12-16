@@ -19,6 +19,9 @@ describe('CompilerGroup', () => {
           let range = parser.parse(content);
           // console.log(content)
           // console.log(range);
+
+
+          // each compilation unit should have the same numerator
           expect(range.result.numerator).to.equal(60 - 31);
         };
       });

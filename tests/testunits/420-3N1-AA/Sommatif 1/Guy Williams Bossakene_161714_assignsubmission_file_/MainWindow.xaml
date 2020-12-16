@@ -30,7 +30,7 @@
         ResizeMode="NoResize"
         Icon="font.png"  
         Title="Police" Height="450" Width="600">
-    <!-- Err: (2) Panel inutile ne participant pas à la présentation, (1 point) -->
+    <!-- Err:(2) Panel inutile ne participant pas à la présentation, (1 point) -->
     <DockPanel Background="White">
         <TabControl>
             <TabItem>
@@ -40,7 +40,7 @@
                         <TextBlock Text="Police, styles, attributs" Style="{StaticResource StyleTabControl}"/>
                     </StackPanel>
                 </TabItem.Header>
-                <!-- Err: (5) Inutile de nommer le style, (1 point) -->
+                <!-- Err:(5) Inutile de nommer le style, (1 point) -->
                 <Grid Style="{StaticResource StyleMargeGrid}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -155,7 +155,7 @@
                     <Label Background="White" Content="Aperçu" Grid.Row="5" Grid.Column="0"  Margin="-5,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                     <!--Septième ligne-->
-                    <!-- Err: (3) Contrôle n'a pas le bon alignement à gauche, (1 point) -->
+                    <!-- Err:(3) Contrôle n'a pas le bon alignement à gauche, (1 point) -->
                     <TextBox Name="TxtApercu" Text="{Binding ElementName=LsbFonts, Path=SelectedItem.Content, Mode=OneWay}"  
                              FontFamily="{Binding ElementName=LsbFonts, Path=SelectedItem.Content, Mode=OneWay}" 
                              FontSize="{Binding ElementName=TxtTaille, Path=Text, Mode=OneWay}"

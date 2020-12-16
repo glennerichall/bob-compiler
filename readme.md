@@ -23,21 +23,21 @@ Compiles *file* or files in *dir*, replacing tags in every files with text in *c
 Here is an example of *comments* file content Iit may be in that format or in JSON format):
 ```properties
 Total:60
-1   Err: (4)The URL has the wrong value
-1   Err: (9) Pseudo-element has wrong background-color
-1   Err: (10) All text must be justified
-0.5 Err: (11) File is badly named
-1   Err: (19) Missing information
+1   Err:(4)The URL has the wrong value
+1   Err:(9) Pseudo-element has wrong background-color
+1   Err:(10) All text must be justified
+0.5 Err:(11) File is badly named
+1   Err:(19) Missing information
 ```
 
 And a file annotated with tags
 ```html
-<!-- Err: (11) -->
+<!-- Err:(11) -->
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-    <!-- Err: (19) -->
+    <!-- Err:(19) -->
     <meta charset="UTF-8" />
     <meta name="author" content="" />
 
@@ -46,7 +46,7 @@ And a file annotated with tags
             border-left: solid;
             margin-left: 50px;
             border-width: 10px;
-            /* Err: (25) */
+            /* Err:(25) */
             padding: 10px;
             text-align: justify;
         }
@@ -54,7 +54,7 @@ And a file annotated with tags
 </head>
 
 <body>
-    <!-- Err: (22) -->
+    <!-- Err:(22) -->
     <p class="pizzabacon">
         Chop. pork enim et occaecat shankle eiusmod landjaeger nisi
         <i>cillum</i> Id tail. magna cow non consectetur sunt jerky, qui chop Pork

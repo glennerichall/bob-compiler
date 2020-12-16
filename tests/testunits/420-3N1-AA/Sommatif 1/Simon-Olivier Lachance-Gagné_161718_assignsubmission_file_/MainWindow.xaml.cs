@@ -77,7 +77,7 @@ namespace Sommatif_1
                     Apercus.FontStyle = FontStyles.Normal;
                     Apercus.FontWeight = FontWeights.Normal;
                 }
-                /* Err: (15) Instruction inadéquate, (0.5 point) */
+                /* Err:(15) Instruction inadéquate, (0.5 point) */
                 if (lbxStyle.SelectedIndex == 1)
                 {
                     Apercus.FontStyle = FontStyles.Italic;

@@ -1,5 +1,5 @@
 
-/* Err: (30) Il manque le fichier HTML, (0.5 point) */
+/* Err:(30) Il manque le fichier HTML, (0.5 point) */
 body {
     border-left: 10px solid;
     padding-left: 30px;
@@ -12,12 +12,12 @@ body {
     font-size: 30px;
   }
 
-  /* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+  /* Err:(2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
   p strong:hover {
     background-color: blue;
   }
 
-  /* Err: (36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
+  /* Err:(36) Les images ont une marge à 3 pixels à droite (::before) et à gauche (::after) du texte bacon, (1 point) */
   p strong.bacon::before, p strong.bacon::after {
     content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
   }

@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         Icon="font.png"
         Title="Police" Height="450" Width="600">
-    <!-- Err: (2) Panel inutile ne participant pas à la présentation, (1 point) -->
+    <!-- Err:(2) Panel inutile ne participant pas à la présentation, (1 point) -->
     <DockPanel>
         <TabControl>
             <TabItem>
@@ -36,14 +36,14 @@
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <!-- Err: (8) Les marges entre les colonnes ne sont pas uniformes), (1 point) -->
+                    <!-- Err:(8) Les marges entre les colonnes ne sont pas uniformes), (1 point) -->
                     <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">Police: </Label>
                     <Label Grid.Row="0" Grid.Column="2">Style de police:</Label>
                     <Label Grid.Row="0" Grid.Column="3">Taille:</Label>
                     <TextBox Name="familles" IsReadOnly="True" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"></TextBox>
                     <TextBox Name="styles" IsReadOnly="True" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"></TextBox>
                     <TextBox Name="police" IsReadOnly="True" Grid.Row="1" Grid.Column="3"></TextBox>
-                    <!-- Err: (10) Les valeurs initiales ne sont pas précisées, (1 point) -->
+                    <!-- Err:(10) Les valeurs initiales ne sont pas précisées, (1 point) -->
                     <ListBox Name="list" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="300" SelectionChanged="List_SelectionChanged"/>
                     <ListBox Name="font" Grid.Row="2" Grid.Column="2" SelectionChanged="Style_SelectionChanged">
                         <ListBoxItem>Normal</ListBoxItem>
@@ -73,7 +73,7 @@
                     <Label Grid.Row="3" Grid.Column="0">Couleur de police</Label>
                     <Label Grid.Row="3" Grid.Column="1">Soulignement</Label>
                     <xctk:ColorPicker x:Name="colorList" Grid.Row="4" Grid.Column="0" SelectedColorChanged="ColorList_OnSelectedColorChanged"></xctk:ColorPicker>
-                    <!-- Err: (14) Le soulignement n'est pas mis-à-jour, (2 points) -->
+                    <!-- Err:(14) Le soulignement n'est pas mis-à-jour, (2 points) -->
                     <ComboBox Name="souligne" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="2.2,0,108.4,0.2" >
                         <ComboBoxItem IsSelected="True">Aucun</ComboBoxItem>
                         <ComboBoxItem>
@@ -105,10 +105,10 @@
                                 </TextBlock.TextDecorations>Un texte souligné</TextBlock>
                         </ComboBoxItem>
                     </ComboBox>
-                    <!-- Err: (13) Il manque la ligne, (1 point) -->
-                    <!-- Err: (11) Fautes de français, (0.5 point) -->
+                    <!-- Err:(13) Il manque la ligne, (1 point) -->
+                    <!-- Err:(11) Fautes de français, (0.5 point) -->
                     <Label Grid.Row="5" Grid.Column="0">Apercu</Label>
-                    <!-- Err: (3) Contrôle n'a pas le bon alignement à gauche, (1 point) -->
+                    <!-- Err:(3) Contrôle n'a pas le bon alignement à gauche, (1 point) -->
                     <Border BorderBrush="Gray" BorderThickness="2" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" Height="150" Width="550">
                         <Grid>
                            <TextBlock Name="apercu" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock> 

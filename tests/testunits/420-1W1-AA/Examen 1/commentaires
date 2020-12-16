@@ -1,53 +1,53 @@
 Total: 100
-0.5 Err(1) Les cellules et non le tableau ont un remplissage de 5 pixels
-1	Err(2) Le code est mal formaté
-2	Err(3) Il faut une feuille de style externe
-1	Err(4) Les images ont 300 pixels
-1	Err(5) Les marges à gauche et à droite du body seulement
-1	Err(6) Le remplissage à gauche et à droite du body seulement
-1	Err(7) La cellule de classe total
-1	Err(8) Code en incise
-1	Err(11) Méta-informations manquantes
-1	Err(12) Titre de la page
-1	Err(13) Taille de la police
-1	Err(14) Rayon de bordure
-1	Err(15) L'élément caption n'est pas à la bonne place
-1	Err(16) Au moins une règle interne
-0.5	Err(17) Double souligné
-0.5	Err(18) Nom du fichier
-0.5	Err(19) Texte inséré au mauvais endroit
-0.5	Err(20) Balise insérée au mauvais endroit
-1	Err(21) Liste de définition mal construite
-1	Err(22) Identificateur non demandé
-30	Err(23) Fichier non disponible
-1	Err(24) Élément de haute importance
-1	Err(25) Élément de commentaire
-0.5	Err(26) Classe innatendue
-1	Err(27)	Il manque la balise fermante
-1	Err(28) Commentaire non signifiant
-1	Err(29) Figure mal construite
-0.5	Err(30) Il manque le texte alternatif de l'iamge
-1	Err(31) Élément de paragraphe
-1	Err(32) Il manque une cellule
-1	Err(33) Élément de cellule de donnée
-1	Err(34) Combinaison de sélecteurs
-1	Err(35) Identificateur attendu
-1	Err(36) Source de l'image erronée
-1	Err(37) Nombre de colonne incorrect
-1	Err(38) Le lien est mal construit
-1	Err(39) Il manque le body
-1	Err(40) Liste non-ordnonée mal construite
-1	Err(41) Attribut de style dépréciée
-1	Err(42) Ligne en trop
-1	Err(43) Sélection erronée
-1	Err(44) Identificateur non-existant
-1	Err(45) Les bordures à droite et à gauche seulement
-1	Err(46) Texte justifié
-1	Err(47) Les cellules ont un remplissage de 5 pixels
-1	Err(48)	Trame de fond du tableau
-1	Err(49) Termes des listes de définitions
-1	Err(50) Alignement de la cellule à droite
-1	Err(51) Propriété innatendue
-1	Err(52) Élément innatendu
-1	Err(53) Couleur des liens
-1	Err(54) Règle mal déclarée
+-0.5 Err(1) Les cellules et non le tableau ont un remplissage de 5 pixels
+-1	Err(2) Le code est mal formaté
+-2	Err(3) Il faut une feuille de style externe
+-1	Err(4) Les images ont 300 pixels
+-1	Err(5) Les marges à gauche et à droite du body seulement
+-1	Err(6) Le remplissage à gauche et à droite du body seulement
+-1	Err(7) La cellule de classe total
+-1	Err(8) Code en incise
+-1	Err(11) Méta-informations manquantes
+-1	Err(12) Titre de la page
+-1	Err(13) Taille de la police
+-1	Err(14) Rayon de bordure
+-1	Err(15) L'élément caption n'est pas à la bonne place
+-1	Err(16) Au moins une règle interne
+-0.5	Err(17) Double souligné
+-0.5	Err(18) Nom du fichier
+-0.5	Err(19) Texte inséré au mauvais endroit
+-0.5	Err(20) Balise insérée au mauvais endroit
+-1	Err(21) Liste de définition mal construite
+-1	Err(22) Identificateur non demandé
+-30	Err(23) Fichier non disponible
+-1	Err(24) Élément de haute importance
+-1	Err(25) Élément de commentaire
+-0.5	Err(26) Classe innatendue
+-1	Err(27)	Il manque la balise fermante
+-1	Err(28) Commentaire non signifiant
+-1	Err(29) Figure mal construite
+-0.5	Err(30) Il manque le texte alternatif de l'iamge
+-1	Err(31) Élément de paragraphe
+-1	Err(32) Il manque une cellule
+-1	Err(33) Élément de cellule de donnée
+-1	Err(34) Combinaison de sélecteurs
+-1	Err(35) Identificateur attendu
+-1	Err(36) Source de l'image erronée
+-1	Err(37) Nombre de colonne incorrect
+-1	Err(38) Le lien est mal construit
+-1	Err(39) Il manque le body
+-1	Err(40) Liste non-ordnonée mal construite
+-1	Err(41) Attribut de style dépréciée
+-1	Err(42) Ligne en trop
+-1	Err(43) Sélection erronée
+-1	Err(44) Identificateur non-existant
+-1	Err(45) Les bordures à droite et à gauche seulement
+-1	Err(46) Texte justifié
+-1	Err(47) Les cellules ont un remplissage de 5 pixels
+-1	Err(48)	Trame de fond du tableau
+-1	Err(49) Termes des listes de définitions
+-1	Err(50) Alignement de la cellule à droite
+-1	Err(51) Propriété innatendue
+-1	Err(52) Élément innatendu
+-1	Err(53) Couleur des liens
+-1	Err(54) Règle mal déclarée

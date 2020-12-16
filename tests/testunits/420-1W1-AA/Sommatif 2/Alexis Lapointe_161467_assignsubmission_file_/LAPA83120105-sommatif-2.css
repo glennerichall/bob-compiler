@@ -1,5 +1,5 @@
 
-/* Err: (10) Tout le texte dans le document doit être justifié, (1 point) */
+/* Err:(10) Tout le texte dans le document doit être justifié, (1 point) */
 body{
     border-left: solid black 10px;
     padding-left: 30px;
@@ -7,14 +7,14 @@ body{
     counter-reset:p;
     counter-reset:i;
 }
-/* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+/* Err:(2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
 strong:hover{
     background-color: blue;
 }
 p strong{
     font-size: 30px;
 }
-/* Err: (5) Le document est mal formatté, (1 point) */
+/* Err:(5) Le document est mal formatté, (1 point) */
 i{
     font-weight: bold;
     text-decoration: red line-through;
@@ -28,7 +28,7 @@ i::before{
 strong.bacon:nth-of-type(3){
 background-color: green;
 border-radius: 10px;
-/* Err: (6) Utilser la propriété padding pour ajouter un remplissage au contenu, (1 point) */
+/* Err:(6) Utilser la propriété padding pour ajouter un remplissage au contenu, (1 point) */
 border-left: green solid 20px;
 content: 20px;
 border-right: 20px green solid;
@@ -46,7 +46,7 @@ p.pizza.bacon{
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
     padding: 10px;
-    /* Err: (7) Cette déclaration doit être dans le pseudo élément ::before, (1 point) */
+    /* Err:(7) Cette déclaration doit être dans le pseudo élément ::before, (1 point) */
     top: -15px;
     
 }
@@ -58,12 +58,12 @@ p.bacon.pizza strong{
 color: red;
 }
 p.bacon.pizza::before{
-    /* Err: (8) Il manque un espace entre le numéro du compteur et le texte pizza bacon, (0.5 point) */
+    /* Err:(8) Il manque un espace entre le numéro du compteur et le texte pizza bacon, (0.5 point) */
 content: "pizza bacon"counter(p);
 border: dashed 1px black;
 padding: 3px;
-/* Err: (38) Les pseudo-éléments des paragraphes pizza doivent être absolus et décalés en haut de -25 pixels, (1 point) */
+/* Err:(38) Les pseudo-éléments des paragraphes pizza doivent être absolus et décalés en haut de -25 pixels, (1 point) */
 position: relative;
-/* Err: (9) Le pseudo-élément ::before n'a pas une couleur de fond blanc, (1 point) */
+/* Err:(9) Le pseudo-élément ::before n'a pas une couleur de fond blanc, (1 point) */
 
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <!-- Err: (19) Il manque les méta-informations, (0.5 point) -->
+    <!-- Err:(19) Il manque les méta-informations, (0.5 point) -->
     <meta charset="UTF-8" />
     <meta name="Francis Girard" content="" />
     <meta name="Laboratoire-sommatif-2" content="" />
@@ -14,13 +14,13 @@
          border-style: solid;
         border-left-width: 10px;
         margin-left: 50px;
-        /* Err: (10) Tout le texte dans le document doit être justifié, (1 point) */
+        /* Err:(10) Tout le texte dans le document doit être justifié, (1 point) */
         justify-content: center;
-        /* Err: (24) Utiliser une propriété raccourcie, (0.5 point) */
+        /* Err:(24) Utiliser une propriété raccourcie, (0.5 point) */
         border-top-width: 0px;
         border-right-width: 0px;
         border-bottom-width: 0px;
-        /* Err: (25) Seule le remplissage gauche doit être renseigné, (1 point) */
+        /* Err:(25) Seule le remplissage gauche doit être renseigné, (1 point) */
         padding: 30px;
         content: none;
         color: black;
@@ -30,8 +30,8 @@
          font-size: 30px;
        }
 
-       /* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
-       /* Err: (26) Tous les éléments de hautes importances dans les paragraphes, y compris ceux qui ne sont pas de classe bacon, (1 point) */
+       /* Err:(2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+       /* Err:(26) Tous les éléments de hautes importances dans les paragraphes, y compris ceux qui ne sont pas de classe bacon, (1 point) */
        p strong.bacon:hover{
          background-color: blue;
        }
@@ -42,14 +42,14 @@
        }
 
        i::before{
-         /* Err: (5) Le document est mal formatté, (1 point) */
-         /* Err: (27) Tous les éléments de texte différenciés doivent être en gras, (1 point) */
+         /* Err:(5) Le document est mal formatté, (1 point) */
+         /* Err:(27) Tous les éléments de texte différenciés doivent être en gras, (1 point) */
         content: counter(i)"." counter(i2)" " ;font: bold;color:red;
        }
        p{
         counter-increment: i;
          counter-reset: i2;
-         /* Err: (41) Déclaration doublée, (1 point) */
+         /* Err:(41) Déclaration doublée, (1 point) */
          counter-increment: p;
          position: relative;
        }
@@ -64,7 +64,7 @@
          content:counter(p)" " ;
        }
        p.pizza.bacon::before{
-         /* Err: (8) Il manque un espace entre le numéro du compteur et le texte pizza bacon, (0.5 point) */
+         /* Err:(8) Il manque un espace entre le numéro du compteur et le texte pizza bacon, (0.5 point) */
          content:"Pizza Bacon"counter(p)" " ;
          top: -15px;
          border-width: 1px;
@@ -82,14 +82,14 @@
        }
        p strong.bacon::before{
          content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
-         /* Err: (6) Utilser la propriété padding pour ajouter un remplissage au contenu, (1 point) */
+         /* Err:(6) Utilser la propriété padding pour ajouter un remplissage au contenu, (1 point) */
          border-radius: 10px;
         }
         p strong.bacon::after{
          content: url(https://image.flaticon.com/icons/png/24/135/135641.png);
          border-radius: 10px;
         }
-        /* Err: (21) : Règle redondante, (1 point) */
+        /* Err:(21) : Règle redondante, (1 point) */
         p strong.bacon:nth-of-type(3)::after{
          background-color: #60c70b;
          padding-right: 20px;

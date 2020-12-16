@@ -35,12 +35,12 @@
                 </Grid.RowDefinitions>
                 <Label Style="{StaticResource lftMarg}" Content="Police :" Grid.Row="0" Grid.Column="0"></Label>
                 <Label Style="{StaticResource RightMarg}" Content="Style de police :" Grid.Row="0" Grid.Column="1" Margin="0"></Label>
-                <!-- Err: (17) Contrôle à l'extérieur des limites de la grille, (1 point) -->
+                <!-- Err:(17) Contrôle à l'extérieur des limites de la grille, (1 point) -->
                 <Label Content="Taille :" Grid.Row="0" Grid.Column="3"></Label>
                 <TextBox Style="{StaticResource lftMarg}" HorizontalAlignment="Center" IsReadOnly="True" Name="txtFont" Grid.Column="0" Text="Arial" Grid.Row="1" Width="360" Margin="20,0,10,0"/>
                 <ListBox Style="{StaticResource lftMarg}" HorizontalAlignment="Center" SelectionChanged="ShowFont" SelectionMode="Single" Height="100" Width="360" Name="lsbFont" Grid.Row="2" Grid.Column="0" Margin="20,0,10,13"/>
                 <TextBox IsReadOnly="True" Name="styleFont" Grid.Column="1" Text="Normal" Width="100" Grid.Row="1" Margin="0,0,30,0"/>
-                <!-- Err: (8) Les marges entre les colonnes ne sont pas uniformes), (1 point) -->
+                <!-- Err:(8) Les marges entre les colonnes ne sont pas uniformes), (1 point) -->
                 <ListBox SelectionChanged="ShowStyle" SelectionMode="Single" Height="100" Width="100" Name="lsbStyles" Grid.Row="2" Grid.Column="1" Margin="0,0,30,11">
                     <ListBoxItem Content="Normal"></ListBoxItem>
                     <ListBoxItem Content="Gras"></ListBoxItem>
@@ -107,7 +107,7 @@
                         </ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
-                <!-- Err: (1) La ligne et le libellé doivent être décalés un peu vers la gauche, (1 point) -->
+                <!-- Err:(1) La ligne et le libellé doivent être décalés un peu vers la gauche, (1 point) -->
                 <Label Margin="10,0,0,0" Grid.Row="5" Grid.Column="0" Content="Aperçu"></Label>
                 <Line Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" StrokeThickness="1" Stroke="Gray" X1="0" X2="1" Y1="0" Y2="0" Grid.ColumnSpan="3"  Stretch="Fill" Margin="65,0,30,0"></Line>
                 <Border Margin="20,10,20,20" BorderBrush="Black" BorderThickness="1" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Height="100" Width="550">

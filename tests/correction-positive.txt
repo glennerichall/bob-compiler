@@ -1,0 +1,9 @@
+Total: auto
+# Question 1
+1       check-1         Blah 1
+1       check-2         Blah 2
+1       check-3         Blah 3
+2.5     check-4         Blah 4
+-1      check-5         Blah 5
+-1      check-6         Blah 6
+-1      check-7         Blah 7

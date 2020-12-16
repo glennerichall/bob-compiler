@@ -122,9 +122,9 @@
                         </Grid.RowDefinitions>
 
                         <!--La ligne-->
-                        <!-- Err: (1) La ligne et le libellé doivent être décalés un peu vers la gauche, (1 point) -->
+                        <!-- Err:(1) La ligne et le libellé doivent être décalés un peu vers la gauche, (1 point) -->
                         <Line Grid.Column="0" Grid.Row="0" Stretch="Fill" StrokeThickness="2" Y1="0" Y2="0" X1="0" X2="7" Stroke="LightGray"></Line>
-						<!-- Err: (11) Fautes de français, (0.5 point) -->
+						<!-- Err:(11) Fautes de français, (0.5 point) -->
                         <Label Margin="-5,0,0,0" Grid.Column="0" Grid.Row="0" Background="White" HorizontalAlignment="Left">Aperçus</Label>
                         <!--boite de rendu-->
                         <TextBox Name="txbRender" Style="{StaticResource brdTxtBox}" Grid.Column="0" Height="120" Grid.Row="1" IsReadOnly="True" 

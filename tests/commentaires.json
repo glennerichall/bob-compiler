@@ -1,12 +1,12 @@
 {
     "total": 60,
-    "messages": {
-        "Err: (1)": {
-            "points": 1,
+    "comments": {
+        "Err:(1)": {
+            "points": -1,
             "content": "Les éléments de hautes importances seulement dans les paragraphes"
         },
-        "Err: (2)": {
-            "points": 0.5,
+        "Err:(2)": {
+            "points": -0.5,
             "content": "Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon"
         }
     }

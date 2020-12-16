@@ -2,7 +2,7 @@ const groupby = [
     'groupby',
     {
         type: 'string',
-        describe: 'Grouper les fichiers selon les groupes nommés',
+        describe: "Grouper les fichiers selon les groupes définis dans l'expression régulière [pattern]",
     },
 ];
 
@@ -11,7 +11,7 @@ const pattern = [
     {
         type: 'string',
         default: '.*',
-        describe: 'Filtrer les fichiers selon une expression régulière',
+        describe: 'Filtrer les fichiers selon une expression régulière. Voir également [gropuby] et [parts]',
     },
 ];
 
@@ -19,7 +19,7 @@ const exclude = [
     'exclude',
     {
         type: 'string',
-        default: 'null',
+        default: null,
         describe: 'Exclure certains fichiers selon une expression régulière'
     }
 ];
@@ -29,7 +29,7 @@ const parts = [
     {
         choices: ['basename', 'dirname', 'extname', 'resolve'],
         default: 'basename',
-        describe: 'Considérer seulement certaines parties du nom de fichier',
+        describe: "Considérer seulement certaines parties du nom de fichier lors de l'application du paramètre [pattern]",
     },
 ];
 
@@ -54,7 +54,7 @@ const watch = [
     'watch',
     {
         type: 'boolean',
-        describe: 'Observe et recompile les fichiers lors de la correction (pas enconre implanté)',
+        describe: 'Observe et recompile les fichiers lors de la correction (pas encore implanté)',
     },
 ];
 

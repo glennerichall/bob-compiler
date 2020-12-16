@@ -146,12 +146,12 @@
                     <Line X1="1" X2="0" Y1="0" Y2="0" Stretch="Fill" 
                               Stroke="Gray" Margin="45,0,0,0"></Line>
                 </Grid>
-                <!-- Err: (3) Contrôle n'a pas le bon alignement à gauche, (1 point) -->
+                <!-- Err:(3) Contrôle n'a pas le bon alignement à gauche, (1 point) -->
                 <Border Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" 
                         BorderBrush="Black" BorderThickness="1"
                         Height="110" Width="520"
                         HorizontalAlignment="Center">
-                    <!-- Err: (2) Panel inutile ne participant pas à la présentation, (1 point) -->
+                    <!-- Err:(2) Panel inutile ne participant pas à la présentation, (1 point) -->
                     <ScrollViewer HorizontalScrollBarVisibility="Hidden"
                                   VerticalScrollBarVisibility="Hidden">
                         <TextBlock Name="TebAprecu" TextWrapping="Wrap"
@@ -165,7 +165,7 @@
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <Image Source="edit-text.png"/>
-                    <!-- Err: (11) Fautes de français, (0.5 point) -->
+                    <!-- Err:(11) Fautes de français, (0.5 point) -->
                     <Label>Paramètre avencés</Label>
                 </StackPanel>
             </TabItem.Header>

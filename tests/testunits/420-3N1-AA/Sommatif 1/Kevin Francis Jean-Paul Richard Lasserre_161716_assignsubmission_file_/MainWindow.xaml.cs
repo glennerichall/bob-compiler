@@ -103,7 +103,7 @@ namespace RICK76100099_Som1
             
             switch (CobUnderline.SelectedIndex)
             {
-                /* Err: (12) Il manque la gestion pour le soulignement Normal, (1 point) */
+                /* Err:(12) Il manque la gestion pour le soulignement Normal, (1 point) */
                 case 1:
                     TebAprecu.TextDecorations = Underline.TextDecorations;
                     break;

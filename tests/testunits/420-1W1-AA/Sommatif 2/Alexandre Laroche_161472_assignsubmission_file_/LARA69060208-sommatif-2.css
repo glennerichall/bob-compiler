@@ -25,7 +25,7 @@ body{
 p strong{
     font-size: 30px
 }
-/* Err: (2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
+/* Err:(2) Tous les éléments de hautes importances dans les paragraphes, y compris les 3ième bacon, (1 point) */
 p strong:hover{
     background-color:blue;
 }
@@ -79,7 +79,7 @@ p.bacon.pizza::before{
     background-color: white;
     top: -15px;
     position: absolute;
-    /* Err: (37) Les pseudo-éléments des paragraphes pizza bacon ont un remplissage de 3 pixels, (1 point) */
+    /* Err:(37) Les pseudo-éléments des paragraphes pizza bacon ont un remplissage de 3 pixels, (1 point) */
 }
 
 /*7*/

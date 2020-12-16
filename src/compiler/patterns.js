@@ -1,24 +1,9 @@
 const positiveInt = '\\d+';
-const positiveFloat = '\\d+(\\.\\d+){0,1}';
-const float = `-{0,1}${positiveFloat}`;
-const int = `-{0,1}${positiveInt}`;
-const ratio = `((${positiveFloat})/(${positiveInt}))`;
-
-const tagCapture = (tag, content) =>
-  `(?<tag>${tag})(?<target>${content || '.*'})`;
-
-const tagSequence = (tagBegin, tagEnd, content) =>
-  tagCapture(
-    `${tagBegin}\\s*(?<sequence>${positiveInt})\\s*${tagEnd}`,
-    content
-  );
-
-const errorTag = (tag, sep, content) =>
-  tagSequence(
-    `(?<error>${tag})\\s*\\(`,
-    `\\)\\s*${sep || ''}`,
-    content || '.*'
-  );
+const positiveFloat = '\\d+(?:\\.\\d+)?';
+const float = `-?${positiveFloat}`;
+const int = `-?${positiveInt}`;
+const ratio = `((?:${positiveFloat})/(?:${positiveInt}))`;
+const standardValidChars = '[a-zA-Z\\d\\.\\-_\\(\\):]+';
 
 const commentBlock = '(\\/\\*)([\\s\\S]*?)(\\*\\/)';
 const commentLine = '(\\/\\/)(.*)($)';
@@ -34,12 +19,10 @@ module.exports = {
   float,
   int,
   ratio,
-  tagCapture,
-  tagSequence,
-  errorTag,
   commentBlock,
   commentLine,
   commentXml,
   commentSharp,
-  comment
+  comment,
+  standardValidChars
 };

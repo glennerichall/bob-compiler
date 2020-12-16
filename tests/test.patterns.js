@@ -69,49 +69,4 @@ describe('patterns', () => {
     });
   });
 
-  describe('errorTag', () => {
-    it('should capture sequence Err(i):', () => {
-      let res = new RegExp(patterns.errorTag('Err', ':')).exec(
-        'blah Err    ( 11)        : blah blah blah'
-      );
-      expect(res).to.not.be.null;
-      expect(res.groups.sequence).to.equal('11');
-      expect(res.groups.target).to.equal(' blah blah blah');
-      expect(res.groups.error).to.equal('Err');
-    });
-
-    it('should capture sequence Err(i)', () => {
-      let res = new RegExp(patterns.errorTag('Err')).exec(
-        'blah Err    (11 )  blah blah blah'
-      );
-      expect(res).to.not.be.null;
-      expect(res.groups.sequence).to.equal('11');
-      expect(res.groups.target).to.equal('blah blah blah');
-      expect(res.groups.error).to.equal('Err');
-    });
-  });
-
-  // describe('errorTagInHtml', () => {
-  //   it('should capture tag Wrn(i)', () => {
-  //     let res = new RegExp(patterns.errorTagInHtml('Wrn', ':')).exec(
-  //       'blah /*      Wrn    ( 11 )  : blah blah blah    */ \n blah blag'
-  //     );
-  //     expect(res).to.not.be.null;
-  //     expect(res.groups.sequence).to.equal('11');
-  //     expect(res.groups.target).to.equal(' blah blah blah    ');
-  //     expect(res.groups.error).to.equal('Wrn');
-  //   });
-
-  //   it('should capture line comments', () => {
-  //     let res = new RegExp(patterns.errorTagInHtml('Err', ':')).exec(
-  //       'blah // Err( 11 )  : blah blah blah   \n blah  bla',
-  //       'm'
-  //     );
-  //     console.log(new RegExp(patterns.errorTagInHtml('Err', ':')));
-  //     expect(res).to.not.be.null;
-  //     expect(res.groups.sequence).to.equal('11');
-  //     expect(res.groups.target.trim()).to.equal('blah blah blah');
-  //     expect(res.groups.error).to.equal('Err');
-  //   });
-  // });
 });

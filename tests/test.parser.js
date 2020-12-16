@@ -1,9 +1,11 @@
 const {
   createCommentParser,
   createResultParser,
-  createTagParser,
-  createErrorParser,
+  createParser,
 } = require('../src/compiler/parser.builder');
+
+const {asDatabase} = require('../src/compiler/comments');
+
 const { expect } = require('chai');
 
 describe('Parser builders', () => {
@@ -24,80 +26,37 @@ describe('Parser builders', () => {
     });
   });
 
-  describe('#createTagParser', () => {
-    it('should parse comments <!-- comment --> using a given tag', () => {
-      const text =
-        'text textec texte \n text <!--   bob: aaabbbbccc dddeeff    --> text \n text text';
-      const tag = 'bob:';
-      const parser = createTagParser(tag);
-      const range = parser.parse(text);
-      expect(range).to.have.property('begin', '<!--');
-      expect(range).to.have.property('end', '-->');
-      expect(range).to.have.property('tag', 'bob:');
-      expect(range).to.have.property('target', 'aaabbbbccc dddeeff');
+  describe('#createParser',  () => {
+    it('should parse error with id', async() => {
+      let text =
+        'texte xtex xtext \n <!-- Err:(1) Message erruer --> ,\n text text';
+      const db = asDatabase('./tests/commentaires.json');
+      await db.load();
+      let parser = createParser( db );
+      let range = parser.parse(text);
+      expect(range).to.have.property('id', "Err:(1)");
+    });
+
+    it('should parse multiple comments', async () => {
+      let text =
+          'text textec texte \n text /*   Err:(1) aaabbbbccc dddeeff    */ text \n text text  <!-- Err:(2) yo -->';
+      const db = asDatabase('./tests/commentaires.json');
+      await db.load();
+      let parser = createParser(db);
+      let range = parser.parse(text);
+      expect(range).to.have.property('begin', '/*');
+      expect(range).to.have.property('end', '*/');
+      expect(range).to.have.property('id', 'Err:(1)');
       expect(range).to.have.property('first', 25);
       expect(range).to.have.property('last', 61);
-    });
-
-    it('should parse comments /* comment */ using a given tag', () => {
-      let text =
-        'text textec texte \n text /*   bob: aaabbbbccc dddeeff    */ text \n text text';
-      let tag = 'bob:';
-      let parser = createTagParser(tag);
-      let range = parser.parse(text);
-      expect(range).to.have.property('begin', '/*');
-      expect(range).to.have.property('end', '*/');
-      expect(range).to.have.property('tag', 'bob:');
-      expect(range).to.have.property('target', 'aaabbbbccc dddeeff');
-      expect(range).to.have.property('first', 25);
-      expect(range).to.have.property('last', 58);
-    });
-
-    it('should parse comments a pattern tag', () => {
-      let text =
-        'text textec texte \n text /*   bill: aaabbbbccc dddeeff    */ text \n text text';
-      let tag = '(bob|bill):';
-      let parser = createTagParser(tag);
-      let range = parser.parse(text);
-      expect(range).to.have.property('begin', '/*');
-      expect(range).to.have.property('end', '*/');
-      expect(range).to.have.property('tag', 'bill:');
-      expect(range).to.have.property('target', 'aaabbbbccc dddeeff');
-      expect(range).to.have.property('first', 25);
-      expect(range).to.have.property('last', 59);
-    });
-
-    it('should parse multiple comments', () => {
-      let text =
-        'text textec texte \n text /*   bill: aaabbbbccc dddeeff    */ text \n text text  <!-- bob: yo -->';
-      let tag = '(bob|bill):';
-      let parser = createTagParser(tag);
-      let range = parser.parse(text);
-      expect(range).to.have.property('begin', '/*');
-      expect(range).to.have.property('end', '*/');
-      expect(range).to.have.property('tag', 'bill:');
-      expect(range).to.have.property('target', 'aaabbbbccc dddeeff');
-      expect(range).to.have.property('first', 25);
-      expect(range).to.have.property('last', 59);
       range = parser.parse(text);
       expect(range).to.have.property('begin', '<!--');
       expect(range).to.have.property('end', '-->');
-      expect(range).to.have.property('tag', 'bob:');
-      expect(range).to.have.property('target', 'yo');
-      expect(range).to.have.property('first', 79);
-      expect(range).to.have.property('last', 94);
+      expect(range).to.have.property('id', 'Err:(2)');
+      expect(range).to.have.property('first', 81);
+      expect(range).to.have.property('last', 99);
       range = parser.parse(text);
       expect(range).to.be.null;
-    });
-  });
-
-  describe('#createErrorParser', () => {
-    it('should parse error with id', () => {
-      let text =
-        'texte xtex xtext \n <!-- Err: (45) Message erruer --> ,\n text text';
-      let parser = createErrorParser('Err:');
-      let range = parser.parse(text);
-      expect(range).to.have.property('sequence', 45);
     });
   });
 

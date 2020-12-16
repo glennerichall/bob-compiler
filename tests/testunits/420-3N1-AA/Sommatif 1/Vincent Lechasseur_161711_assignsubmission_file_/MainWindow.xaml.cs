@@ -97,7 +97,7 @@ namespace sommatif1
             var cbB = ((sender as ComboBox));
             if (cbB != null)
             {
-                /* Err: (15) Instruction inadéquate, (0.5 point) */
+                /* Err:(15) Instruction inadéquate, (0.5 point) */
                 if (cbB.SelectedIndex != 0)
                 {
                     MonTxt.TextDecorations = ((TextBlock)((ComboBoxItem)cbBSoulignement.SelectedItem).Content).TextDecorations;

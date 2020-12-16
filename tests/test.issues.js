@@ -139,10 +139,10 @@ describe('issues', () => {
     await compiler.execute();
 
     expect(compiler.document.content.split('\n')[58].trim()).to.be.equal(
-      '/* Err(10) Placer la photo absent.png dans les resources, (1 point) */'
+      '/* Err(10) Placer la photo absent.png dans les resources, (-1 point) */'
     );
     expect(compiler.document.content.split('\n')[82].trim()).to.be.equal(
-      "// Err(11) Vérifier que l'index est à l'intérieur des limites de la grille, (1 point)"
+      "// Err(11) Vérifier que l'index est à l'intérieur des limites de la grille, (-1 point)"
     );
   });
 });

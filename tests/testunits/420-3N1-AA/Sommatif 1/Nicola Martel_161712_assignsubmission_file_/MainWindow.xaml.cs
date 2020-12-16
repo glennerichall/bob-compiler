@@ -70,7 +70,7 @@ namespace Sommatif_1
                 apercu.FontWeight = FontWeights.Bold;
                 apercu.FontStyle = FontStyles.Normal;
             }
-            /* Err: (15) Instruction inadéquate, (0.5 point) */
+            /* Err:(15) Instruction inadéquate, (0.5 point) */
             if (style == "Italique")
             {
                 apercu.FontWeight = FontWeights.Normal;
