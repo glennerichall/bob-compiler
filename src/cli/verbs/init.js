@@ -2,7 +2,7 @@ const {
 
 } = require('./switches');
 const logger = require('../../logger.js');
-const localPresets = require('../cli-presets.js');
+const localPresets = require('../presets.js');
 
 const preset = [
     'preset', {
