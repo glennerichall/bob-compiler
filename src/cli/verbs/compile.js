@@ -6,12 +6,21 @@ const {
     single,
     watch,
     results,
-    string
+    string,
+    tagPattern
 } = require('./switches');
 const logger = require('../../logger.js');
 const localPresets = require('../presets.js');
 const {compile} = require('../compile.js');
-const {checkExists} = require('./presets');
+
+const checkExists = (preset) => {
+    if(preset === undefined) return true;
+    const presets = localPresets.listPresets();
+    if (presets[preset] === undefined) {
+        throw new Error(`Le preset ${preset} n'existe pas`);
+    }
+    return true;
+};
 
 const dryrun = [
     'preset',

@@ -158,4 +158,3 @@ const preCmd = [
 
 
 module.exports = preCmd;
-module.exports.checkExists = checkExists;

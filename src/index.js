@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 //#!/usr/bin/env node --experimental-modules --no-warnings
 
-const yargs = require('yargs');
+const yargs = require('yargs/yargs');
 const getVersion = require('./version.js');
 const NpmApi = require('npm-api');
 const logger = require('./logger.js');
 const {levels} = require('./logger.js');
 const parseYargs = require('./cli');
 
+
 // ---------------------------------------------------------------------------
-(async () => {
+const init = async (args, activeVersion) => {
+    const v = activeVersion ?? await getVersion();
     try {
-        const v = await getVersion();
-        const argv = parseYargs(yargs).version(v).argv;
+        const argv = parseYargs(yargs(args)).version(v).argv;
 
         if (argv.verbose) {
             logger.level = levels.info;
@@ -33,4 +34,11 @@ const parseYargs = require('./cli');
         }
     } catch (e) {}
 
-})();
+};
+
+
+if (require.main === module) {
+    init(process.argv);
+} else {
+    module.exports = init;
+}
