@@ -5,8 +5,9 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha tests/ ",
-    "start:prod": "npm run ./src/index.js",
-    "bump": "npm version patch && git push origin master",
+    "bump-path": "git add . && git commit && npm version patch && git push",
+    "bump-minor": "git add . && git commit && npm version minor && git push",
+    "bump-major": "git add . && git commit && npm version major && git push",
     "deploy": "npm publish . --access public"
   },
   "bin": {

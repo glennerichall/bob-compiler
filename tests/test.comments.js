@@ -1,15 +1,36 @@
 const {expect} = require('chai');
 const {CommentList, determineType} = require('../src/compiler/comments.js');
 const {promises} = require('fs');
+const logger = require('../src/logger');
 
 describe('CommentList', () => {
     describe('#load', () => {
 
-        it('should permit a-zA-Z.-_\d from tag sequence', async () => {
+        it('should permit a-zA-Z.-_\d(): from tag id', async () => {
             let database = new CommentList('tests/commentaires');
             await database.load();
             expect(database.comments).to.have.property('Err:(Q1.1)');
             expect(database.comments).to.have.property('Err:(Q_1-1.2)');
+        });
+
+        it('should permit custom tag id', async () => {
+            let database = new CommentList('tests/commentaires');
+            await database.load('Err:\\(\\d+\\)');
+            expect(Object.keys(database.comments)).to.have.length(46);
+        });
+
+        it('should warn for bad comment declaration', async () => {
+            let database = new CommentList('tests/commentaires');
+            let warn = logger.warn.bind(logger);
+            let output = '';
+            logger.warn = (msg) => (output += msg);
+            await database.load('Err:\\(\\d+\\)');
+            logger.warn = warn;
+            expect(output).to.equal(
+                'Le commentaire: " -0.5\tErr:(Q1.1) Top bidon " à la ligne 47 est invalide dans ' +
+                'le fichier de commentairesLe commentaire: " -0.5\tErr:(Q_1-1.2) Top top bidon " à la ligne ' +
+                '48 est invalide dans le fichier de commentaires'
+            );
         });
 
         it('should load from file with comments', async () => {

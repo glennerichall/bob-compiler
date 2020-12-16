@@ -5,8 +5,7 @@ const {stripCommentTags} = require('./parser.builder.js');
 const readFile = promises.readFile;
 const logger = require('../logger');
 
-function loadFromCDbP(content, options) {
-    options = options || {};
+function loadFromCDbP(content, options = {}) {
     let comments = {};
     const lines = content
         .split('\n')
@@ -16,8 +15,9 @@ function loadFromCDbP(content, options) {
         .filter(({content}) => !content.startsWith('#'))
         .filter(({content}) => content.length);
 
+    const tagPattern = options.tagPattern ?? standardValidChars;
     const pattern = new RegExp(
-        `(?<points>${float})\\s+(?<id>${standardValidChars})\\s+(?<content>\\S+.+)`
+        `(?<points>${float})\\s+(?<id>${tagPattern})\\s+(?<content>\\S+.+)`
     );
     for (let i = 1; i < lines.length; i++) {
         const {content, line} = lines[i];
@@ -65,7 +65,7 @@ function loadFromJson(content) {
     let {total, comments} = JSON.parse(content);
 
     for (let key in comments) {
-        comments[key].id  = key;
+        comments[key].id = key;
     }
     return {
         comments,
@@ -100,14 +100,13 @@ function asDatabase(database) {
 }
 
 class CommentList {
-    constructor(filename, options) {
+    constructor(filename) {
         this.filename = filename;
         this.comments = null;
-        this.options = options;
     }
 
-    async load() {
-        let {comments, total} = await loadComments(this.filename, this.options);
+    async load(tagPattern) {
+        let {comments, total} = await loadComments(this.filename, {tagPattern});
         this.comments = comments;
         this.total = total;
     }

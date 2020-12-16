@@ -12,7 +12,7 @@ const levels = {
 
 class Logger {
     constructor() {
-        this.level = levels.error;
+        this.level = levels.warn;
     }
 
     trace(msg) {

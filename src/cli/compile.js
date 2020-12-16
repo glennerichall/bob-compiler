@@ -80,7 +80,7 @@ const compileGroup = async (source, commentaires, options) => {
         }
         logger.info('\n');
 
-        await group.load();
+        await group.load(options.tagPattern);
         let result = await group.execute();
         results[group.key] = result;
 
@@ -97,7 +97,7 @@ const compileOne = async (source, commentaires, options) => {
     if (options.dryrun) {
         compiler.document.saveAs = async () => Promise.resolve(true);
     }
-    await compiler.load();
+    await compiler.load(options.tagPattern);
     let res = await compiler.execute();
     if (options.print) {
         await compiler.document.export();

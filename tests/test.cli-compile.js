@@ -79,6 +79,11 @@ describe('cli-compile', () => {
   });
 
   describe('#compile', () => {
+
+    it.skip('should check for existing preset', async()=>{
+
+    })
+
     it('should print results in json', async () => {
       const base = './tests/testunits/420-1W1-AA/Sommatif 2';
       const source = base;

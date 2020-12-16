@@ -1,6 +1,8 @@
 const {asDatabase, getDefaultFix} = require('./comments.js');
 const {Document} = require('../editor/document.js');
 const memoized = require('../utils/memoized');
+const logger = require('../logger');
+
 const {
     createParser,
     createResultParser
@@ -73,17 +75,18 @@ class Compiler {
         this.comments = [];
     }
 
-    async load() {
+    async load(tagPattern) {
         await this.document.load();
-        await this.database.load();
+        await this.database.load(tagPattern);
         let {content, lang} = this.document;
         const {comments, total} = this.database;
 
-        let parser = createParser(this.database);
+        let parser = createParser(this.database, tagPattern);
         let range;
         while ((range = parser.parse(content))) {
             this.comments.push(new TagComment(range, comments[range.id]));
         }
+        // FIXME Should be configurable by env var or presets...
         const tag = 'Résultat:';
         let fix = getDefaultFix(lang);
         let r = createResultParser(tag).parse(content) || {
@@ -116,7 +119,7 @@ class Compiler {
                 const line = this.document.content
                     .substring(0, comment.range.first)
                     .split('\n').length;
-                console.error(
+                logger.warn(
                     `Tag ${id} not found in ${this.database.filename} at line ${line} of ${this.document.filename}`
                 );
                 continue;

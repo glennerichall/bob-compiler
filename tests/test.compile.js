@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const logger = require('../src/logger');
 
 const { Comment, Compiler } = require('../src/compiler/compiler.js');
 const fs = require('fs');
@@ -79,21 +80,21 @@ describe('Compiler', () => {
       expect(compiler.document.content).to.be.equal(content);
     });
 
-    it.skip('should indicate missing keys', async () => {
+    it('should warn missing keys', async () => {
       let file = 'tests/missing-key.html';
-      const compiler = new Compiler(file, db);
-      let error = console.error.bind(console);
+      const compiler = new Compiler(file, 'tests/missing-key-comments');
+      let warn = logger.warn.bind(logger);
       let output = '';
-      console.error = (msg) => (output += msg);
+      logger.warn = (msg) => (output += msg);
       compiler.document.save = () => {
         // let content = compiler.document.content;
         // require('fs').writeFileSync('tests/saved-no-result.html', content, 'utf8');
       };
-      await compiler.load();
+      await compiler.load('Err:\\(\\d+\\)');
       await compiler.execute();
-      console.error = error;
+      logger.warn = warn;
       expect(output).to.equal(
-        'Tag Err:(191) not found in tests/commentaires at line 6 of tests/missing-key.html'
+        'Tag Err:(191) not found in tests/missing-key-comments at line 6 of tests/missing-key.html'
       );
     });
   });

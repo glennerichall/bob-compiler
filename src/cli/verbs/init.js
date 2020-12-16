@@ -1,17 +1,21 @@
 const {
 
-} = require('../switches');
+} = require('./switches');
 const logger = require('../../logger.js');
 const localPresets = require('../cli-presets.js');
+
+const preset = [
+    'preset', {
+        type: 'string',
+        describe: 'Le preset à utiliser pour ce fichier de facilitation',
+    }
+];
 
 const initCmd = [
     'init [preset]',
     'Créer des fichiers de scripts pour faciliter la correction.',
     (y) => {
-        y.option('preset', {
-            type: 'string',
-            describe: 'Le preset à utiliser pour ce fichier de facilitation',
-        });
+        y.option(...preset);
     },
     async (args) => {
         let { preset } = args;
@@ -27,13 +31,13 @@ const initCmd = [
         let files = [];
         switch (process.platform) {
             case 'win32':
-                files = require('../../assets/win32.js').files;
+                files = require('../assets/win32.js').files;
                 break;
             case 'darwin':
                 logger.error("MacOS n'est pas supporté pour cette fonctionnalité pour l'instant");
                 return;
             case 'linux':
-                files = require('../../assets/linux.js').files;
+                files = require('../assets/linux.js').files;
                 break;
             default:
                 logger.error(

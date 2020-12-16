@@ -29,11 +29,13 @@ const chain = (a, b) => {
 //     return chain(createCommentParser(), parser, 'content', ['target', 'tag']);
 // }
 
-function createParser(database) {
-    const ids = Object.keys(database.comments).join('|')
-        .replace(/\(/g, '\\(')
-        .replace(/\)/g, '\\)');
-    const pattern = new RegExp(`(?<id>${ids}).*`, 'm');
+function createParser(database, tagPattern) {
+    if (tagPattern === undefined) {
+        tagPattern = Object.keys(database.comments).join('|')
+            .replace(/\(/g, '\\(')
+            .replace(/\)/g, '\\)');
+    }
+    const pattern = new RegExp(`(?<id>${tagPattern}).*`, 'm');
     const parser = new Parser(pattern);
     return chain(createCommentParser(), parser);
 }

@@ -4,17 +4,17 @@ const {
     exclude,
     parts,
     single,
-    watch
-} = require('../switches');
+    tagPattern,
+    string,
+} = require('./switches');
 
-const localPresets = require('../cli-presets.js');
+const localPresets = require('../presets.js');
 const logger = require('../../logger.js');
 
-const add_args = '<preset> [groupby] [pattern] [exclude] [parts] [single] [results]';
-
-const check_exists = (preset) => {
+const checkExists = (preset) => {
+    if(preset === undefined) return true;
     const presets = localPresets.listPresets();
-    if (presets[preset] == undefined) {
+    if (presets[preset] === undefined) {
         throw new Error(`Le preset ${preset} n'existe pas`);
     }
     return true;
@@ -27,23 +27,26 @@ const add_build = (y) =>
             type: 'string',
             describe: 'Nom du preset',
         })
-        .option(groupby[0], { ...groupby[1], default: undefined })
-        .option(pattern[0], { ...pattern[1], default: undefined })
-        .option(exclude[0], {...exclude[1], default: undefined})
-        .option(parts[0], { ...parts[1], default: undefined })
-        .option(results[0], { ...results[1], default: undefined })
-        .option(single[0], { ...single[1], default: undefined })
+        .option(...groupby)
+        .option(...pattern)
+        .option(...exclude)
+        .option(...parts)
+        .option(...results)
+        .option(...single)
+        .option(...tagPattern)
         .group(
-            ['groupby', 'pattern', 'exclude', 'parts', 'results', 'single'],
+            [groupby[0], pattern[0], exclude[0], parts[0], results[0], single[0], tagPattern[0]],
             'Preset parameters'
         )
         .check(
             (args) =>
-                args.groupby != undefined ||
-                args.pattern != undefined ||
-                args.parts != undefined ||
-                args.results != undefined ||
-                args.single != undefined
+                args.groupby !== undefined ||
+                args.pattern !== undefined ||
+                args.exclude !== undefined ||
+                args.parts !== undefined ||
+                args.results !== undefined ||
+                args.single !== undefined ||
+                args.tagPattern !== undefined
         );
 
 const preCmd = [
@@ -53,7 +56,7 @@ const preCmd = [
         yargs
             .usage('$0 presets <cmd> [args]')
             .command(
-                `add ${add_args}`,
+                `add ${string}`,
                 'Ajouter un preset',
                 (y) => add_build(y),
                 (args) => {
@@ -62,9 +65,9 @@ const preCmd = [
                 }
             )
             .command(
-                `append ${add_args}`,
+                `append ${string}`,
                 'Ajouter des arguments à un preset',
-                (y) => add_build(y).check((args) => check_exists(args.preset)),
+                (y) => add_build(y).check((args) => checkExists(args.preset)),
                 (args) => {
                     localPresets.mergePreset(args.preset, args);
                     console.log('done');
@@ -155,3 +158,4 @@ const preCmd = [
 
 
 module.exports = preCmd;
+module.exports.checkExists = checkExists;

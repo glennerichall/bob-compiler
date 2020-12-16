@@ -26,8 +26,8 @@ class CompilationGroup {
             .reduce((a, b) => a + b, 0);
     });
 
-    async load() {
-        let promises = this.compilers.map(compiler => compiler.load());
+    async load(tagPattern) {
+        let promises = this.compilers.map(compiler => compiler.load(tagPattern));
         await Promise.all(promises);
     }
 

@@ -16,7 +16,7 @@ function clean(value) {
   delete value['action'];
 
   for (let key in value) {
-    if (value[key] == undefined) {
+    if (value[key] === undefined) {
       delete value[key];
     }
   }
