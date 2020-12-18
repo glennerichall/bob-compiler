@@ -6,11 +6,11 @@ const logger = require('../src/logger');
 describe('CommentList', () => {
     describe('#load', () => {
 
-        it('should permit a-zA-Z.-_\d(): from tag id', async () => {
+        it('should permit a-zA-Z.-_\d()[]: from tag id', async () => {
             let database = new CommentList('tests/commentaires');
             await database.load();
-            expect(database.comments).to.have.property('Err:(Q1.1)');
-            expect(database.comments).to.have.property('Err:(Q_1-1.2)');
+            expect(database.comments).to.have.property('Err:(Q1.1)[]');
+            expect(database.comments).to.have.property('Err:(Q_1-1.2)[]');
         });
 
         it('should permit custom tag id', async () => {
@@ -27,8 +27,8 @@ describe('CommentList', () => {
             await database.load('Err:\\(\\d+\\)');
             logger.warn = warn;
             expect(output).to.equal(
-                'Le commentaire: " -0.5\tErr:(Q1.1) Top bidon " à la ligne 47 est invalide dans ' +
-                'le fichier de commentairesLe commentaire: " -0.5\tErr:(Q_1-1.2) Top top bidon " à la ligne ' +
+                'Le commentaire: " -0.5\tErr:(Q1.1)[] Top bidon " à la ligne 47 est invalide dans ' +
+                'le fichier de commentairesLe commentaire: " -0.5\tErr:(Q_1-1.2)[] Top top bidon " à la ligne ' +
                 '48 est invalide dans le fichier de commentaires'
             );
         });
@@ -37,7 +37,7 @@ describe('CommentList', () => {
             let database = new CommentList('tests/commentaires');
             await database.load();
             expect(Object.keys(database.comments)).to.have.length(48);
-            expect(database.comments["Err:(Q1.1)"]).to.have.property('id', "Err:(Q1.1)");
+            expect(database.comments["Err:(Q1.1)[]"]).to.have.property('id', "Err:(Q1.1)[]");
             expect(database.comments["Err:(3)"]).to.have.property('points', -0.5);
             expect(database.total).to.equal(60);
             expect(database.comments["Err:(45)"]).to.have.property('content', "Rien n'a été fait");

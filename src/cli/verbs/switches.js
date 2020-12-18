@@ -71,6 +71,16 @@ const tagPattern = [
     }
 ];
 
+const gridout = [
+    'gridout',
+    {
+        choices: ['none', 'csv', 'json'],
+        default: 'none',
+        describe:
+            'Exporter les commentaires contenus dans chaque groupe dans un fichier par groupe',
+    }
+]
+
 const string = `[${groupby[0]}] [${pattern[0]}] [${exclude[0]}] [${parts[0]}] [${single[0]}] [${tagPattern[0]}] [${results[0]}]`;
 
 module.exports = {

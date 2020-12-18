@@ -45,5 +45,5 @@ Total:60
 -1    Err:(44) Il manque le compteur 
 -20   Err:(45) Rien n'a été fait 
 -1    Err:(46) Mauvaise valeur 
--0.5	Err:(Q1.1) Top bidon
--0.5	Err:(Q_1-1.2) Top top bidon
+-0.5	Err:(Q1.1)[] Top bidon
+-0.5	Err:(Q_1-1.2)[] Top top bidon

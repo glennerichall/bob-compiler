@@ -3,7 +3,7 @@ const positiveFloat = '\\d+(?:\\.\\d+)?';
 const float = `-?${positiveFloat}`;
 const int = `-?${positiveInt}`;
 const ratio = `((?:${positiveFloat})/(?:${positiveInt}))`;
-const standardValidChars = '[a-zA-Z\\d\\.\\-_\\(\\):]+';
+const standardValidChars = '[a-zA-Z\\d\\.\\-_\\(\\):\\[\\]]+';
 
 const commentBlock = '(\\/\\*)([\\s\\S]*?)(\\*\\/)';
 const commentLine = '(\\/\\/)(.*)($)';
