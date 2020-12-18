@@ -57,7 +57,7 @@ const watch = [
     'watch',
     {
         type: 'integer',
-        default: 1000,
+        default: 0,
         describe: 'Observe et recompile les fichiers lors de la correction (pas encore implanté)',
     },
 ];
