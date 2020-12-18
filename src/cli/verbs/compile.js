@@ -22,7 +22,7 @@ const checkExists = (preset) => {
     return true;
 };
 
-const dryrun = [
+const preset = [
     'preset',
     {
         type: 'array',
@@ -37,6 +37,14 @@ const verbose = [
         type: 'boolean',
         describe: 'Exécution verbeuse',
     }
+];
+
+const dryrun = [
+    'dryrun', {
+        type: 'boolean',
+        describe: 'Ne pas exécuter la commande',
+    }
+
 ];
 
 const source = [
@@ -67,7 +75,7 @@ async function runWatch(timeout, args) {
 }
 
 const cpmCmd = [
-    `compile <${source[0]}> <${commentaires[0]}> ${string} [preset] [${watch[0]}] [${verbose[0]}] [${dryrun[0]}]`,
+    `compile <${source[0]}> <${commentaires[0]}> ${string} [${preset[0]}] [${watch[0]}] [${verbose[0]}] [${dryrun[0]}]`,
     'Compiler les points des commentaires annotés dans les fichiers.',
     (y) =>
         y
@@ -81,6 +89,7 @@ const cpmCmd = [
             .option(...single)
             .option(...watch)
             .option(...tagPattern)
+            .options(...preset)
             .option(...dryrun)
             .option(...verbose)
             .check(({preset}) => checkExists(preset))

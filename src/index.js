@@ -7,21 +7,27 @@ const NpmApi = require('npm-api');
 const logger = require('./logger.js');
 const {levels} = require('./logger.js');
 const parseYargs = require('./cli');
+const { hideBin } = require('yargs/helpers');
 
 
 // ---------------------------------------------------------------------------
 const init = async (args, activeVersion) => {
     const v = activeVersion ?? await getVersion();
+    if (process.env.trace === 'on') {
+        logger.level = levels.trace;
+    }
     try {
-        const argv = parseYargs(yargs(args)).version(v).argv;
+        const argv = parseYargs(yargs(hideBin(args))).version(v).argv;
 
-        if (argv.verbose) {
+        if (argv.verbose && logger.level > levels.info) {
             logger.level = levels.info;
         }
 
         logger.info('\nCurrent effective options are:');
         logger.info(argv);
-    } catch (e) {}
+    } catch (e) {
+        logger.trace(e);
+    }
 
     try {
         const npm = new NpmApi();

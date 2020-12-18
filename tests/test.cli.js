@@ -46,4 +46,14 @@ describe('Cli', () => {
         expect(output).to.match(/Newer version available \d+\.\d+\.\d+, consider upgrading it \(npm upgrade -g bob-compiler\)/);
         console.warn = log;
     });
+
+    it('should init', async()=>{
+        const argv = [ 'init' ];
+        const log = console.warn.bind(console);
+        let output = '';
+        console.warn = msg=>output += msg;
+        await cli(argv, 'v0');
+        expect(output).to.match(/Newer version available \d+\.\d+\.\d+, consider upgrading it \(npm upgrade -g bob-compiler\)/);
+        console.warn = log;
+    })
 });

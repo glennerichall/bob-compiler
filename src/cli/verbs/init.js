@@ -3,6 +3,7 @@ const {
 } = require('./switches');
 const logger = require('../../logger.js');
 const localPresets = require('../presets.js');
+const {writeFile} = require('fs').promises;
 
 const preset = [
     'preset', {
@@ -12,7 +13,7 @@ const preset = [
 ];
 
 const initCmd = [
-    'init [preset]',
+    `init [${preset[0]}]`,
     'Créer des fichiers de scripts pour faciliter la correction.',
     (y) => {
         y.option(...preset);

@@ -32,6 +32,6 @@
     "npm-api": "^1.0.0",
     "recursive-readdir": "^2.2.2",
     "settings-store": "^1.4.1",
-    "yargs": "^14.2.2"
+    "yargs": "^16.2.0"
   }
 }

@@ -11,6 +11,13 @@ const {
 const localPresets = require('../presets.js');
 const logger = require('../../logger.js');
 
+const preset = [
+    'preset', {
+        type: 'string',
+        describe: 'Nom du preset',
+    }
+];
+
 const checkExists = (preset) => {
     if(preset === undefined) return true;
     const presets = localPresets.listPresets();
@@ -23,10 +30,7 @@ const checkExists = (preset) => {
 
 const add_build = (y) =>
     y
-        .positional('preset', {
-            type: 'string',
-            describe: 'Nom du preset',
-        })
+        .positional(...preset)
         .option(...groupby)
         .option(...pattern)
         .option(...exclude)
