@@ -4,8 +4,6 @@
     <list default="true" id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/parser.builder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/parser.builder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test.cli-compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.cli-compile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test.issues.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.issues.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +43,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.test">
-    <configuration name="test" type="NodeJSConfigurationType" application-parameters="compile &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\AUDT82010105-Sommatif-2\Sommatif-2\MainWindow.xaml.cs&quot; &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\commentaires&quot; --preset 420-3N1-AA --results csv" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+    <configuration name="test" type="NodeJSConfigurationType" application-parameters="compile &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\AUDT82010105-Sommatif-2&quot; &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\commentaires&quot; --preset 420-3N1-AA --results csv" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="Test All" type="mocha-javascript-test-runner">
@@ -114,10 +112,10 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/compiler/compiler.js</url>
-          <line>107</line>
+          <url>file://$PROJECT_DIR$/src/compiler/parser.js</url>
+          <line>12</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

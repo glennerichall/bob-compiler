@@ -36,9 +36,11 @@ function createParser(database, tagPattern) {
             .replace(/\(/g, '\\(')
             .replace(/\)/g, '\\)')
             .replace(/\[/g, '\\[')
-            .replace(/]/g, '\\]');
+            .replace(/]/g, '\\]')
+            .replace(/\./g, '\\.')
+        ;
     }
-    const pattern = new RegExp(`(?<nullpts>!)?(?<id>${tagPattern})\\s+(\\((?<otherComment>[^\\)]*)\\))?.*`, 'm');
+    const pattern = new RegExp(`(?<nullpts>!)?(?<id>${tagPattern})(?:\\s+|$)(\\((?<otherComment>[^\\)]*)\\))?.*`, 'm');
     const parser = new Parser(pattern);
     return chain(createCommentParser(), parser);
 }
