@@ -2,26 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/testunits/420-1W1-AA/Examen 2/BILG12109904-examen-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/testunits/420-1W1-AA/Examen 2/BOUT64110104-examen-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/testunits/420-1W1-AA/Examen 2/DOUE71120200-examen-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/testunits/420-1W1-AA/Examen 2/LAVD12109401-examen-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/testunits/420-1W1-AA/Examen 2/ROYL90020000-examen-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/testunits/420-1W1-AA/Examen 2/commentaires" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/testunits/420-1W1-AA/Examen 2/mort75100103-examen-2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/(Compile) Linux Drop Over Me.desktop" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/(Watch) Linux Drop Over Me.desktop" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/compile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/verbs/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/verbs/compile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/comments.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/compiler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/compiler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/parser.builder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/parser.builder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/saved-no-result.html" beforeDir="false" afterPath="$PROJECT_DIR$/tests/saved-no-result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/saved.html" beforeDir="false" afterPath="$PROJECT_DIR$/tests/saved.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.cli-compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.cli-compile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test.issues.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.issues.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test.setupteardown.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.setupteardown.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +19,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1lKwbdBNKwRKl1zbJPajqeJlRQC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -56,7 +44,10 @@
       <recent name="$PROJECT_DIR$/src/editor" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.test">
+    <configuration name="test" type="NodeJSConfigurationType" application-parameters="compile &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\AUDT82010105-Sommatif-2\Sommatif-2\MainWindow.xaml.cs&quot; &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\commentaires&quot; --preset 420-3N1-AA --results csv" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <configuration name="Test All" type="mocha-javascript-test-runner">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -69,6 +60,33 @@
       <test-pattern>tests/test.*.js</test-pattern>
       <method v="2" />
     </configuration>
+    <configuration name="cli-compile.#getGroups.should filter using regexp exclude" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$/</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/tests/test.cli-compile.js</test-file>
+      <test-names>
+        <name value="cli-compile" />
+        <name value="#getGroups" />
+        <name value="should filter using regexp exclude" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Mocha.Test All" />
+      <item itemvalue="Mocha.cli-compile.#getGroups.should filter using regexp exclude" />
+      <item itemvalue="Node.js.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Mocha.cli-compile.#getGroups.should filter using regexp exclude" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -85,5 +103,23 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tests/test.cli-compile.js</url>
+          <line>22</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/compiler/compiler.js</url>
+          <line>107</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

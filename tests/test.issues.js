@@ -197,7 +197,7 @@ describe('issues', () => {
         await compiler.execute();
         // let content = await readFile('tests/saved-no-result.html', 'utf8');
         let content = '';
-        expect(compiler.document.content.split('\n')[0])
+        expect(compiler.document.content.split('\n')[0].trim())
             .to.be.equal('<!-- Résultat: 1/34 -->');
     });
 

@@ -31,13 +31,14 @@ const chain = (a, b) => {
 
 function createParser(database, tagPattern) {
     if (tagPattern === undefined) {
-        tagPattern = Object.keys(database.comments).join('|')
+        tagPattern = Object.keys(database.comments)
+            .join('|')
             .replace(/\(/g, '\\(')
             .replace(/\)/g, '\\)')
             .replace(/\[/g, '\\[')
             .replace(/]/g, '\\]');
     }
-    const pattern = new RegExp(`(?<nullpts>!)?(?<id>${tagPattern})\\s*(\\((?<otherComment>[^\\)]*)\\))?.*`, 'm');
+    const pattern = new RegExp(`(?<nullpts>!)?(?<id>${tagPattern})\\s+(\\((?<otherComment>[^\\)]*)\\))?.*`, 'm');
     const parser = new Parser(pattern);
     return chain(createCommentParser(), parser);
 }

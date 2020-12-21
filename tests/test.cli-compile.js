@@ -14,7 +14,7 @@ describe('cli-compile', () => {
     it('should filter using regexp pattern', async () => {
       let files = await getGroups('./tests/folders', {
         pattern: '.*.toto',
-        parts: 'resolve',
+        parts: 'basename',
       });
       expect(files).to.have.length(4);
     });
@@ -22,7 +22,7 @@ describe('cli-compile', () => {
     it('should filter using regexp exclude', async () => {
       let files = await getGroups('./tests/folders', {
         pattern: '.*.toto',
-        parts: 'resolve',
+        parts: 'basename',
         exclude: 'b.*'
       });
       expect(files).to.have.length(2);
