@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8"
+        <meta name="author" content="Tomy Boulianne"/> 
+        <meta name="evaluation" content="Examen finale"/> 
+        <meta name="date" content="2020-12-15"/> 
+        <meta name="codepermanent" content="BOUT64110104"/>
+        <title>ExamenFinale</title>
+
+        <style>
+            .titre {
+                font: large;
+                white-space: nowrap;
+            }
+            
+            .surligne {
+                background-color: 	#98FB98;
+            }
+            
+            .mon-super-tableau {
+                border-width: 2px;
+                border-style:dashed;
+                border-spacing: 10px;
+                border-color: blue;
+                
+            }
+    
+            
+            td {
+                border-width: 1px;
+                border-style: solid;
+            }
+
+            .fusion {
+                border-width: 2px;
+                border-color: red;
+            }
+
+            form {
+                background-color: #98FB98;
+            }
+
+            img {
+                position: relative;
+                left: 1450px;
+                top: 110px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <h1>420-1W1-AA</h1>
+        <h1 class="titre">Introduction à la programmation Web</h1>
+
+        <p>
+            <a href="https://fr.wikipedia.org/wiki/No%C3%ABl">Noël</a> est une fête d'origine romaine célébrée chaque année, 
+            majoritairement la nuit du 24 décembre et la journée du 25 décembre, 
+            et pouvant avoir une signification culturelle et/ou religieuse. 
+            En tant que fête chrétienne, elle commémore la naissance de Jésus de Nazareth.
+        </p>
+        <ul>
+            <li class="surligne">Robert Noël, chevalier qui accompagne Guillaume le Conquérant en Angleterre en 1066, et devient seigneur de Gainsborough.</li>
+            <li>Jean Noël, anobli par Charles VI en 1415 et mort à Azincourt.</li>
+            <li class="surligne">Nedelec est un nom de famille attesté en Bretagne dès le xvie siècle.</li>
+            <li>Divers migrants en Nouvelle-France sont recensés avec ce nom, dont un François Noël en 1657 et un Joseph-Ozanie Nadeau (originaire de l'Angoumois) vers 1660<sup>135</sup>.</li>
+            <li class="surligne">Dans son Dictionnaire de la Mayenne, Alphonse-Victor Angot évoque un dominicain de Laval, François Noël qui écrivait au milieu du xviie siècle sous le nom de plume de François Silatan.</li>
+        </ul>
+
+        <table class="mon-super-tableau">
+            <tr>
+                <td><pre>&lt;code&gt;</pre></td>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>←</td>
+                
+            </tr>
+            <tr>
+                <td>5</td>
+                <td class="fusion"rowspan="2" colspan="2">6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td class="fusion" rowspan="2" colspan="2">10</td>
+            </tr>
+            <tr>
+                <td class="fusion" colspan="2">15</td>
+                <td>16</td>
+                
+            </tr>
+
+        </table>
+           
+        <picture>
+            <source media="(min-width: 192px)" srcset="gift-box.3x.png">
+            <source media="(max-width: 127px)" srcset="gift-box.1x.png">
+            <source media="(max-width: 191px)" srcset="gift-box.2x.png">
+            <img src="../../../../Fichiers%20de%20travail/Tomy%20Boulianne/Examen%20final/gift-box.1x.png" alt"cadeau">
+        </picture>
+        
+        <h2>Serez-vous au party de Noël?</h2>
+        
+        
+        <form method="POST" action="../../../../Fichiers%20de%20travail/Tomy%20Boulianne/Examen%20final/traitment.php">
+            
+            <label for="case">Je serai présent(e)</label>
+            <input type="checkbox" name="case" id="case" checked><br><br>
+            
+            
+            <label for="Code">Code employé(e) </label>
+            <input type="texte" name="Code" id="Code" maxlength="6" placeholder="code de 6 caractères" required autofocus><br><br>
+
+            <label for="datepref">Date préférée</label>
+            <input type="date"  datepref" id="datepref" min="2019-11-30" max="2019-12-21"><br><br>
+
+            <label for="couleurpref">Couleur préférée</label>
+            <input type="color" value="#FF0000" name="couleurpref" id="couleurpref"><br><br>
+            
+            
+        </form>
+        <form action="mailto:party@collegealma.ca" enctype="text/plain">
+            <input type="submit" value="Submit" />  
+            </form>
+    <script type="text/javascript">
+    function myFunction() 
+    {
+        var checkbox = document.getElementById("case");
+        var date = document.getElementById("datepref");
+
+        if (checkbox == true){
+            date.style.display = "block";
+        } else {
+            date.style.display = "none" ;
+        }
+    }
+    </script>
+    
+    </body>
+</html>

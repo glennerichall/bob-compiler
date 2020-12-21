@@ -1,0 +1,34 @@
+Total: auto
+1   [a] Titre de niveau 1
+1   [b] Titre de niveau 1 de classe 'large'
+1   (b) N'est pas affiché lorsque la page est trop petite
+1   [c] Paragraphe
+1   [d] Lien hypertexte vers https://fr.wikipedia.org/wiki/No%C3%ABl
+1   [e] Liste non-ordonnée
+1   [f] Expostant
+1   [g.1] Tableau de données avec identificateur unique 'mon-super-tableau'
+1   [g.2] Fusion des cellules
+1   [h] Code en incise
+1   [i] Flèche vers la gauche (utiliser l'entité)
+1   [j,k] Cellule de tableau
+1   [l] Titre de niveau 2
+1   [m] Formulaire
+1   [n] Image adaptative
+1   (n) Les images ne sont pas visibles lors de l'impression
+1   [o.1] Case à cochée
+1   [o.2] Initialement cochée
+1   [p.1] Champs texte obligatoire
+1   [p.2] 6 caractères exactement
+1   [q.1] Date
+1   [q.2] Entre le 30 novembre 2019 et le 21 décembre 2019
+1   [q.3] Si 'presence' n'est pas cochée ce champs est désactivé
+1   [r] Couleur initialement rouge
+1   [o-r] Champs nommés
+1   [s.1] Bouton submit
+1   [s.2] Demande la confirmation
+1   [s.3] N'envoie le formulaire que si l'utilisateur confirme
+1   [s.4] Envoie le formulaire à party@collegealma.ca
+1   (1) Éléments de couleur vert pâle
+1   (2) Espace entre les cellules de 10 pixels
+1   (3) Bordure bleu pointillée de 2 pixels d'épaisseur
+2   (4) Les cellules fusionnées ont une bordure rouge de 2 pixels d'épaisseur

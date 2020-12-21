@@ -65,12 +65,13 @@ const commentaires = [
     }
 ];
 
-async function runWatch(timeout, args) {
+async function runWatch(timeout, source, commentaires, args) {
     setInterval(async () => {
+        console.clear();
         await compile(source, commentaires, args);
         // TODO https://www.npmjs.com/package/terminal-kit
         // TODO https://www.npmjs.com/package/blessed
-        console.clear();
+
     }, timeout);
 }
 
@@ -109,7 +110,7 @@ const cpmCmd = [
     async (args) => {
         const {source, commentaires, watch} = args;
         if (watch) {
-            await runWatch(watch, args);
+            await runWatch(watch, source, commentaires, args);
         } else {
             await compile(source, commentaires, args);
         }

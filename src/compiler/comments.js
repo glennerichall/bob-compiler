@@ -37,6 +37,7 @@ function loadFromCDbP(content, options = {}) {
     }
 
     let total = lines[0].content.replace('Total:', '').trim();
+    let numpoints;
     try {
         if (total.toLowerCase() === 'auto') {
             total = 0;
@@ -49,16 +50,18 @@ function loadFromCDbP(content, options = {}) {
             if (total <= 0) {
                 throw new Error();
             }
+            numpoints = total;
             total = 0;
         } else {
             total = Number.parseInt(total);
+            numpoints = total;
         }
     } catch (e) {
         logger.error('Le total doit être inscrit à la première ligne du fichier de commentaires et \n' +
             "un total auto doit contenir des commentaires à valeur positives");
         throw e;
     }
-    return {comments, total};
+    return {comments, total, numpoints};
 }
 
 function loadFromJson(content) {
@@ -106,9 +109,10 @@ class CommentList {
     }
 
     async load(tagPattern) {
-        let {comments, total} = await loadComments(this.filename, {tagPattern});
+        let {comments, total, numpoints} = await loadComments(this.filename, {tagPattern});
         this.comments = comments;
         this.total = total;
+        this.numpoints = numpoints;
     }
 }
 

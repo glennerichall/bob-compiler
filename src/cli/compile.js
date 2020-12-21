@@ -20,6 +20,8 @@ const getGroups = async (source, options) => {
         files = await readdir(source);
         logger.info(`${files.length} fichier(s) trouvé(s)`);
         logger.info(`Filtrage des fichiers selon [pattern] et [exclude] : `);
+        logger.info(`pattern: ${pattern}`);
+        logger.info(`exclude: ${exclude}`);
     } catch (e) {
         console.trace(e);
         throw e;
@@ -110,13 +112,13 @@ const compile = async (source, commentaires, options) => {
     try {
         await access(source, F_OK);
     } catch (e) {
-        console.error(`Le chemin source ${source} n'existe pas`);
+        logger.error(`Le chemin source ${source} n'existe pas`);
         return;
     }
     try {
         await access(commentaires, F_OK);
     } catch (e) {
-        console.error(`Le chemin commentaires ${commentaires} n'existe pas`);
+        logger.error(`Le chemin commentaires ${commentaires} n'existe pas`);
         return;
     }
     let start = new Date();

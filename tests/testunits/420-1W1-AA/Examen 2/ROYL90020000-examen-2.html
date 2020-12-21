@@ -1,0 +1,147 @@
+<!-- Résultat: 0/0 -->
+<!DOCTYPE html>
+<html lang="Fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Laurent Roy" />
+    <meta name="evaluation" content="Exam-2" />
+    <meta name="date" content="2020-12-15" />
+    <title>Exam-Final</title>
+
+    <style>
+        li:nth-last-of-type(odd) {
+            background-color: rgb(145, 224, 145);
+        }
+
+        form {
+            padding: 12px;
+            background-color: rgb(145, 224, 145);
+        }
+
+        td,
+        th {
+
+            border: 1px solid black;
+        }
+
+        #mon-super-tableau {
+            border: 2px dashed blue;
+            border-spacing: 10px;
+        }
+
+        .bordure-rouge {
+            border: 2px solid red;
+        }
+
+        form p>label {
+            display: inline-block;
+            width: 150px;
+        }
+
+        .responsive {
+            position: relative;
+            left: 95%;
+            bottom: 55px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>420-1W1-AA</h1>
+
+    <h1 class="large">Introduction à la programmation Web</h1>
+
+    <p>
+        <a href="https://fr.wikipedia.org/wiki/No%C3%ABl">Noël</a> est une fête d'origine romaine célébrée chaque année,
+        majoritairement la nuit du 24 décembre et la journée du
+        25 décembre, et pouvant avoir une signification culturelle et/ou religieuse. En tant que fête chrétienne, elle
+        commémore la naissance de Jésus de Nazareth.
+    </p>
+
+    <ul>
+        <li>
+            Robert Noël, chevalier qui accompagne Guillaume le Conquérant en Angleterre en 1066, et devient seigneur de
+            Gainsborough.
+        </li>
+        <li>
+            Jean Noël, anobli par Charles VI en 1415 et mort à Azincourt.
+        </li>
+        <li>
+            Nedelec est un nom de famille attesté en Bretagne dès le xvie siècle.
+        </li>
+        <li>
+            Divers migrants en Nouvelle-France sont recensés avec ce nom, dont un François Noël en 1657 et un
+            Joseph-Ozanie Nadeau (originaire de l'Angoumois) vers 1660<sup>135</sup>.
+        </li>
+        <li>
+            Dans son Dictionnaire de la Mayenne, Alphonse-Victor Angot évoque un dominicain de Laval, François Noël qui
+            écrivait
+            au milieu du xviie siècle sous le nom de plume de François Silatan.
+        </li>
+    </ul>
+
+    <table id="mon-super-tableau">
+        <tr>
+            <td colspan="3"><q>code</q></td>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>&larr;</td>
+        </tr>
+        <tr>
+            <td colspan="3">5</td>
+            <td colspan="2" rowspan="2" class="bordure-rouge">6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td colspan="3">9</td>
+            <td colspan="2" rowspan="2" class="bordure-rouge">10</td>
+        </tr>
+        <tr>
+            <td colspan="4" class="bordure-rouge">15</td>
+            <td>16</td>
+        </tr>
+
+    </table>
+
+    <h2>Serez-vous au party de Noël ?</h2>
+
+    <form onsubmit="confirm('Confirmez-vous les informations ?')" action="mailto:party@collegealma.ca">
+        <img src="../../../../Fichiers%20de%20travail/Laurent%20Roy/Examen%20final/gift-box.1x.png" alt="cadeau" class="responsive">
+        <p>
+            <label for="presence">Je serai présent(e) </label>
+            <input type="checkbox" name="presence" id="presence" checked>
+        </p>
+
+        <p>
+            <label for="employe">Code employé(e) </label>
+            <input type="text" name="employe" id="employe" minlength="6" maxlength="6">
+        </p>
+
+        <p>
+            <label for="date">Date préférée </label>
+            <input type="date" name="date" id="date" min="2019-11-30" max="2019-12-21">
+        </p>
+        <p>
+            <label for="couleur">Couleur préféré </label>
+            <input type="color" name="couleur" id="couleur" value="#ff0000">
+        </p>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        var presenceVerif = document.getElementById('presence');
+        var date = document.getElementById('date');
+        presenceVerif.onchange = function () {
+            date.disabled = !this.checked;
+        };
+
+    </script>
+
+
+</body>
+
+</html>

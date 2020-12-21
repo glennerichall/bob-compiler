@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=Drop Over Me
-Comment=Execute the script with the file dropped
-Exec=gnome-terminal -- "/home/glenn/Documents/Projects/VSCOde/commentscompiler/.watch.sh"
-Icon=utilities-terminal
-Type=Application
-Terminal=true
-Name[en_CA]=(Compile) Linux Drop Over Me

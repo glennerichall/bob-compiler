@@ -1,0 +1,131 @@
+<!-- Résultat: 0/0 -->
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Dave Lavoie-Dufour" />
+    <meta name="evaluation" content="Examen-2" />
+    <meta name="codepermanent" content="LAVD12109401" />
+    <meta name="date" content="2020-12-15" />
+    <title>Examen-2 LAVD12109401</title>
+
+</head>
+
+<style>
+    li:nth-child(odd) {
+        background-color: lightgreen;
+    }
+
+    form {
+        background-color: lightgreen;
+        padding: 10px;
+    }
+
+    input {
+        position: absolute;
+        left: 200px;
+        margin: 5px;
+    }
+
+    td {
+        border: solid black 1px;
+    }
+
+    table {
+        border: dashed blue 2px;
+        border-spacing: 10px;
+    }
+
+    td[colspan="2"] {
+        border: solid red 2px;
+    }
+
+    @media print {
+        .responsive {
+            display: none;
+        }
+    }
+
+    img {
+        float: right;
+        position: relative;
+        top: -50px;
+        right: 10px;
+    }
+</style>
+
+<body>
+    <h1>420-1W1-AA</h1>
+    <h1 class="large">Introduction à la programmation Web</h1>
+    <p><a href="https://fr.wikipedia.org/wiki/No%C3%ABl">Noël</a> est une fête d'origine romaine célébrée chaque année,
+        majoritairement la nuit du 24 décembre et la journée du 25 décembre, et pouvant avoir une signification
+        culturelle et/ou religieuse. En tant que fête chrétienne, elle commémore la naissance de Jésus de Nazareth.</p>
+
+    <ul>
+        <li>Robert Noël, chevalier qui accompagne Guillaume le Conquérant en Angleterre en 1066, et devient seigneur de
+            Gainsborough.</li>
+        <li>Jean Noël, anobli par Charles VI en 1415 et mort à Azincourt.</li>
+        <li>Nedelec est un nom de famille attesté en Bretagne dès le xvie siècle.</li>
+        <li>Divers migrants en Nouvelle-France sont recensés avec ce nom, dont un François Noël en 1657 et un
+            Joseph-Ozanie Nadeau (originaire de l'Angoumois) vers 1660<sup>135</sup>.</li>
+        <li>Dans son Dictionnaire de la Mayenne, Alphonse-Victor Angot évoque un dominicain de Laval, François Noël qui
+            écrivait au milieu du xviie siècle sous le nom de plume de François Silatan.</li>
+    </ul>
+
+    <table id="mon-super-tableau">
+        <thead>
+            <tr>
+                <td><code>&lt;code&gt;</code></td>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>&larr;</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td rowspan="2" colspan="2">6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td rowspan="2" colspan="2">10</td>
+            </tr>
+            <tr>
+                <td colspan="2">15</td>
+                <td>16</td>
+            </tr>
+        </thead>
+    </table>
+
+    <h2>Serez-vous au party de Noël ?</h2>
+    <img src="../../../../Fichiers%20de%20travail/Dave%20Lavoie-Dufour/Examen%20final/gift-box.1x.png" alt="Cadeau" class="responsive">
+    <form onsubmit="return confirm('Confirmez-vous que les informations sont exactes ?')"
+        action="mailto:part@collegealma.ca" method="POST" enctype="text/plain">
+        <label for="presence">Je serai présent(e)
+            <input name="presence" id="presence" type="checkbox" onchange="checkChange(this)" checked><br>
+        </label>
+        <label for="employe">Code employé(e)
+            <input name="employe" id="employe" type="tel" pattern="[0-9]{6}" minlength="6" maxlength="6"><br>
+        </label>
+        <label for="date">Date préférée
+            <input name="date" id="date" type="date" min="2019-11-30" max="2019-12-21"><br>
+        </label>
+        <label for="color">Couleur préférée
+            <input name="color" id="color" type="color" value="#FF0000"><br>
+        </label>
+        <input type="submit" id ="submit" value="Submit">
+    </form>
+
+    <script>
+        function checkChange(checkbox) {
+            if (checkbox.checked) {
+                document.getElementbyId("date").disabled = false;
+            }
+            else {
+                document.getElementbyId("date").disabled = true;
+            }
+        }
+    </script>
+</body>

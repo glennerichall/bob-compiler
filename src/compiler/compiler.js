@@ -43,13 +43,35 @@ class Comment {
 class TagComment extends Comment {
     constructor(range, database) {
         super(range, database);
+        this.nullpts = !!range.nullpts;
+    }
+
+
+    getPoints() {
+        let points = super.getPoints();
+        if (this.nullpts) points = 0;
+        return points;
     }
 
     getText() {
-        let {id, begin, end} = this.range;
-        let {points, content} = this.database;
-        let card = Math.abs(points) > 1 ? 's' : '';
-        let template = `${begin} ${id} ${content}, (${points} point${card}) ${
+        let {id, begin, end, otherComment} = this.range;
+        let {content} = this.database;
+        let points = this.getPoints();
+        let pond = super.getPoints();
+        if(points !== super.getPoints()) points = `${points}/${pond}`;
+        let card = Math.abs(pond) > 1 ? 's' : '';
+        if(otherComment){
+            otherComment = '(' + otherComment + ') ';
+        } else if(this.nullpts){
+            otherComment = 'Non-réalisé: ';
+        } else if(pond < 0) {
+            otherComment = 'Erreur: ';
+        } else {
+            otherComment = 'Ok: ';
+        }
+        let prefix = this.nullpts ? '!' : ' ';
+
+        let template = `${begin} ${prefix}${id} ${otherComment}${content}, (${points} point${card}) ${
             end || ''
         }`;
         return template;
@@ -63,7 +85,7 @@ class ResultComment extends Comment {
 
     getText(sum) {
         let {tag, begin, end, max} = this.range;
-        let template = `${begin} ${tag} ${Math.max(max + sum, 0)}/${max} ${end}`;
+        let template = `${begin} ${tag} ${Math.max(sum, 0)}/${max} ${end}`;
         return template;
     }
 }
@@ -79,7 +101,7 @@ class Compiler {
         await this.document.load();
         await this.database.load(tagPattern);
         let {content, lang} = this.document;
-        const {comments, total} = this.database;
+        const {comments, numpoints} = this.database;
 
         let parser = createParser(this.database, tagPattern);
         let range;
@@ -96,7 +118,7 @@ class Compiler {
         };
         r = {
             ...r,
-            max: total,
+            max: numpoints,
             tag,
         };
         this.resultComment = new ResultComment(r);
@@ -139,7 +161,7 @@ class Compiler {
     async execute() {
         await this.document.edit(editor => {
             this.applyComments(editor);
-            this.applyResult(editor, this.getSum());
+            this.applyResult(editor, this.getTotal());
             return true;
         });
         await this.document.save();
