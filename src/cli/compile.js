@@ -28,8 +28,10 @@ const getGroups = async (source, options) => {
     }
 
     files = files.filter((file) => pattern.test(path[options.parts](file)));
+    logger.debug(`${files.length} fichier(s) correspondant(s) selon [pattern]`);
     if (exclude) {
         files = files.filter((file) => !exclude.test(path[options.parts](file)));
+        logger.debug(`${files.length} fichier(s) exclus(s) selon [exclude]`);
     }
 
     logger.info(`${files.length} fichier(s) conservé(s)`);

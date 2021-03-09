@@ -16,6 +16,7 @@ Name[en_CA]=(Compile) Linux Drop Over Me`,
     content: `#!/bin/bash
 source ~/.bashrc
 bobc --version
+if [ ! -f "$1/commentaires" ]; then touch "$1/commentaires"; fi
 bobc compile "$1" "$1/commentaires" @{preset} --results csv > "$1/../result-\${1##*/}.txt"
 cat "$1/../result-\${1##*/}.txt" | xclip
 cat "$1/../result-\${1##*/}.txt"
@@ -38,6 +39,7 @@ Name[en_CA]=(Compile) Linux Drop Over Me`,
     content: `#!/bin/bash
 source ~/.bashrc
 bobc --version
+if [ ! -f "$1/commentaires" ]; then touch "$1/commentaires"; fi
 bobc compile "$1" "$1/commentaires" @{preset} --results csv --watch > "$1/../result-\${1##*/}.txt"
 cat "$1/../result-\${1##*/}.txt" | xclip
 cat "$1/../result-\${1##*/}.txt"`,

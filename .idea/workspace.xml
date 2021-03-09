@@ -4,6 +4,9 @@
     <list default="true" id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/assets/linux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/assets/linux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/assets/win32.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/assets/win32.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/compile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cli/verbs/presets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/verbs/presets.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,14 +46,23 @@
       <recent name="$PROJECT_DIR$/src/editor" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.index.js">
+  <component name="RunManager" selected="Node.js.test (append)">
     <configuration name="index.js help" type="NodeJSConfigurationType" application-parameters="presets add 555-5555" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="index.js" type="NodeJSConfigurationType" application-parameters="presets list" nameIsGenerated="true" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="test" type="NodeJSConfigurationType" application-parameters="compile &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\AUDT82010105-Sommatif-2&quot; &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\commentaires&quot; --preset 420-3N1-AA --results csv" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+    <configuration name="test (append)" type="NodeJSConfigurationType" application-parameters="presets append 420-2P2-AA --pattern &quot;Travail sommatif \d\\(?&lt;etudiant&gt;[^\\]+)\\Travail sommatif \d\\Version \d\\(.*\\)*[^\\]+\.cs$&quot;" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+      <envs>
+        <env name="trace" value="on" />
+      </envs>
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="NodeJSConfigurationType" application-parameters="compile &quot;E:\calma\corrections\420-2P2-AA\Travail sommatif 1&quot; &quot;E:\calma\corrections\420-2P2-AA\Travail sommatif 1\commentaires&quot; --preset 420-2P2-AA --results csv --dryrun --verbose" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+      <envs>
+        <env name="trace" value="on" />
+      </envs>
       <method v="2" />
     </configuration>
     <configuration name="Test All" type="mocha-javascript-test-runner">
@@ -86,6 +98,7 @@
       <item itemvalue="Mocha.Test All" />
       <item itemvalue="Mocha.cli-compile.#getGroups.should filter using regexp exclude" />
       <item itemvalue="Node.js.test" />
+      <item itemvalue="Node.js.test (append)" />
       <item itemvalue="Node.js.index.js" />
       <item itemvalue="Node.js.index.js help" />
     </list>
@@ -108,7 +121,7 @@
       <workItem from="1613571649420" duration="22000" />
       <workItem from="1613571848943" duration="17000" />
       <workItem from="1615230810211" duration="946000" />
-      <workItem from="1615297039470" duration="1168000" />
+      <workItem from="1615297039470" duration="5400000" />
     </task>
     <servers />
   </component>
@@ -128,13 +141,13 @@
           <line>12</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/cli/verbs/presets.js</url>
-          <line>114</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="NodeJSConfigurationType">
+        <watch expression="files.filter((file) =&gt; pattern.test(path[options.parts](file)))" language="JavaScript" />
+        <watch expression="pattern" language="JavaScript" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

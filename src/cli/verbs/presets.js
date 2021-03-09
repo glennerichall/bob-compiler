@@ -73,10 +73,12 @@ const preCmd = [
         .command(
             `append <preset> ${string}`,
             'Ajouter des arguments à un preset',
-            (y) => add_build(y).check((args) => checkExists(args.preset)),
+            (y) => add_build(y)
+                .check((args) => checkExists(args.preset)),
             (args) => {
-                localPresets.mergePreset(args.preset, args);
-                console.log('done');
+                console.log('Not implemented');
+                // localPresets.mergePreset(args.preset, args);
+                // console.log('done');
             }
         )
         .command(
