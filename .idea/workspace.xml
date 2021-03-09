@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/parser.builder.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/parser.builder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/verbs/presets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/verbs/presets.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +33,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
-    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
+    <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -42,7 +43,13 @@
       <recent name="$PROJECT_DIR$/src/editor" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.test">
+  <component name="RunManager" selected="Node.js.index.js">
+    <configuration name="index.js help" type="NodeJSConfigurationType" application-parameters="presets add 555-5555" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.js" type="NodeJSConfigurationType" application-parameters="presets list" nameIsGenerated="true" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="NodeJSConfigurationType" application-parameters="compile &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\AUDT82010105-Sommatif-2&quot; &quot;E:\calma\corrections\420-3N1-AA\Travail sommatif 2\commentaires&quot; --preset 420-3N1-AA --results csv" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -79,6 +86,8 @@
       <item itemvalue="Mocha.Test All" />
       <item itemvalue="Mocha.cli-compile.#getGroups.should filter using regexp exclude" />
       <item itemvalue="Node.js.test" />
+      <item itemvalue="Node.js.index.js" />
+      <item itemvalue="Node.js.index.js help" />
     </list>
     <recent_temporary>
       <list>
@@ -96,6 +105,10 @@
       <updated>1607359163276</updated>
       <workItem from="1607359164517" duration="1087000" />
       <workItem from="1608039393459" duration="2730000" />
+      <workItem from="1613571649420" duration="22000" />
+      <workItem from="1613571848943" duration="17000" />
+      <workItem from="1615230810211" duration="946000" />
+      <workItem from="1615297039470" duration="1168000" />
     </task>
     <servers />
   </component>
@@ -108,14 +121,18 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/tests/test.cli-compile.js</url>
           <line>22</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/compiler/parser.js</url>
           <line>12</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/cli/verbs/presets.js</url>
+          <line>114</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
