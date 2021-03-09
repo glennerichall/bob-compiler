@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/compile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/verbs/presets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/verbs/presets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/comments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/assets/linux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/assets/linux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/assets/win32.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/assets/win32.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +113,8 @@
       <workItem from="1613571649420" duration="22000" />
       <workItem from="1613571848943" duration="17000" />
       <workItem from="1615230810211" duration="946000" />
-      <workItem from="1615297039470" duration="6241000" />
+      <workItem from="1615297039470" duration="6658000" />
+      <workItem from="1615303812800" duration="766000" />
     </task>
     <servers />
   </component>
@@ -137,7 +137,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/compiler/comments.js</url>
           <line>99</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
