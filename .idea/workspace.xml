@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/assets/linux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/assets/linux.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/assets/win32.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/assets/win32.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cli/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/compile.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cli/verbs/presets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/verbs/presets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/comments.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +44,7 @@
       <recent name="$PROJECT_DIR$/src/editor" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.test (append)">
+  <component name="RunManager" selected="Node.js.test">
     <configuration name="index.js help" type="NodeJSConfigurationType" application-parameters="presets add 555-5555" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
@@ -77,7 +75,7 @@
       <test-pattern>tests/test.*.js</test-pattern>
       <method v="2" />
     </configuration>
-    <configuration name="cli-compile.#getGroups.should filter using regexp exclude" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="cli-compile.#getGroups.should filter using regexp exclude" type="mocha-javascript-test-runner" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -102,11 +100,6 @@
       <item itemvalue="Node.js.index.js" />
       <item itemvalue="Node.js.index.js help" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Mocha.cli-compile.#getGroups.should filter using regexp exclude" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -121,7 +114,7 @@
       <workItem from="1613571649420" duration="22000" />
       <workItem from="1613571848943" duration="17000" />
       <workItem from="1615230810211" duration="946000" />
-      <workItem from="1615297039470" duration="5400000" />
+      <workItem from="1615297039470" duration="6241000" />
     </task>
     <servers />
   </component>
@@ -140,6 +133,12 @@
           <url>file://$PROJECT_DIR$/src/compiler/parser.js</url>
           <line>12</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/compiler/comments.js</url>
+          <line>99</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

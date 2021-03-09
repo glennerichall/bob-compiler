@@ -76,6 +76,7 @@ const preCmd = [
             (y) => add_build(y)
                 .check((args) => checkExists(args.preset)),
             (args) => {
+                // FIXME Yargs met les valeurs par défaut. Trouver un moyen de déterminer les options passés en argument et les retirer de args
                 console.log('Not implemented');
                 // localPresets.mergePreset(args.preset, args);
                 // console.log('done');

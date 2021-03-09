@@ -15,6 +15,11 @@ function loadFromCDbP(content, options = {}) {
         .filter(({content}) => !content.startsWith('#'))
         .filter(({content}) => content.length);
 
+    if (lines.length === 0) {
+        logger.error(`Le fichier commentaires est vide`);
+        throw new Error(`Le fichier commentaires est vide`);
+    }
+
     const tagPattern = options.tagPattern ?? standardValidChars;
     const pattern = new RegExp(
         `(?<points>${float})\\s+(?<id>${tagPattern})\\s+(?<content>\\S+.+)`

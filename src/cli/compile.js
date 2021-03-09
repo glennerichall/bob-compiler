@@ -30,8 +30,9 @@ const getGroups = async (source, options) => {
     files = files.filter((file) => pattern.test(path[options.parts](file)));
     logger.debug(`${files.length} fichier(s) correspondant(s) selon [pattern]`);
     if (exclude) {
+        let n = files.length;
         files = files.filter((file) => !exclude.test(path[options.parts](file)));
-        logger.debug(`${files.length} fichier(s) exclus(s) selon [exclude]`);
+        logger.debug(`${n - files.length} fichier(s) exclus(s) selon [exclude]`);
     }
 
     logger.info(`${files.length} fichier(s) conservé(s)`);
@@ -140,8 +141,8 @@ const compile = async (source, commentaires, options) => {
             let result = await compileOne(source, commentaires, options);
         }
     } catch (e) {
-        logger.error(e.message);
-        return;
+        logger.trace(e);
+        throw e;
     }
     logger.info(
         `\nCompilation terminée en ${new Date() - start} milliseconde(s)`
