@@ -58,13 +58,13 @@ class TagComment extends Comment {
         let {content} = this.database;
         let points = this.getPoints();
         let pond = super.getPoints();
-        if(points !== super.getPoints()) points = `${points}/${pond}`;
+        if (points !== super.getPoints()) points = `${points}/${pond}`;
         let card = Math.abs(pond) > 1 ? 's' : '';
-        if(otherComment){
+        if (otherComment) {
             otherComment = '(' + otherComment + ') ';
-        } else if(this.nullpts){
+        } else if (this.nullpts) {
             otherComment = 'Non-réalisé: ';
-        } else if(pond < 0) {
+        } else if (pond < 0) {
             otherComment = 'Erreur: ';
         } else {
             otherComment = 'Ok: ';
@@ -102,13 +102,19 @@ class Compiler {
         await this.database.load(tagPattern);
         let {content, lang} = this.document;
         const {comments, numpoints} = this.database;
+        const seen = {};
 
         let parser = createParser(this.database, tagPattern);
         let range;
+
         while ((range = parser.parse(content))) {
-            this.comments.push(new TagComment(range, comments[range.id]));
+            let comment = comments[range.id];
+            if (!seen[range.id]) seen[range.id] = 0;
+            seen[range.id]++;
+            this.comments.push(new TagComment(range, comment));
         }
-        // FIXME Should be configurable by env var or presets...
+
+        // FIXME The tag should be configurable by env var or presets...
         const tag = 'Résultat:';
         let fix = getDefaultFix(lang);
         let r = createResultParser(tag).parse(content) || {
@@ -122,6 +128,8 @@ class Compiler {
             tag,
         };
         this.resultComment = new ResultComment(r);
+
+        return seen;
     }
 
     getSum = memoized(() => {

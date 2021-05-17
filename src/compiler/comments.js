@@ -130,11 +130,16 @@ function getDefaultFix(lang) {
         lang === 'cpp' ||
         lang === 'c' ||
         lang === 'c++' ||
-        lang === 'java'
+        lang === 'java' ||
+        lang === 'gradle'
     ) {
         begin = '/*';
         end = '*/';
-    } else if (lang === 'html' || lang === 'xaml') {
+    } else if (
+        lang === 'html' ||
+        lang === 'xaml' ||
+        lang === 'xml'
+    ) {
         begin = '<!--';
         end = '-->';
     }

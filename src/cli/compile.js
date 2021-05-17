@@ -85,7 +85,21 @@ const compileGroup = async (source, commentaires, options) => {
         }
         logger.info('\n');
 
-        await group.load(options.tagPattern);
+        let seen = await group.load(options.tagPattern);
+
+        for (let id in group.database.comments) {
+            let {points} = group.database.comments[id];
+            if (!seen[id] && points > 0) {
+                logger.warn(
+                    `Tag ${id} was in ${group.database.filename} but has not been seen for ${group.key}`
+                );
+            } else if (seen[id] > 1) {
+                logger.warn(
+                    `Tag ${id} has been seen ${seen[id]} times for ${group.key}`
+                );
+            }
+        }
+
         let result = await group.execute();
         results[group.key] = result;
 
@@ -102,7 +116,21 @@ const compileOne = async (source, commentaires, options) => {
     if (options.dryrun) {
         compiler.document.saveAs = async () => Promise.resolve(true);
     }
-    await compiler.load(options.tagPattern);
+    let seen = await compiler.load(options.tagPattern);
+
+    for (let id in compiler.database.comments) {
+        let {points} = compiler.database.comments[id].range;
+        if (!seen[id] && points > 0) {
+            logger.warn(
+                `Tag ${id} was in ${compiler.database.filename} but has not been seen in ${source}`
+            );
+        } else if (seen[id] > 1) {
+            logger.warn(
+                `Tag ${id} has been seen ${seen[id]} times in ${source}`
+            );
+        }
+    }
+
     let res = await compiler.execute();
     if (options.print) {
         await compiler.document.export();

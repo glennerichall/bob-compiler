@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4c84f6b-e518-451e-900d-d899ecc604ef" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cli/assets/commentaires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cli/assets/presets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cli/assets/linux.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/assets/linux.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cli/assets/win32.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/assets/win32.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/compile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/verbs/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/verbs/init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/comments.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/comments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/compiler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/compiler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/group.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/group.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,10 +39,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/index.js" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -43,11 +52,14 @@
       <recent name="$PROJECT_DIR$/src/editor" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.test">
-    <configuration name="index.js help" type="NodeJSConfigurationType" application-parameters="presets add 555-5555" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+  <component name="RunManager" selected="Node.js.index.js (compile)">
+    <configuration name="index.js (compile)" type="NodeJSConfigurationType" application-parameters="compile &quot;$PROJECT_DIR$/../../corrections/420-4N2-AA/Examen 2&quot; &quot;$PROJECT_DIR$/../../corrections/420-4N2-AA/commentaires-Examen 2.txt&quot; --preset &quot;Examen 2&quot;  --results csv --verbose" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="index.js" type="NodeJSConfigurationType" application-parameters="presets list" nameIsGenerated="true" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
+    <configuration name="index.js (init)" type="NodeJSConfigurationType" application-parameters="init -d=&quot;Examen 2&quot;" path-to-js-file="$PROJECT_DIR$/src/index.js" working-dir="$PROJECT_DIR$/../../corrections/420-4N2-AA/">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.js help" type="NodeJSConfigurationType" application-parameters="presets add 555-5555" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="test (append)" type="NodeJSConfigurationType" application-parameters="presets append 420-2P2-AA --pattern &quot;Travail sommatif \d\\(?&lt;etudiant&gt;[^\\]+)\\Travail sommatif \d\\Version \d\\(.*\\)*[^\\]+\.cs$&quot;" path-to-js-file="src/index.js" working-dir="$PROJECT_DIR$">
@@ -96,7 +108,8 @@
       <item itemvalue="Mocha.cli-compile.#getGroups.should filter using regexp exclude" />
       <item itemvalue="Node.js.test" />
       <item itemvalue="Node.js.test (append)" />
-      <item itemvalue="Node.js.index.js" />
+      <item itemvalue="Node.js.index.js (compile)" />
+      <item itemvalue="Node.js.index.js (init)" />
       <item itemvalue="Node.js.index.js help" />
     </list>
   </component>
@@ -115,6 +128,7 @@
       <workItem from="1615230810211" duration="946000" />
       <workItem from="1615297039470" duration="6658000" />
       <workItem from="1615303812800" duration="766000" />
+      <workItem from="1621257830565" duration="13662000" />
     </task>
     <servers />
   </component>
@@ -129,16 +143,6 @@
           <line>22</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/compiler/parser.js</url>
-          <line>12</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/compiler/comments.js</url>
-          <line>99</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -147,5 +151,9 @@
         <watch expression="pattern" language="JavaScript" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,0 +1,9 @@
+Total: auto
+# Pondération Code Commentaires
+# La pondération est numérique et peut être négative
+# Le code ne doit pas contenir d'espaces
+# Exemple
+# Le total sera de 2.5 points
+# 1     Q1      Commentaire pour la question 1 vaut pour un point
+# 1.5   Q2      Commentaire pour la question 2 vaut pour 1.5 points
+# -1    Err1    Si ce code est retrouvé dans la copie de l'étudiant, 1 points seront retranchés

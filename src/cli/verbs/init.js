@@ -1,9 +1,9 @@
-const {
-
-} = require('./switches');
+const {} = require('./switches');
 const logger = require('../../logger.js');
 const localPresets = require('../presets.js');
-const {writeFile} = require('fs').promises;
+const {writeFile, chmod} = require('fs').promises;
+const {constants} = require('fs');
+const path = require('path')
 
 const preset = [
     'preset', {
@@ -12,20 +12,39 @@ const preset = [
     }
 ];
 
+const devoir = [
+    'd', {
+        alias: 'devoir',
+        type: 'string',
+        describe: 'Le nom du devoir pour le preset Devoirs',
+    }
+];
+
 const initCmd = [
-    `init [${preset[0]}]`,
+    `init [${preset[0]}] [devoir]`,
     'Créer des fichiers de scripts pour faciliter la correction.',
     (y) => {
-        y.option(...preset);
+        y.option(...preset)
+        .option(...devoir);
     },
     async (args) => {
-        let { preset } = args;
+        let {preset} = args;
         let pt = '';
         if (!!preset) {
             let p = localPresets.getPreset(preset);
             if (!p) {
                 logger.warn(`Le preset ${preset} n'existe pas`);
             }
+            pt = '--preset ' + preset;
+        } else {
+            // FIXME let yargs do the job of determining if devoir is optional
+            if(!args.devoir) {
+                console.log("Le nom du devoir doit être fourni (-d=devoir)");
+                return;
+            }
+            preset = args.devoir;
+            let data = require('../assets/presets').devoirs(args.devoir);
+            localPresets.putPreset(preset, data);
             pt = '--preset ' + preset;
         }
 
@@ -48,11 +67,13 @@ const initCmd = [
         }
         try {
             const promises = files.map(async (file) => {
-                let {name, content} = file;
+                let {name, content, postProcess} = file;
+                name = name.replace('@{preset}', preset);
                 content = content
-                    .replace('@{preset}', pt)
-                    .replace('@{curdir}', process.cwd());
-                return writeFile(name, content);
+                    .replace(/@{preset}/g, preset)
+                    .replace(/@{curdir}/g, process.cwd());
+                await writeFile(name, content);
+                if (postProcess) return postProcess(name);
             });
             await Promise.all(promises);
         } catch (e) {
