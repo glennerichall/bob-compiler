@@ -4,3 +4,4 @@ lib/
 *.destop
 .watch.sh
 .compile.sh
+.idea
