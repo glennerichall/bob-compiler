@@ -91,7 +91,7 @@ const compileGroup = async (source, commentaires, options) => {
             let {points} = group.database.comments[id];
             if (!seen[id] && points > 0) {
                 logger.warn(
-                    `Tag ${id} was in ${group.database.filename} but has not been seen for ${group.key}`
+                    `Tag ${id} was in ${path.basename(group.database.filename)} but has not been seen for ${group.key}`
                 );
             } else if (seen[id] > 1) {
                 logger.warn(
@@ -122,7 +122,7 @@ const compileOne = async (source, commentaires, options) => {
         let {points} = compiler.database.comments[id].range;
         if (!seen[id] && points > 0) {
             logger.warn(
-                `Tag ${id} was in ${compiler.database.filename} but has not been seen in ${source}`
+                `Tag ${id} was in ${path.basename(compiler.database.filename)} but has not been seen in ${source}`
             );
         } else if (seen[id] > 1) {
             logger.warn(
