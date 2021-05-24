@@ -1,5 +1,3 @@
-
-
 const levels = {
     trace: 0,
     debug: 1,
@@ -11,6 +9,7 @@ const levels = {
 };
 
 class Logger {
+
     constructor() {
         this.level = levels.warn;
     }
@@ -32,6 +31,7 @@ class Logger {
 
     warn(msg) {
         if (this.level > levels.warn) return;
+        if (this._onWarn) this._onWarn(msg);
         console.warn(msg);
     }
 
@@ -47,6 +47,10 @@ class Logger {
 
     log(msg) {
         console.log(msg);
+    }
+
+    set onWarn(listener) {
+        this._onWarn = listener;
     }
 }
 

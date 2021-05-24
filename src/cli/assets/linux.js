@@ -9,6 +9,11 @@ const postProcess = (name)=>{
       constants.S_IWUSR);
 };
 
+// TODO ca devrait provenir de paramètres en cli
+//  --geometry=160x30
+// et
+//  --full-screen
+// gnome-terminal --geometry=160x30 --full-screen
 module.exports.files = [
   {
     name: '(@{preset}) Linux Drop Over Me.desktop',
@@ -16,7 +21,7 @@ module.exports.files = [
 Encoding=UTF-8
 Name=Drop Over Me
 Comment=Execute the script with the file dropped
-Exec=gnome-terminal -- "@{curdir}/.compile-@{preset}.sh"
+Exec=gnome-terminal --geometry=160x30 -- "@{curdir}/.compile-@{preset}.sh"
 Icon=utilities-terminal
 Type=Application
 Terminal=true

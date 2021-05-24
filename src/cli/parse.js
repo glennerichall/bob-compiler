@@ -76,9 +76,15 @@ module.exports.parse = async function parse(source, tagPattern) {
     }
 
     let result = {};
+    let filenames = {};
 
     for (let file of files) {
         let comments = await load(file, tagPattern);
+
+        if (comments.length && !filenames[file]) {
+            filenames[file] = [];
+        }
+
         for (let comment of comments) {
             if (result[comment.id]) {
                 logger.warn(`Tag ${comment.id} has been declared twice or more times`);
@@ -90,8 +96,9 @@ module.exports.parse = async function parse(source, tagPattern) {
                     .replace(comment.id, '')
                     .trim()
             };
+            filenames[file].push(comment.id);
         }
     }
 
-    return result;
+    return {result, filenames};
 }
