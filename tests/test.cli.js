@@ -19,7 +19,7 @@ describe('Cli', () => {
     });
 
     it('should show help', async () => {
-        const argv = ['',''];
+        const argv = ['', ''];
         const log = console.error.bind(console);
         let output = '';
         console.error = msg => output += msg;
@@ -30,7 +30,8 @@ Commands:
   bobc list <commentaires>                                                                                                                         Afficher la liste des commentaires contenu dans le fichier
   bobc presets                                                                                                                                     Gérer les groupes d'arguments prédéfinis (preset)
   bobc compile <source> <commentaires> [groupby] [pattern] [exclude] [parts] [single] [tag-pattern] [results] [preset] [watch] [verbose] [dryrun]  Compiler les points des commentaires annotés dans les fichiers.
-  bobc init [preset]                                                                                                                               Créer des fichiers de scripts pour faciliter la correction.
+  bobc init [preset] [devoir]                                                                                                                      Créer des fichiers de scripts pour faciliter la correction.
+  bobc parse <source> [pattern] [verbose] [output]                                                                                                 Analyser une solution contenant les pondérations pour générer un fichier commentaires
 
 Options:
   --help     Show help  [boolean]

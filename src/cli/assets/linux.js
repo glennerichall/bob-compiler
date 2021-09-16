@@ -35,7 +35,8 @@ bobc --version
 if [ ! -f "$1/../commentaires-@{preset}.txt" ]; then 
   touch "$1/../commentaires-@{preset}.txt"
   echo "Total: auto" >>  "$1/../commentaires-@{preset}.txt"
-  echo "# Pondération Code Commentaires" >>  "$1/../commentaires-@{preset}.txt"
+  echo "# Les informations dans les colonnes suivantes:" >>  "commentaires-@{preset}.txt"
+  echo "# Pondération  |   Code   |    Commentaires" >>  "commentaires-@{preset}.txt"
   echo "# La pondération est numérique et peut être négative" >>  "$1/../commentaires-@{preset}.txt"
   echo "# Le code ne doit pas contenir d'espaces" >>  "$1/../commentaires-@{preset}.txt"
   echo "# Exemple:" >>  "$1/../commentaires-@{preset}.txt"

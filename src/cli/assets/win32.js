@@ -5,7 +5,8 @@ module.exports.files = [
 call bobc --version
 if not exist  "commentaires-@{preset}.txt"  (
     echo "Total: auto" >  "commentaires-@{preset}.txt"
-    echo "# Pondération Code Commentaires" >>  "commentaires-@{preset}.txt"
+    echo "# Les informations dans les colonnes suivantes:" >>  "commentaires-@{preset}.txt"
+    echo "# Pondération  |   Code   |    Commentaires" >>  "commentaires-@{preset}.txt"
     echo "# La pondération est numérique et peut être négative" >>  "commentaires-@{preset}.txt"
     echo "# Le code ne doit pas contenir d'espaces" >>  commentaires-@{preset}.txt"
     echo "# Exemple:" >>  commentaires-@{preset}.txt"
@@ -13,7 +14,7 @@ if not exist  "commentaires-@{preset}.txt"  (
 )
 call bobc compile "%~1" "commentaires-@{preset}.txt" --preset "@{preset}" --results csv > "result-@{preset}.txt"
 chcp 65001 > nul
-type "result-@{preset}1.txt" | clip
+type "result-@{preset}.txt" | clip
 type "result-@{preset}.txt"
 pause`,
     },

@@ -4,7 +4,7 @@
   "description": "Command line application to compile annotated code files in comments",
   "main": "./src/index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha tests/ ",
+    "test": "mocha tests/ ",
     "deploy": "npm publish . --access public"
   },
   "bin": {
@@ -21,11 +21,11 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "cross-env": "^6.0.3",
-    "mocha": "^6.2.2",
-    "nodemon": "^1.19.4"
+    "mocha": "^9.1.1",
+    "nodemon": "^2.0.12"
   },
   "dependencies": {
-    "npm": "^6.14.8",
+    "npm": "^7.23.0",
     "npm-api": "^1.0.0",
     "recursive-readdir": "^2.2.2",
     "settings-store": "^1.4.1",
