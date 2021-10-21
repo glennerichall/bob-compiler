@@ -85,7 +85,7 @@ const initCmd = [
                 if (postProcess) return postProcess(name);
             });
             promises.push((async () => {
-                const filename = path.join(process.cwd(), `${name}-comentaires.txt`);
+                const filename = path.join(process.cwd(), `${args.devoir}-comentaires.txt`);
                 if (!(await exists(filename))) {
                     return copyFile(path.join(__dirname, '..', 'assets', 'commentaires.txt'), filename);
                 }
