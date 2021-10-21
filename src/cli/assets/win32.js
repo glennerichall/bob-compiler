@@ -3,9 +3,6 @@ module.exports.files = [
         name: '(@{preset}) Windows Drop Over Me.bat',
         content: `@echo off
 call bobc --version
-if not exist  "commentaires-@{preset}.txt"  (
-    echo Le fichier des commentaires par défaut n'existe pas et devrait être nommé ./commentaires-@{preset}.txt
-)
 call bobc compile "%~1" "commentaires-@{preset}.txt" --preset "@{preset}" --results csv > "result-@{preset}.txt"
 chcp 65001 > nul
 type "result-@{preset}.txt" | clip

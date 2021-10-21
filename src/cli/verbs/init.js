@@ -84,13 +84,13 @@ const initCmd = [
                 await writeFile(name, content);
                 if (postProcess) return postProcess(name);
             });
-            promises.push(async () => {
+            promises.push((async () => {
                 const filename = path.join(process.cwd(), `${name}-comentaires.txt`);
                 if (!(await exists(filename))) {
                     return copyFile(path.join(__dirname, '..', 'assets', 'commentaires.txt'), filename);
                 }
                 return Promise.resolve();
-            })
+            })());
             await Promise.all(promises);
         } catch (e) {
             logger.trace(e);

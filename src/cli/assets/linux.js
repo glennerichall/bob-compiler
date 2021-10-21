@@ -32,9 +32,6 @@ Name[en_CA]=(Compile @{preset}) Linux Drop Over Me`,
     content: `#!/bin/bash
 source ~/.bashrc
 bobc --version
-if [ ! -f "$1/../commentaires-@{preset}.txt" ]; then 
-  echo Le fichier des commentaires par défaut n'existe pas et devrait être nommé ./commentaires-@{preset}.txt
-fi
 bobc compile "$1" "$1/../commentaires-@{preset}.txt" --preset "@{preset}" --results csv > "$1/../result-@{preset}.txt"
 cat "$1/../result-@{preset}.txt" | xclip
 cat "$1/../result-@{preset}.txt"
