@@ -4,13 +4,7 @@ module.exports.files = [
         content: `@echo off
 call bobc --version
 if not exist  "commentaires-@{preset}.txt"  (
-    echo "Total: auto" >  "commentaires-@{preset}.txt"
-    echo "# Les informations dans les colonnes suivantes:" >>  "commentaires-@{preset}.txt"
-    echo "# Pondération  |   Code   |    Commentaires" >>  "commentaires-@{preset}.txt"
-    echo "# La pondération est numérique et peut être négative" >>  "commentaires-@{preset}.txt"
-    echo "# Le code ne doit pas contenir d'espaces" >>  commentaires-@{preset}.txt"
-    echo "# Exemple:" >>  commentaires-@{preset}.txt"
-    echo "1     Q1      Commentaire pour la question 1" >>  "commentaires-@{preset}.txt"
+    echo Le fichier des commentaires par défaut n'existe pas et devrait être nommé ./commentaires-@{preset}.txt
 )
 call bobc compile "%~1" "commentaires-@{preset}.txt" --preset "@{preset}" --results csv > "result-@{preset}.txt"
 chcp 65001 > nul

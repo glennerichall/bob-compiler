@@ -33,14 +33,7 @@ Name[en_CA]=(Compile @{preset}) Linux Drop Over Me`,
 source ~/.bashrc
 bobc --version
 if [ ! -f "$1/../commentaires-@{preset}.txt" ]; then 
-  touch "$1/../commentaires-@{preset}.txt"
-  echo "Total: auto" >>  "$1/../commentaires-@{preset}.txt"
-  echo "# Les informations dans les colonnes suivantes:" >>  "commentaires-@{preset}.txt"
-  echo "# Pondération  |   Code   |    Commentaires" >>  "commentaires-@{preset}.txt"
-  echo "# La pondération est numérique et peut être négative" >>  "$1/../commentaires-@{preset}.txt"
-  echo "# Le code ne doit pas contenir d'espaces" >>  "$1/../commentaires-@{preset}.txt"
-  echo "# Exemple:" >>  "$1/../commentaires-@{preset}.txt"
-  echo "1     Q1      Commentaire pour la question 1" >>  "$1/../commentaires-@{preset}.txt"
+  echo Le fichier des commentaires par défaut n'existe pas et devrait être nommé ./commentaires-@{preset}.txt
 fi
 bobc compile "$1" "$1/../commentaires-@{preset}.txt" --preset "@{preset}" --results csv > "$1/../result-@{preset}.txt"
 cat "$1/../result-@{preset}.txt" | xclip

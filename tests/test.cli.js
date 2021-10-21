@@ -39,7 +39,7 @@ Options:
         console.error = log;
     });
 
-    it('should new version', async () => {
+    it('should warn for new version', async () => {
         const argv = ['--version'];
         const log = console.warn.bind(console);
         let output = '';
@@ -49,13 +49,11 @@ Options:
         console.warn = log;
     });
 
-    it('should init', async () => {
-        const argv = ['init'];
-        const log = console.warn.bind(console);
-        let output = '';
-        console.warn = msg => output += msg;
-        await cli(argv, 'v0');
-        expect(output).to.match(/Newer version available \d+\.\d+\.\d+, consider upgrading it \(npm upgrade -g bob-compiler\)/);
-        console.warn = log;
+    it('should have default preset', async () => {
+        let data = require('../src/cli/assets/presets').devoirs('toto tata');
+        expect(data).to.have.property('groupby', 'etudiant');
+        expect(data).to.have.property('parts', 'resolve');
+        expect(data).to.have.property('exclude', '([/\\\\]bin[/\\\\]|[/\\\\]obj[/\\\\]|[/\\\\].idea[/\\\\]|[/\\\\].gradle[/\\\\]|[/\\\\]build[/\\\\]|[/\\\\]node_modules[/\\\\])');
+        expect(data).to.have.property('pattern', '(?<etudiant>[^/\\\\]+)[/\\\\]toto tata[/\\\\]Version \\d[/\\\\](.*[/\\\\])*[^/\\\\]+\\.(java|xml|gradle|cs|xaml|html|css|js|sql)$');
     })
 });

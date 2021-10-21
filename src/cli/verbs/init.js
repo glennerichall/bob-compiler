@@ -1,9 +1,18 @@
 const {} = require('./switches');
 const logger = require('../../logger.js');
 const localPresets = require('../presets.js');
-const {writeFile, chmod} = require('fs').promises;
+const {writeFile, copyFile, access} = require('fs').promises;
 const {constants} = require('fs');
-const path = require('path')
+const path = require('path');
+
+async function exists(path) {
+    try {
+        await access(path);
+        return true;
+    } catch {
+        return false;
+    }
+}
 
 const preset = [
     'preset', {
@@ -25,7 +34,7 @@ const initCmd = [
     'Créer des fichiers de scripts pour faciliter la correction.',
     (y) => {
         y.option(...preset)
-        .option(...devoir);
+            .option(...devoir);
     },
     async (args) => {
         let {preset} = args;
@@ -38,7 +47,7 @@ const initCmd = [
             pt = '--preset ' + preset;
         } else {
             // FIXME let yargs do the job of determining if devoir is optional
-            if(!args.devoir) {
+            if (!args.devoir) {
                 console.log("Le nom du devoir doit être fourni (-d=devoir)");
                 return;
             }
@@ -75,6 +84,13 @@ const initCmd = [
                 await writeFile(name, content);
                 if (postProcess) return postProcess(name);
             });
+            promises.push(async () => {
+                const filename = path.join(process.cwd(), `${name}-comentaires.txt`);
+                if (!(await exists(filename))) {
+                    return copyFile(path.join(__dirname, '..', 'assets', 'commentaires.txt'), filename);
+                }
+                return Promise.resolve();
+            })
             await Promise.all(promises);
         } catch (e) {
             logger.trace(e);
