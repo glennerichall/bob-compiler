@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const logger = require('../../logger');
 const {parse} = require('../parse');
+const {standardValidChars, comment} = require("../../compiler/patterns");
 
 const subSectionSorter = reg => (a, b) => {
     let m1 = reg.exec(a);
@@ -66,8 +67,16 @@ module.exports = [
     ,
     async args => {
 
+        // #70:
+        // On capture la pondération pour pouvoir capture n'importe quel genre de tag.
+        // Voir cli\parse.js #96
         let tagPattern = args.pattern ??
-            '((?<nom>err|question|q|etc|lab|laboratoire|travail|tr|devoir|dev)\\.?(?<numero>\\d+(\\.\\d+)*))';
+            `((?<nom>err|question|q|etc|lab|laboratoire|travail|tr|devoir|dev)\\.?(?<numero>${standardValidChars}))`;
+
+        let tagComment = args.pattern ?? `(?<ponderation>\\d+(\\.\\d+)?)\\s+${tagPattern}`;
+
+        logger.debug('Tag pattern to match: ' + tagPattern);
+        logger.debug('Tag comment to match: ' + tagComment);
         // Afficher à l'écran et dans le fichier si nécessaire
         // le total auto
         let file = 'Total: auto\n';
@@ -77,7 +86,7 @@ module.exports = [
         };
 
         // obtenir les commentaires depuis la solution
-        let {result, filenames} = await parse(args.source, tagPattern);
+        let {result, filenames} = await parse(args.source, tagComment);
 
         // regrouper les fichiers du même nom (par exemple pour les ressources Android)
         filenames = Object.keys(filenames).reduce((prev, cur) => {

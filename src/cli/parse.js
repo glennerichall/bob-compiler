@@ -4,7 +4,7 @@ const {
     createParser
 } = require('../compiler/parser.builder.js');
 const path = require('path');
-const sep = path.sep;
+const sep = '/\\\\';
 
 const {Document} = require('../editor/document');
 
@@ -51,7 +51,7 @@ module.exports.parse = async function parse(source, tagPattern) {
         'node_modules'
     ];
 
-    exclude = "(" + exclude.map(x => `${sep}${x}${sep}`).join('|') + ")";
+    exclude = "(" + exclude.map(x => `[${sep}]${x}[${sep}]`).join('|') + ")";
 
     try {
         files = await readdir(source);
@@ -70,6 +70,13 @@ module.exports.parse = async function parse(source, tagPattern) {
         files = files.filter((file) => !exclude.test(path.resolve(file)));
         logger.debug(`${n - files.length} fichier(s) exclus(s) selon [exclude]`);
 
+        for (let i = 0; i < Math.min(files.length, 5); i++) {
+            logger.debug(files[i]);
+        }
+        if (files.length > 5) {
+            logger.debug(`et ${files.length - 5} autres fichiers ...`);
+        }
+
     } catch (e) {
         console.trace(e);
         throw e;
@@ -86,6 +93,10 @@ module.exports.parse = async function parse(source, tagPattern) {
         }
 
         for (let comment of comments) {
+            // #96:
+            // On a capturé la pondération dans le nom du tag. On retire cette pondération du id du commentaire.
+            // voir verbs\parse.js #70
+            comment.id = comment.id.split(/\s+/)[1];
             if (result[comment.id]) {
                 logger.warn(`Tag ${comment.id} has been declared twice or more times`);
             }
