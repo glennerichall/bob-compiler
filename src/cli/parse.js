@@ -84,6 +84,9 @@ module.exports.parse = async function parse(source, tagPattern) {
 
     let result = {};
     let filenames = {};
+    let total = 0;
+
+    let autoId = 0;
 
     for (let file of files) {
         let comments = await load(file, tagPattern);
@@ -93,10 +96,18 @@ module.exports.parse = async function parse(source, tagPattern) {
         }
 
         for (let comment of comments) {
+            total += comment.points > 0 ? comment.points : 0;
+
             // #96:
             // On a capturé la pondération dans le nom du tag. On retire cette pondération du id du commentaire.
             // voir verbs\parse.js #70
             comment.id = comment.id.split(/\s+/)[1];
+
+            const id = comment.id;
+            if (comment.id.endsWith('auto')) {
+                comment.id = comment.id.replace('auto', ++autoId);
+            }
+
             if (result[comment.id]) {
                 logger.warn(`Tag ${comment.id} has been declared twice or more times`);
             }
@@ -104,12 +115,12 @@ module.exports.parse = async function parse(source, tagPattern) {
                 points: comment.points,
                 description: comment.content
                     .replace(comment.points, '')
-                    .replace(comment.id, '')
+                    .replace(id, '')
                     .trim()
             };
             filenames[file].push(comment.id);
         }
     }
 
-    return {result, filenames};
+    return {result, filenames, total};
 }

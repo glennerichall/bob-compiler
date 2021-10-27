@@ -86,7 +86,7 @@ module.exports = [
         };
 
         // obtenir les commentaires depuis la solution
-        let {result, filenames} = await parse(args.source, tagComment);
+        let {result, filenames, total} = await parse(args.source, tagComment);
 
         // regrouper les fichiers du même nom (par exemple pour les ressources Android)
         filenames = Object.keys(filenames).reduce((prev, cur) => {
@@ -129,6 +129,7 @@ module.exports = [
         console.log('Total: auto');
 
         for (let filename of files) {
+            let stot = 0;
 
             // obtenir les tags pour le fichier en cours
             let commentaires = filenames[filename].reduce((res, id) => {
@@ -154,11 +155,25 @@ module.exports = [
 
             for (let id of ids) {
                 let line = `${commentaires[id].points}\t${id}\t${commentaires[id].description}`;
+                stot += commentaires[id].points > 0 ? commentaires[id].points : 0;
                 console.log(line);
                 file += line + '\n';
             }
 
+            console.log('# --------------------------------------------------------------------------------------');
+            console.log(`# Sous-total: ${stot}`);
+
+            file += '\n# --------------------------------------------------------------------------------------';
+            file += `\n# Sous-total: ${stot}`
+
         }
+
+        console.log('\n# --------------------------------------------------------------------------------------');
+        console.log(`# Total: ${total}`);
+        console.log('# --------------------------------------------------------------------------------------');
+        file += '\n# --------------------------------------------------------------------------------------';
+        file += `\n# Total: ${total}`;
+        file += '\n# --------------------------------------------------------------------------------------\n';
 
         if (args.output) {
             try {
