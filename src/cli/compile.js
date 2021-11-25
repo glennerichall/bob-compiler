@@ -1,6 +1,6 @@
-const { Compiler } = require('../compiler/compiler.js');
-const { CompilationGroup } = require('../compiler/group.js');
-const { promises } = require('fs');
+const {Compiler} = require('../compiler/compiler.js');
+const {CompilationGroup} = require('../compiler/group.js');
+const {promises} = require('fs');
 const readdir = require('recursive-readdir');
 const path = require('path');
 const logger = require('../logger.js');
@@ -87,17 +87,27 @@ const compileGroup = async (source, commentaires, options) => {
 
         let seen = await group.load(options.tagPattern);
 
+        let warnCount = 0;
         for (let id in group.database.comments) {
             let {points} = group.database.comments[id];
             if (!seen[id] && points > 0) {
-                logger.warn(
-                    `Tag ${id} was in ${path.basename(group.database.filename)} but has not been seen for ${group.key}`
-                );
+                warnCount++;
+                if (warnCount <= 2) {
+                    logger.warn(
+                        `Tag ${id} was in ${path.basename(group.database.filename)} but has not been seen for ${group.key}`
+                    );
+                }
             } else if (seen[id] > 1) {
-                logger.warn(
-                    `Tag ${id} has been seen ${seen[id]} times for ${group.key}`
-                );
+                warnCount++;
+                if (warnCount <= 2) {
+                    logger.warn(
+                        `Tag ${id} has been seen ${seen[id]} times for ${group.key}`
+                    );
+                }
             }
+        }
+        if (warnCount > 2) {
+            logger.warn(`... and ${warnCount} other warnings`);
         }
 
         let result = await group.execute();
