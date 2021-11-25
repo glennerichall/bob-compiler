@@ -17,7 +17,7 @@ async function exists(path) {
 const preset = [
     'preset', {
         type: 'string',
-        describe: 'Le preset à utiliser pour ce fichier de facilitation',
+        describe: 'Le preset à utiliser pour ce fichier de facilitation. Le nom du devoir est assumé étant le même que le nom du preset.',
     }
 ];
 
@@ -25,7 +25,7 @@ const devoir = [
     'd', {
         alias: 'devoir',
         type: 'string',
-        describe: 'Le nom du devoir pour le preset Devoirs',
+        describe: 'Le nom du devoir pour le preset Devoirs. Un preset sera créé avec le même nom que le devoir.',
     }
 ];
 
@@ -33,8 +33,7 @@ const initCmd = [
     `init [${preset[0]}] [devoir]`,
     'Créer des fichiers de scripts pour faciliter la correction.',
     (y) => {
-        y.option(...preset)
-            .option(...devoir);
+        y.option(...preset).option(...devoir);
     },
     async (args) => {
         let {preset} = args;
@@ -45,6 +44,7 @@ const initCmd = [
                 logger.warn(`Le preset ${preset} n'existe pas`);
             }
             pt = '--preset ' + preset;
+            args.devoir = preset;
         } else {
             // FIXME let yargs do the job of determining if devoir is optional
             if (!args.devoir) {

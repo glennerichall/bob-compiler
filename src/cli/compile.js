@@ -158,11 +158,11 @@ const compile = async (source, commentaires, options) => {
         if (stats.isDirectory() && !options.single) {
             logger.info('Compilation par groupes de fichiers');
             let results = await compileGroup(source, commentaires, options);
-            if (options.results == 'csv') {
+            if (options.results === 'csv') {
                 for (let key in results) {
                     console.log(`${key} : ${results[key]}`);
                 }
-            } else if (options.results == 'json') {
+            } else if (options.results === 'json') {
                 console.log(JSON.stringify(results));
             }
         } else {
