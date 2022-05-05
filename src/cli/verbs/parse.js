@@ -75,7 +75,7 @@ module.exports = [
         if (args.pattern) {
             tagPattern = `((?<nom>${args.pattern})\\.?(?<numero>${standardValidChars}))`;
         } else {
-            tagPattern = `((?<nom>err|question|q|etc|lab|laboratoire|travail|tr|devoir|dev|som|sommatif)\\.?(?<numero>${standardValidChars}))`;
+            tagPattern = `((?<nom>err|question|q|etc|lab|laboratoire|travail|tr|devoir|dev|som|ts|sommatif)\\.?(?<numero>${standardValidChars}))`;
         }
         tagComment = `(?<ponderation>\\d+(\\.\\d+)?)\\s+${tagPattern}`;
 
