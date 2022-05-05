@@ -65,16 +65,16 @@ module.exports.parse = async function parse(source, tagPattern) {
         exclude = new RegExp(exclude);
         files = files.filter((file) => pattern.test(path.resolve(file)));
 
-        logger.debug(`${files.length} fichier(s) correspondant(s) selon [pattern]`);
+        logger.info(`${files.length} fichier(s) correspondant(s) selon [pattern]`);
         let n = files.length;
         files = files.filter((file) => !exclude.test(path.resolve(file)));
-        logger.debug(`${n - files.length} fichier(s) exclus(s) selon [exclude]`);
+        logger.info(`${n - files.length} fichier(s) exclus(s) selon [exclude]`);
 
         for (let i = 0; i < Math.min(files.length, 5); i++) {
-            logger.debug(files[i]);
+            logger.info(files[i]);
         }
         if (files.length > 5) {
-            logger.debug(`et ${files.length - 5} autres fichiers ...`);
+            logger.info(`et ${files.length - 5} autres fichiers ...`);
         }
 
     } catch (e) {

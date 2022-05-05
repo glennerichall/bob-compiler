@@ -70,17 +70,24 @@ module.exports = [
         // #70:
         // On capture la pondération pour pouvoir capture n'importe quel genre de tag.
         // Voir cli\parse.js #96
-        let tagPattern = args.pattern ??
-            `((?<nom>err|question|q|etc|lab|laboratoire|travail|tr|devoir|dev)\\.?(?<numero>${standardValidChars}))`;
+        let tagPattern;
+        let tagComment;
+        if (args.pattern) {
+            tagPattern = `((?<nom>${args.pattern})\\.?(?<numero>${standardValidChars}))`;
+        } else {
+            tagPattern = `((?<nom>err|question|q|etc|lab|laboratoire|travail|tr|devoir|dev|som|sommatif)\\.?(?<numero>${standardValidChars}))`;
+        }
+        tagComment = `(?<ponderation>\\d+(\\.\\d+)?)\\s+${tagPattern}`;
 
-        let tagComment = args.pattern ?? `(?<ponderation>\\d+(\\.\\d+)?)\\s+${tagPattern}`;
 
-        logger.debug('Tag pattern to match: ' + tagPattern);
-        logger.debug('Tag comment to match: ' + tagComment);
+        logger.info('Tag pattern to match: ' + tagPattern);
+        logger.info('Tag comment to match: ' + tagComment);
         // Afficher à l'écran et dans le fichier si nécessaire
         // le total auto
+        console.log('Total: auto');
         let file = 'Total: auto\n';
 
+        // Ajouter les warnings dans le fichier de sortie
         logger.onWarn = msg => {
             file += '# (Warning) ' + msg + '\n';
         };
@@ -125,8 +132,6 @@ module.exports = [
             // obtenir la liste de fichiers triées
             files = medians.map(x => x.filename);
         }
-
-        console.log('Total: auto');
 
         for (let filename of files) {
             let stot = 0;
