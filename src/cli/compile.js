@@ -12,8 +12,8 @@ const getGroups = async (source, options) => {
         pattern: '.*',
         parts: 'resolve',
     };
-    const pattern = new RegExp(options.pattern);
-    const exclude = options.exclude ? new RegExp(options.exclude) : null;
+    const pattern = new RegExp(options.pattern, 'i');
+    const exclude = options.exclude ? new RegExp(options.exclude, 'i') : null;
     let files;
 
     try {
