@@ -25,7 +25,7 @@
     "nodemon": "^2.0.12"
   },
   "dependencies": {
-    "npm": "^7.23.0",
+    "npm": "^8.11.0",
     "npm-api": "^1.0.0",
     "recursive-readdir": "^2.2.2",
     "settings-store": "^1.4.1",
