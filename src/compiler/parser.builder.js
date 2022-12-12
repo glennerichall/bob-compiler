@@ -40,7 +40,7 @@ function createParser(database, tagPattern) {
             .replace(/\./g, '\\.')
         ;
     }
-    const pattern = new RegExp(`(?<nullpts>!)?(?<id>${tagPattern})(?:\\s+|$)(\\((?<otherComment>[^\\)]*)\\))?.*`, 'm');
+    const pattern = new RegExp(`(?<nullpts>!\\d*)?(?<id>${tagPattern})(?:\\s+|$)(\\((?<otherComment>[^\\)]*)\\))?.*`, 'm');
     const parser = new Parser(pattern);
     return chain(createCommentParser(), parser);
 }

@@ -43,13 +43,19 @@ class Comment {
 class TagComment extends Comment {
     constructor(range, database) {
         super(range, database);
-        this.nullpts = !!range.nullpts;
+        this.nullpts = range.nullpts;
     }
 
 
     getPoints() {
         let points = super.getPoints();
-        if (this.nullpts) points = 0;
+        if (this.nullpts) {
+            if(this.nullpts == "!") {
+                points = 0;
+            } else {
+                points = points - Number.parseInt(this.nullpts.substring(1));
+            }
+        }
         return points;
     }
 
@@ -63,13 +69,13 @@ class TagComment extends Comment {
         if (otherComment) {
             otherComment = '(' + otherComment + ') ';
         } else if (this.nullpts) {
-            otherComment = 'Non-réalisé: ';
+            otherComment = 'Incorrect: ';
         } else if (pond < 0) {
             otherComment = 'Erreur: ';
         } else {
             otherComment = 'Ok: ';
         }
-        let prefix = this.nullpts ? '!' : ' ';
+        let prefix = this.nullpts ?  this.nullpts : ' ';
 
         let template = `${begin} ${prefix}${id} ${otherComment}${content}, (${points} point${card}) ${
             end || ''
