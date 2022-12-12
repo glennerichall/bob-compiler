@@ -116,7 +116,12 @@ module.exports.parse = async function parse(source, tagPattern) {
                 description: comment.content
                     .replace(comment.points, '')
                     .replace(id, '')
-                    .trim()
+                    .trim(),
+                range: {
+                    first: comment.first,
+                    last: comment.last
+                },
+                comment,
             };
             filenames[file].push(comment.id);
         }

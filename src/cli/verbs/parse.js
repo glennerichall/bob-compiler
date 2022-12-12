@@ -1,8 +1,11 @@
+// noinspection LanguageDetectionInspection
+
 const fs = require('fs');
 const path = require('path');
 const logger = require('../../logger');
 const {parse} = require('../parse');
 const {standardValidChars, comment} = require("../../compiler/patterns");
+const {Document} = require('../../editor/document');
 
 const subSectionSorter = reg => (a, b) => {
     let m1 = reg.exec(a);
@@ -63,6 +66,11 @@ module.exports = [
                 type: 'boolean',
                 describe: 'Exécution verbeuse',
             })
+            .option('update',
+                {
+                    type: 'boolean',
+                    describe: 'Remplacer les tags "auto" avec leur numérotation auto-générée',
+                })
     }
     ,
     async args => {
@@ -94,6 +102,7 @@ module.exports = [
 
         // obtenir les commentaires depuis la solution
         let {result, filenames, total} = await parse(args.source, tagComment);
+        const fullPathFilenames = Object.keys(filenames);
 
         // regrouper les fichiers du même nom (par exemple pour les ressources Android)
         filenames = Object.keys(filenames).reduce((prev, cur) => {
@@ -179,6 +188,37 @@ module.exports = [
         file += '\n# --------------------------------------------------------------------------------------';
         file += `\n# Total: ${total}`;
         file += '\n# --------------------------------------------------------------------------------------\n';
+
+        if (args.update) {
+            for (let file of fullPathFilenames) {
+                const filename = path.basename(file);
+                // obtenir les tags pour le fichier en cours
+                let commentaires = filenames[filename].reduce((res, id) => {
+                    res[id] = result[id];
+                    return res;
+                }, {});
+
+                // let content = fs.readFileSync(file).toString();
+
+                let document = new Document(file);
+                await document.load();
+
+                await document.edit(async editor => {
+                    for (let comment of Object.values(commentaires)) {
+                        let text = `${comment.comment.begin} ${comment.points} ${comment.comment.id} ${comment.description} ${comment.comment.end}`;
+                        editor.replaceRange(comment.range, text);
+                    }
+                    return true;
+                });
+
+
+                const dir = path.dirname(file);
+                const ext = path.extname(file);
+                const newFilename = filename.replace(ext, ".pond" + ext);
+
+                await document.saveAs(path.join(dir, newFilename));
+            }
+        }
 
         if (args.output) {
             try {
